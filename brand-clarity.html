@@ -3,205 +3,164 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Generator - Kalz Learn</title>
+  <title>Brand Clarity Tool - Kalz Learn</title>
   <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="nav-container">
-
-       <a href="index.html" class="logo">
-  <img src="images/logo.png" alt="Kalz Learn logo">
-</a>
-
-
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="resources.html">Resources</a>
-        <a href="products.html">Products</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-
-      <a href="brand-clarity.html" class="btn primary small">
-        Free Brand Tool
-      </a>
-
-    </div>
-  </header>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brand Clarity Generator</title>
-
-  <!-- Icons -->
+  <link rel="stylesheet" href="css/generator.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-  <div class="bcg-wrapper">
-    <h2>Let’s Define Your Brand</h2>
-    <p class="subtitle">
-      Share a bit about yourself — we’ll turn it into a personalized brand strategy.
-    </p>
-
-    <form id="bcg-form">
-      <div class="form-grid">
-
-        <div class="field">
-          <div class="label"><i class="fa-solid fa-compass"></i> Primary Market</div>
-          <select id="primaryMarket" required>
-            <option value="">Select your main area</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <div class="label"><i class="fa-solid fa-bullseye"></i> Specific Market</div>
-          <select id="specificMarket" required>
-            <option value="">Select a focus</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <div class="label"><i class="fa-solid fa-box"></i> Delivery Method</div>
-          <select id="deliveryMethod" required>
-            <option value="">Select format</option>
-            <option>Short-form content</option>
-            <option>Long-form content</option>
-            <option>Email newsletters</option>
-            <option>Video tutorials</option>
-            <option>Step-by-step guides</option>
-            <option>Templates</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <div class="label"><i class="fa-solid fa-globe"></i> Primary Platform</div>
-          <select id="platformSelect" required>
-            <option value="">Select platform</option>
-            <option>YouTube</option>
-            <option>Instagram</option>
-            <option>TikTok</option>
-            <option>Email</option>
-            <option>Website</option>
-          </select>
-        </div>
-
-        <div class="field full">
-  <div class="label">
-    <i class="fa-solid fa-envelope"></i> Email Address
-  </div>
-  <input
-    type="email"
-    id="email"
-    placeholder="e.g. yourname@email.com"
-    required
-  />
-</div>
-
-      </div>
-
-      <div class="cta">
-        <button type="submit">Generate My Brand Blueprint</button>
-      </div>
-    </form>
-
-    <div id="results" class="results"></div>
-
-    <div id="pdfSection" class="pdf-section hidden">
-      <button id="downloadPdf">Download Your Detailed Blueprint (PDF)</button>
-      <div id="confirmation" class="confirmation"></div>
-    </div>
-  </div>
-
-  <!-- JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="js/main.js"></script>
-</body>
-</html>
-<!-- FOOTER SECTION -->
-<footer class="site-footer">
-  <div class="footer-container">
+  
+  <script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '1835111');
+  </script>
+</head>
+<body>
 
-    <!-- Brand -->
-    <div class="footer-brand">
-      <h3>Kalz Learn</h3>
-      <p>
-        Helping beginners gain clarity, build digital products
-        and grow confidently in the digital economy.
-      </p>
-    </div>
-
-    <!-- Links -->
-    <div class="footer-links">
-      <h4>Explore</h4>
+<header class="site-header">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="Kalz Learn logo">
+    </a>
+    <button class="menu-toggle" aria-label="Open Menu" id="menu-toggle">
+        <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-links" id="nav-menu">
+      <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="resources.html">Resources</a>
       <a href="products.html">Products</a>
       <a href="contact.html">Contact</a>
+      <a href="brand-clarity.html" class="active btn primary small btn-mobile-cta">Try Brand Tool</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="bcg-section">
+    <div class="bcg-wrapper">
+      <div class="section-header centered-header">
+        <p class="eyebrow">FREE TOOL</p>
+        <h2>Brand Clarity Generator</h2>
+        <p class="sub-text">Define your niche and message in seconds.</p>
+      </div>
+
+      <form id="bcg-form">
+        <div class="form-grid">
+          <div class="field">
+            <div class="label"><i class="fa-solid fa-compass"></i> Primary Market</div>
+            <select id="primaryMarket" required>
+              <option value="">Select your main area</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <div class="label"><i class="fa-solid fa-bullseye"></i> Specific Market</div>
+            <select id="specificMarket" required>
+              <option value="">Select a focus</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <div class="label"><i class="fa-solid fa-box"></i> Delivery Method</div>
+            <select id="deliveryMethod" required>
+              <option value="">Select format</option>
+              <option>Short-form content</option>
+              <option>Long-form content</option>
+              <option>Email newsletters</option>
+              <option>Video tutorials</option>
+              <option>Step-by-step guides</option>
+              <option>Templates</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <div class="label"><i class="fa-solid fa-globe"></i> Primary Platform</div>
+            <select id="platformSelect" required>
+              <option value="">Select platform</option>
+              <option>YouTube</option>
+              <option>Instagram</option>
+              <option>TikTok</option>
+              <option>Email</option>
+              <option>Website</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <div class="label"><i class="fa-solid fa-envelope"></i> Email Address</div>
+            <input type="email" id="email" placeholder="Required to receive your blueprint" required />
+          </div>
+        </div>
+
+        <div class="cta">
+          <button type="submit" id="generate-btn">Generate My Brand Blueprint</button>
+        </div>
+      </form>
+
+      <div id="results" class="results-container"></div>
+
+      <div id="pdfSection" style="display:none; margin-top:40px; text-align:center;">
+        <button id="downloadPdf" class="btn primary red full-width">
+          <i class="fa-solid fa-file-pdf"></i> Download Detailed Blueprint (PDF)
+        </button>
+        <p class="button-footer-note">
+    You've also been added to our 5-day brand clarity email course.
+  </p>
+        <div id="confirmation" class="confirmation"></div>
+      </div>
     </div>
-      <!-- Social Icons -->
-    <div class="footer-social">
-  <h4>Follow Kalz Learn</h4>
+  </section>
+</main>
 
-  <div class="social-icons">
-    <!-- YouTube -->
-    <a href="https://www.youtube.com/@KalzLearn" aria-label="YouTube">
+<footer class="site-footer">
+  <div class="section-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4>Kalz Learn</h4>
+        <p>Helping beginners gain clarity, build digital products and grow confidently.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <a href="about.html">About</a>
+        <a href="resources.html">Resources</a>
+        <a href="brand-clarity.html">Brand Clarity Tool</a>
+      </div>
+      <div class="footer-social">
+        <h4>Follow Kalz Learn</h4>
+        <div class="social-icons">
+             <a href="https://www.youtube.com/@KalzLearn" aria-label="YouTube">
+               <svg viewBox="0 0 24 24" fill="currentColor" style="width:24px;"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+             </a>
+      <a href="https://www.facebook.com/kalzlearnhq" aria-label="Facebook">
       <svg viewBox="0 0 24 24" fill="none">
-        <path d="M22 12C22 12 22 8.5 21.5 7
-                 C21.1 5.8 20.2 4.9 19 4.5
-                 C16.8 4 12 4 12 4
-                 C12 4 7.2 4 5 4.5
-                 C3.8 4.9 2.9 5.8 2.5 7
-                 C2 8.5 2 12 2 12
-                 C2 12 2 15.5 2.5 17
-                 C2.9 18.2 3.8 19.1 5 19.5
-                 C7.2 20 12 20 12 20
-                 C12 20 16.8 20 19 19.5
-                 C20.2 19.1 21.1 18.2 21.5 17
-                 C22 15.5 22 12 22 12Z"
-              stroke="currentColor" stroke-width="1.6"/>
-        <path d="M10 9L15 12L10 15V9Z"
-              fill="currentColor"/>
+        <path d="M14 9H16V6H14C11.8 6 10 7.8 10 10V12H8V15H10V21H13V15H15L16 12H13V10C13 9.4 13.4 9 14 9Z" fill="currentColor"/>
       </svg>
     </a>
 
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/kalzlearnhq" aria-label="Facebook">
-      <svg viewBox="0 0 24 24" fill="none">
-        <path d="M14 9H16V6H14
-                 C11.8 6 10 7.8 10 10V12H8V15H10V21H13V15H15L16 12H13V10
-                 C13 9.4 13.4 9 14 9Z"
-              fill="currentColor"/>
-      </svg>
-    </a>
-
-    <!-- Instagram -->
     <a href="https://www.instagram.com/kalzlearn/" aria-label="Instagram">
       <svg viewBox="0 0 24 24" fill="none">
-        <rect x="3" y="3" width="18" height="18" rx="5"
-              stroke="currentColor" stroke-width="1.6"/>
-        <circle cx="12" cy="12" r="4"
-                stroke="currentColor" stroke-width="1.6"/>
-        <circle cx="17.5" cy="6.5" r="1"
-                fill="currentColor"/>
+        <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
       </svg>
     </a>
-  </div>
-</div>
-
-  </div>
-
-  <!-- Bottom bar -->
-  <div class="footer-bottom">
-    <p>© 2026 Kalz Learn. All rights reserved.</p>
+          </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Kalz Learn. All rights reserved.</p>
+    </div>
   </div>
 </footer>
+
+<script src="js/generator.js"></script>
+<script>
+  // Mobile Menu Logic
+  const menuToggle = document.getElementById('menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
+  menuToggle.addEventListener('click', () => { navMenu.classList.toggle('active'); });
+</script>
+</body>
+</html>

@@ -5,179 +5,130 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resources - Kalz Learn</title>
   <link rel="stylesheet" href="css/style.css">
-<script>
+  <script>
     (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
     .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
     n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
     (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
     ml('account', '1835111');
-</script>
+  </script>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="nav-container">
+<header class="site-header">
+  <div class="nav-container">
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="Kalz Learn logo">
+    </a>
 
-       <a href="index.html" class="logo">
-  <img src="images/logo.png" alt="Kalz Learn logo">
-</a>
+    <button class="menu-toggle" aria-label="Open Menu" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
 
-
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="resources.html" class="active">Resources</a>
-        <a href="products.html">Products</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-
-      <a href="brand-clarity.html" class="btn primary small">
-        Free Brand Tool
-      </a>
-
-    </div>
-  </header>
-<!-- RESOURCE SECTION -->
-<section class="resources-section">
-
-  <div class="section-container">
-
-    <h2>Free Resources for Creators</h2>
-    <p class="subtitle">
-      High-value tools and guides to help you start for free.
-    </p>
-
-    <div class="resources-grid">
-
-      <!-- Brand Clarity Generator -->
-      <div class="resource-box">
-        <div class="resource-icon">
-          <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="Generator icon">
-        </div>
-        <h3>Brand Clarity Generator</h3>
-        <p>
-          Use our tool to instantly generate your niche, mission statement and product ideas.
-        </p>
-        <a href="https://kalzlearn.com/generator" class="resource-btn">
-          Try the Tool Now
-        </a>
-      </div>
-
-      <!-- First Sale Checklist -->
-      <div class="resource-box">
-        <div class="resource-icon">
-          <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png" alt="Checklist icon">
-        </div>
-        <h3>The “First Sale” Checklist</h3>
-        <p>
-          A step-by-step PDF guide to launching your first product in 7 days.
-        </p>
-        <button
-          class="resource-btn ml-onclick-form"
-          onclick="ml('show', 'CflHxh', true)">
-          Download PDF
-        </button>
-      </div>
-
-      <!-- 5-Day Email Course -->
-      <div class="resource-box">
-        <div class="resource-icon">
-          <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email icon">
-        </div>
-        <h3>5-Day Email Course</h3>
-        <p>
-          Daily actionable tips delivered straight to your inbox to build momentum.
-        </p>
-        <button
-          class="resource-btn ml-onclick-form"
-          onclick="ml('show', 'OlMovk', true)">
-          Subscribe Free
-        </button>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-</body>
-</html>
-<!-- FOOTER SECTION -->
-<footer class="site-footer">
-  <div class="footer-container">
-
-    <!-- Brand -->
-    <div class="footer-brand">
-      <h3>Kalz Learn</h3>
-      <p>
-        Helping beginners gain clarity, build digital products
-        and grow confidently in the digital economy.
-      </p>
-    </div>
-
-    <!-- Links -->
-    <div class="footer-links">
-      <h4>Explore</h4>
+    <nav class="nav-links" id="nav-menu">
+      <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="resources.html">Resources</a>
+      <a href="resources.html" class="active">Resources</a>
       <a href="products.html">Products</a>
       <a href="contact.html">Contact</a>
-    </div>
-      <!-- Social Icons -->
-    <div class="footer-social">
-  <h4>Follow Kalz Learn</h4>
+      <a href="brand-clarity.html" class="btn primary small btn-mobile-cta">Try Brand Tool</a>
+    </nav>
+  </div>
+</header>
 
-  <div class="social-icons">
-    <!-- YouTube -->
+<main>
+  <section class="resources-section">
+    <div class="section-container">
+      <div class="section-header centered-header">
+        <p class="eyebrow">OUR RESOURCES</p>
+        <h2>Free Resources for Creators</h2>
+        <p class="sub-text">High-value tools and guides to help you start for free.</p>
+      </div>
+
+      <div class="resources-grid">
+        <div class="resource-card light-blue-bg">
+          <div class="icon-circle blue"><i class="icon-sparkles"></i></div>
+          <h3>Brand Clarity Generator</h3>
+          <p>Use our tool to instantly generate your niche, mission statement and product ideas.</p>
+          <a href="https://kalzlearn.com/generator" class="btn primary red">Try It Now →</a>
+        </div>
+
+        <div class="resource-card">
+          <div class="icon-circle green"><i class="icon-file"></i></div>
+          <h3>The "First Sale" Checklist</h3>
+          <p>A step-by-step PDF guide to launching your first product in 7 days.</p>
+          <button class="btn outline-red ml-onclick-form" onclick="ml('show', 'CflHxh', true)">Download PDF ↓</button>
+        </div>
+
+ 
+
+        <div class="resource-card">
+          <div class="icon-circle light-blue"><i class="icon-mail"></i></div>
+          <h3>5-Day Email Course</h3>
+          <p>Daily actionable tips delivered straight to your inbox to build momentum.</p>
+          <button class="btn outline-red ml-onclick-form" onclick="ml('show', 'OlMovk', true)">Subscribe Free</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="section-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4>Kalz Learn</h4>
+        <p>Helping beginners gain clarity, build digital products and grow confidently in the digital economy.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Explore</h4>
+        <a href="about.html">About</a>
+        <a href="resources.html">Resources</a>
+        <a href="products.html">Products</a>
+        <a href="brand-clarity.html">Brand Clarity Tool</a>
+      </div>
+
+      <div class="footer-social">
+        <h4>Follow Kalz Learn</h4>
+        <div class="social-icons">
     <a href="https://www.youtube.com/@KalzLearn" aria-label="YouTube">
       <svg viewBox="0 0 24 24" fill="none">
-        <path d="M22 12C22 12 22 8.5 21.5 7
-                 C21.1 5.8 20.2 4.9 19 4.5
-                 C16.8 4 12 4 12 4
-                 C12 4 7.2 4 5 4.5
-                 C3.8 4.9 2.9 5.8 2.5 7
-                 C2 8.5 2 12 2 12
-                 C2 12 2 15.5 2.5 17
-                 C2.9 18.2 3.8 19.1 5 19.5
-                 C7.2 20 12 20 12 20
-                 C12 20 16.8 20 19 19.5
-                 C20.2 19.1 21.1 18.2 21.5 17
-                 C22 15.5 22 12 22 12Z"
-              stroke="currentColor" stroke-width="1.6"/>
-        <path d="M10 9L15 12L10 15V9Z"
-              fill="currentColor"/>
+        <path d="M22 12C22 12 22 8.5 21.5 7C21.1 5.8 20.2 4.9 19 4.5C16.8 4 12 4 12 4C12 4 7.2 4 5 4.5C3.8 4.9 2.9 5.8 2.5 7C2 8.5 2 12 2 12C2 12 2 15.5 2.5 17C2.9 18.2 3.8 19.1 5 19.5C7.2 20 12 20 12 20C12 20 16.8 20 19 19.5C20.2 19.1 21.1 18.2 21.5 17C22 15.5 22 12 22 12Z" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M10 9L15 12L10 15V9Z" fill="currentColor"/>
       </svg>
     </a>
 
-    <!-- Facebook -->
     <a href="https://www.facebook.com/kalzlearnhq" aria-label="Facebook">
       <svg viewBox="0 0 24 24" fill="none">
-        <path d="M14 9H16V6H14
-                 C11.8 6 10 7.8 10 10V12H8V15H10V21H13V15H15L16 12H13V10
-                 C13 9.4 13.4 9 14 9Z"
-              fill="currentColor"/>
+        <path d="M14 9H16V6H14C11.8 6 10 7.8 10 10V12H8V15H10V21H13V15H15L16 12H13V10C13 9.4 13.4 9 14 9Z" fill="currentColor"/>
       </svg>
     </a>
 
-    <!-- Instagram -->
     <a href="https://www.instagram.com/kalzlearn/" aria-label="Instagram">
       <svg viewBox="0 0 24 24" fill="none">
-        <rect x="3" y="3" width="18" height="18" rx="5"
-              stroke="currentColor" stroke-width="1.6"/>
-        <circle cx="12" cy="12" r="4"
-                stroke="currentColor" stroke-width="1.6"/>
-        <circle cx="17.5" cy="6.5" r="1"
-                fill="currentColor"/>
+        <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
       </svg>
     </a>
   </div>
-</div>
-
-  </div>
-
-  <!-- Bottom bar -->
-  <div class="footer-bottom">
-    <p>© 2026 Kalz Learn. All rights reserved.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Kalz Learn. All rights reserved.</p>
+    </div>
   </div>
 </footer>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
+</script>
+</body>
+</html>

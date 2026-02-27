@@ -1,70 +1,272 @@
-/* RESET / BASE */
+/* =========================================
+   1. GLOBAL RESET & FONTS
+========================================= */
 * {
   box-sizing: border-box;
-}
-body {
   margin: 0;
-  font-family: Inter, Arial, sans-serif;
-  color: #111;
-  background: #fff;
-  padding-top: 72px;
+  padding: 0;
 }
 
-/* HEADER */
-.site-header {
-  position: fixed;        /* NEW */
-  top: 0;                 /* NEW */
-  left: 0;                /* NEW */
-  width: 100%;            /* NEW */
-  z-index: 1000;          /* NEW */
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  color: #111;
+  line-height: 1.6;
+  padding-top: 80px; /* Space for fixed header */
+  background-color: #fff;
+}
 
-  border-bottom: 1px solid #eee;
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+section {
+  padding: 100px 0; /* Standard desktop vertical breathing room */
+}
+
+/* =========================================
+   2. GLOBAL TYPOGRAPHY
+========================================= */
+/* MOBILE TOP GAP REDUCTION */
+@media (max-width: 768px) {
+  /* 1. Reduce the main wrapper's top margin/padding */
+  .bcg-wrapper, 
+  main, 
+  .content-section {
+    margin-top: 10px !important;
+    padding-top: 10px !important;
+  }
+}
+/* HERO SMALL STYLING */
+.hero-small {
+  padding: 60px 0 20px 0; /* Tightened bottom padding to fix big space */
+  background-color: #ffffff;
+  text-align: left; /* Left aligned per instructions [cite: 2026-02-26] */
+}
+
+/* section-container keeps content from hitting the screen edges */
+.section-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hero-small h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #000000;
+  margin-bottom: 10px; /* Reduces gap between title and subtitle */
+  letter-spacing: -0.02em;
+}
+
+.hero-small .sub-text {
+  font-size: 1.25rem;
+  color: #444444; 
+  line-height: 1.4;
+  max-width: 650px; 
+  margin-bottom: 0; 
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  /* 1. Target any hero-style section on the homepage or about page */
+  .hero, .hero-small, .hero-section, .centered-header {
+    padding-top: 10px !important;    /* Forces top space to 10px */
+    margin-top: 0 !important;
+  }
+
+  /* 2. Target the H1 directly to remove the hidden browser margin */
+  .hero h1, .hero-small h1, .hero-section h1 {
+    margin-top: 0 !important;       /* Removes the invisible push above text */
+    padding-top: 0 !important;
+    line-height: 1.1;               /* Prevents tall line-height from adding space */
+  }
+
+  /* 3. Ensure the main content wrapper isn't pushing it down */
+  main, .bcg-wrapper {
+    padding-top: 0 !important;
+  }
+/* Remove the default "push" from headings */
+  h2, h3 {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    text-align: left; /* Keeps text left-aligned under headers [cite: 2026-02-26] */
+  }
+
+  /* Adjust the eyebrow to sit higher */
+  .eyebrow {
+    margin-top: 0 !important;
+    margin-bottom: 5px; /* Tightens the gap to the header below it */
+  }
+
+  /* Ensure the paragraph below h3 is flush left and close */
+  h3 + p {
+    margin-top: 5px !important;
+    text-align: left; [cite: 2026-02-26]
+  }
+}
+/* H2 */
+h2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #111827;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+}
+
+h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: #111827;
+}
+
+.eyebrow {
+  color: #C00000;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* =========================================
+   3. HEADER & NAVIGATION
+========================================= */
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
   background: #fff;
+  border-bottom: 1px solid #eee;
+  z-index: 1000;
 }
 
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 16px 20px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-}
-
-/* IMAGE LOGO */
-.logo {
-  text-decoration: none;
-  display: flex;
   align-items: center;
+  padding: 15px 20px;
 }
 
 .logo img {
-  height: 35px;
+  height: 40px;
   width: auto;
+  display: block;
 }
+
 .nav-links {
   display: flex;
-  gap: 24px;
+  gap: 25px;
+  align-items: center;
 }
 
 .nav-links a {
   text-decoration: none;
   color: #444;
   font-weight: 500;
+  transition: 0.3s;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
+.nav-links a:hover {
   color: #C00000;
 }
+/* Header Centering for Windows */
+.centered-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
 
-/* BUTTONS */
+/* 4-Column Grid */
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2x2 grid as seen in LIKE.png */
+  gap: 25px;
+}
+
+.resource-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 40px 30px;
+  text-align: center; /* Centered for Desktop like LIKE.png */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* First card unique background */
+.light-blue-bg {
+  background-color: #f0f4ff;
+  border: none;
+}
+
+/* Icon Styling */
+.icon-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.icon-circle.blue { background: #e0e7ff; color: #4f46e5; }
+.icon-circle.green { background: #dcfce7; color: #16a34a; }
+.icon-circle.orange { background: #ffedd5; color: #ea580c; }
+.icon-circle.light-blue { background: #e0f2fe; color: #0284c7; }
+
+.resource-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  color: #111;
+}
+
+.resource-card p {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+/* Button Styling from LIKE.png */
+.btn.outline-red {
+  border: 1px solid #d32f2f;
+  color: #d32f2f;
+  background: transparent;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.btn.primary.red {
+  background: #e53935;
+  color: white;
+  border: none;
+}
+
+/* =========================================
+   4. BUTTONS
+========================================= */
 .btn {
-  display: inline-block;
-  padding: 12px 18px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 28px;
   border-radius: 8px;
-  font-weight: 400;
+  font-weight: 700;
   text-decoration: none;
+  transition: 0.3s;
+  cursor: pointer;
+  border: none;
 }
 
 .btn.primary {
@@ -72,830 +274,671 @@ body {
   color: #fff;
 }
 
+.btn.primary:hover {
+  background: #a00000;
+  transform: translateY(-2px);
+}
+
+.btn.secondary {
+  background: transparent;
+  color: #C00000;
+  border: 1.5px solid #C00000;
+}
+
+.btn.secondary:hover {
+  background: #fff5f5;
+}
+
 .btn.small {
-  padding: 10px 16px;
-  font-size: 0.9rem;
+  padding: 8px 16px;
+  font-size: 0.85rem;
 }
 
-/* HERO SECTION */
-.hero {
-  padding: 72px 20px;
+.centered-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 50px;
+}
+.centered-btn-wrapper {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;     /* Centers vertically */
+  width: 100%;             /* Spans the full width of the section */
+  margin-top: 50px;        /* Pushes it away from the cards for breathing room */
+}
+/* Centers the Products header on Desktop/Windows */
+.centered-header {
   text-align: center;
+  margin-bottom: 50px;
 }
 
-.hero-container {
-  max-width: 1100px; /* or 1200px */
+.centered-header .eyebrow {
+  margin: 0 auto 10px;
+}
+
+.centered-header h2 {
+  margin: 0 auto 20px;
+}
+
+.centered-header .sub-text {
   margin: 0 auto;
-  padding: 0 20px; /* safety on small screens */
+  max-width: 600px; /* Keeps the description easy to read */
+}
+/* =========================================
+   5. SECTIONS (ALTERNATING COLORS)
+========================================= */
+
+/* Hero - White */
+.hero {
+  background-color: #ffffff;
+  text-align: center;
+  padding: 120px 0 80px;
 }
 
 .hero h1 {
-  font-size: 2.8rem;
-  margin-bottom: 20px;
+  font-size: 3.5rem;
+  font-weight: 900;
+  max-width: 900px;
+  margin: 0 auto 20px;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
 }
 
 .hero p {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   color: #555;
-  margin-bottom: 40px;
-  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto 35px;
 }
 
 .hero-buttons {
   display: flex;
+  gap: 15px;
   justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
 }
 
-/* Secondary button */
-.btn.secondary {
-  background: #fff;
-  color: #C00000;
-  border: 1px solid #C00000;
-}
-/* PROCESS SECTION */
+/* Process - Light Gray */
 .process {
-  padding: 80px 20px;
-  background: #fafafa;
+  background-color: #f9fafb;
+}
+/* Centers the eyebrow and H2 in the Process section on Windows */
+.process .section-container {
   text-align: center;
 }
 
 .process .eyebrow {
-  color: #C00000;
-  font-weight: 700;
-  letter-spacing: 1px;
-  font-size: 0.85rem;
-  margin-bottom: 10px;
+  margin: 0 auto 10px;
 }
 
 .process h2 {
-  font-size: 2.2rem;
-  margin-bottom: 60px;
+  margin: 0 auto 50px;
+  max-width: 700px;
 }
-
 .process-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
+  margin-top: 60px;
 }
 
 .process-item {
+  display: flex;
+  gap: 20px;
   text-align: left;
 }
 
 .process-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: #5b5bf7; /* matches reference image */
+  flex-shrink: 0;          /* Keeps icon box square */
+  width: 50px;
+  height: 50px;
+  background: #5b5bf7;
+  border-radius: 8px;      /* Slightly rounded corners */
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
 }
 
 .process-icon svg {
-  width: 22px;
-  height: 22px;
-  fill: #ffffff;
-}
-.process-item h3 {
-  font-size: 1.1rem;
-  margin-bottom: 10px;
+  width: 24px;
+  height: 24px;
+  color: #fff;
 }
 
-.process-item p {
-  color: #555;
-  line-height: 1.6;
-  font-size: 0.95rem;
-}
-
-/* CTA */
-.process-cta {
-  margin-top: 60px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .process-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 500px) {
-  .process-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .process-item {
-    text-align: center;
-  }
-}
-
-/* FEATURED PRODUCTS */
+/* Featured Products - White */
 .featured-products {
-  padding: 80px 20px;
-  background: #ffffff;
+  background-color: #ffffff;
 }
 
-.section-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.section-header h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.section-header p {
-  color: #555;
-}
-.subtitle {
-  color: #555;
-  font-size: 1rem;
-}
-/* GRID */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+  margin-top: 50px;
 }
 
-/* CARD */
 .product-card {
   background: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  border: 1px solid #f0f0f0;
+  border-radius: 16px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
+  transition: 0.3s;
 }
 
-.product-card img {
+.product-card:hover {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.card-img-holder img {
   width: 100%;
   border-radius: 8px;
-  margin-bottom: 15px;
-}
-
-.product-card h3 {
-  font-size: 1.05rem;
-  margin-bottom: 8px;
-}
-
-.product-card p {
-  font-size: 0.95rem;
-  color: #555;
-  margin-bottom: 12px;
-}
-
-.price {
-  font-weight: 700;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .product-cta {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin-top: 16px;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 20px;
 }
 
-.product-cta .price {
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: #111;
-}
 .price {
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: #111;
-  display: flex;
-  flex-direction: column;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .price small {
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: #666;
+  display: block;
+  font-size: 0.8rem;
+  color: #777;
+  font-weight: 400;
 }
 
-/* VIEW ALL */
-.view-all {
-  text-align: center;
-  margin-top: 50px;
+.btn-buy {
+  background: #74c660;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 700;
 }
 
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-  .products-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .products-grid {
-    grid-template-columns: 1fr;
-  }
-}
-/* CTA BAND */
+/* CTA Band - Purple */
 .cta-band {
-  background: #4b43d1; /* same purple tone as reference */
-  padding: 60px 20px;
+  background: #4b43d1;
+  color: #fff;
+  padding: 80px 0;
+  margin: 0; /* Backgrounds should touch */
 }
 
-.cta-container {
-  max-width: 1200px;
-  margin: 0 auto;
+.cta-flex {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 40px;
+  align-items: center;
 }
 
 .cta-text h2 {
-  color: #ffffff;
-  font-size: 2rem;
-  margin: 0 0 10px;
-}
-
-.cta-text p {
-  color: #dcdcff;
-  font-size: 1.1rem;
-  margin: 0;
-}
-
-/* CTA Button */
-.cta-btn {
-  background: #ffffff;
-  color: #C00000;
-  padding: 14px 26px;
-  border-radius: 10px;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .cta-container {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-/* WHY KALZLEARN */
-.why-kalzlearn {
-  padding: 80px 20px;
-  background: #f9f9f9;
-  text-align: center;
-}
-
-/* Eyebrow */
-.why-kalzlearn .eyebrow {
-  color: #C00000;
-  font-weight: 700;
-  letter-spacing: 1px;
-  font-size: 0.85rem;
-  margin-bottom: 6px; /* tighter */
-}
-
-/* Section title */
-.why-kalzlearn h2 {
-  font-size: 2.2rem;
-  max-width: 700px;
-  margin: 0 auto 24px; /* WAS 60px → now clean */
-}
-
-/* Grid */
-.why-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-}
-.why-kalzlearn h2 {
-  margin-bottom: 0;
-}
-
-.why-grid {
-  margin-top: 48px;
-}
-/* Cards */
-.why-item {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 10px;
-  text-align: left;
-}
-
-.why-item h3 {
-  font-size: 1.15rem;
+  color: #fff;
   margin-bottom: 10px;
 }
 
-.why-item p {
-  color: #555;
-  line-height: 1.6;
+.btn-white {
+  background: #fff;
+  color: #C00000;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+/* Why Section - Light Gray */
+.why-section {
+  background-color: #f9fafb;
+}
+
+.why-header-center {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.why-card {
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  text-align: left; /* Paragraph below h3 left aligned */
+}
+/* =========================================
+   CONTACT FORM STYLING
+========================================= */
+
+/* 1. Form Wrapper to Center and Limit Width on Desktop */
+.contact-form-wrapper {
+  max-width: 600px;
+  margin: 0 auto; /* Centers the form block */
+  text-align: left; /* Ensures labels and inputs align left */
+}
+
+/* 2. Style the Labels (Name, Email, Message) */
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px; /* Space between label and input */
   font-size: 0.95rem;
 }
 
-/* CTA */
-.why-cta {
-  margin-top: 48px; /* slightly tighter */
-  text-align: center;
+/* 3. Style Input Fields and Textarea */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 6px; /* Slightly rounded corners */
+  font-family: inherit; /* Inherits 'Inter' from body */
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background-color: #fff;
+  margin-bottom: 25px; /* Spacing between form groups */
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .why-grid {
-    grid-template-columns: 1fr;
+/* 4. Placeholder Styling (Subtle Gray) */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #aaa;
+}
+
+/* 5. Focus State (When User Clicks In) */
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #C00000; /* Border changes to Brand Red */
+  box-shadow: 0 0 0 3px rgba(192, 0, 0, 0.1); /* Soft red glow */
+}
+
+/* 6. Special Styling for the Textarea (Message Box) */
+.form-group textarea {
+  resize: vertical; /* User can resize height, but not width */
+}
+
+/* 7. The Full-Width 'Send Message' Button */
+.contact-form-wrapper .btn.full {
+  width: 100%; /* Makes the button fill the form width */
+  padding: 16px;
+  font-size: 1.1rem;
+  justify-content: center; /* Centers text inside flex button */
+  margin-top: 10px;
+}
+
+/* SUCCESS MESSAGE STYLING */
+.form-success {
+  margin-top: 25px;
+  padding: 15px;
+  background-color: #e6fffa;
+  border-left: 4px solid #38b2ac;
+  color: #2c7a7b;
+  border-radius: 4px;
+  font-weight: 500;
+}
+/* ABOUT PAGE STYLING */
+.about-header {
+  padding-top: 40px;    /* Keeps a small gap from the top nav */
+  padding-bottom: 0;    /* Removes bottom padding to fix the big space */
+  text-align: left;     /* Aligns text to the left [cite: 2026-02-26] */
+}
+
+.about-header h1 {
+  font-family: 'Inter', sans-serif; /* Clean, readable font */
+  font-size: 3rem;      /* Large, bold display like hero.png */
+  font-weight: 800;
+  color: #000000;       /* Solid black per instructions */
+  margin-bottom: 10px;  /* Tight gap to the subtitle */
+  letter-spacing: -0.02em;
+}
+
+.about-header .subtitle {
+  font-size: 1.25rem;
+  color: #444444;       /* Dark gray for readability */
+  line-height: 1.4;
+  max-width: 600px;     /* Prevents text from stretching too wide */
+  margin-bottom: 20px;  /* Controls the gap before the main story starts */
+}
+/* About Story */
+.about-story {
+  /* Reduced padding from 80px to 30px to close the "Big Space" */
+  padding: 30px 0 60px 0; 
+  background-color: #fcfcfc;
+}
+
+.story-content {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.15rem; /* Slightly adjusted for better readability */
+  line-height: 1.6;    /* Tightened line height for a more cohesive look */
+  color: #444;
+  text-align: left;   /* Ensures left alignment per instructions [cite: 2026-02-26] */
+}
+
+/* Philosophy Grid */
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.philosophy-item {
+  padding: 30px;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  text-align: left; /* Aligns paragraph under h3 [cite: 2026-02-26] */
+}
+
+.philosophy-item h3 {
+  margin-bottom: 12px; /* Consistent spacing under headers */
+  color: #000000;      /* H1/Main Header color */
+}
+
+/* Fix Button Spacing (Philosophy CTA) */
+/* Fix Button Spacing (Philosophy CTA) */
+.philosophy-cta {
+  display: flex;
+  justify-content: center; /* Change from flex-start to center */
+  gap: 20px;               /* Keeps them side-by-side with a 20px gap */
+  margin-top: 40px;
+}
+
+.philosophy-icon {
+  width: 48px;
+  color: #C00000; /* Brand Red */
+  margin-bottom: 20px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+.about-header h1 {
+    font-size: 2.2rem;   /* Scales down for mobile screens */
+  }
+  
+  .about-header .subtitle {
+    font-size: 1.1rem;
+  }
+  .about-story {
+    padding: 20px 0 40px 0; /* Even tighter spacing for mobile screens */
   }
 
-  .why-item {
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .philosophy-cta {
+    flex-direction: column; /* Stacks buttons on mobile */
+    gap: 15px;
+    align-items: flex-start;
+  }
+  
+  .philosophy-cta .btn {
+    width: 100%; /* Full width buttons for easier mobile tapping */
     text-align: center;
   }
 }
-/* FOOTER */
+
+/* =========================================
+   6. FOOTER (DARK)
+========================================= */
 .site-footer {
-  background: #111;
-  color: #ccc;
-  padding: 60px 20px 30px;
-  font-size: 0.9rem;
+  background: #111827;
+  color: #fff;
+  padding: 80px 0 40px;
 }
 
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
+.footer-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  gap: 40px;
-}
-
-/* Brand */
-.footer-brand h3 {
-  color: #fff;
-  font-size: 1.3rem;
-  margin-bottom: 12px;
+  gap: 60px;
 }
 
 .footer-brand p {
-  line-height: 1.6;
-  color: #bbb;
+  color: #9ca3af;
+  margin-top: 15px;
 }
 
-/* Links & trust */
-.footer-links h4,
-.footer-trust h4 {
-  color: #fff;
-  margin-bottom: 14px;
-  font-size: 1rem;
+.footer-links h4, .footer-social h4 {
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
 }
 
 .footer-links a {
   display: block;
-  color: #bbb;
+  color: #9ca3af;
   text-decoration: none;
-  margin-bottom: 8px;
-}
-
-.footer-links a:hover {
-  color: #C00000;
-}
-
-/* Footer social */
-.footer-social h4 {
-  color: #fff;
-  margin-bottom: 14px;
-  font-size: 1rem;
+  margin-bottom: 12px;
 }
 
 .social-icons {
   display: flex;
-  gap: 16px;
-}
-
-.social-icons a {
-  color: #bbb;
-  width: 24px;
-  height: 24px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.2s ease;
-}
-
-.social-icons a:hover {
-  color: #C00000;
+  gap: 20px;
 }
 
 .social-icons svg {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
+  color: #9ca3af;
+  transition: 0.3s;
 }
 
-/* Bottom bar */
+.social-icons a:hover svg {
+  color: #fff;
+  transform: translateY(-3px);
+}
+
 .footer-bottom {
-  margin-top: 40px;
-  padding-top: 20px;
-  border-top: 1px solid #222;
-  text-align: center;
-  color: #777;
-}
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .footer-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-}
-/* ABOUT STORY */
-.about-story {
-  padding: 20px 20px 80px;
-}
-
-.about-story p {
-  max-width: 900px;
-  margin: 0 auto 20px;
-  font-size: 1rem;
-  line-height: 1.8;
-  color: #555;
-  text-align: left;
-}
-/* CORE PHILOSOPHY */
-.core-philosophy {
-  padding: 60px 20px 100px;
-  background: #fafafa;
-  text-align: center;
-}
-
-.core-philosophy h2 {
-  font-size: 2rem;
-  margin-bottom: 50px;
-}
-
-/* Grid */
-.philosophy-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-  margin-bottom: 50px;
-}
-
-/* Item */
-.philosophy-item {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.04);
-}
-
-.philosophy-icon {
-  width: 44px;
-  height: 44px;
-  margin: 0 auto 16px;
-  color: #5b5bf7;
-}
-
-.philosophy-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.philosophy-item h3 {
-  font-size: 1.05rem;
-  margin-bottom: 8px;
-}
-
-.philosophy-item p {
-  font-size: 0.95rem;
-  color: #555;
-}
-
-/* CTA */
-.philosophy-cta {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .philosophy-grid {
-    grid-template-columns: 1fr;
-  }
-}
-/* =========================
-   RESOURCES PAGE
-========================= */
-
-.resources-section {
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.resources-section h2 {
-  font-size: 2rem;
-  margin-bottom: 12px;
-}
-
-.resources-section .subtitle {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 50px;
-}
-
-/* GRID */
-
-.resources-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-}
-
-/* CARD */
-
-.resource-box {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 40px 30px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.resource-box:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 30px rgba(0,0,0,0.08);
-}
-
-.resource-icon {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 20px;
-  background: #111;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.resource-icon img {
-  width: 26px;
-  height: 26px;
-  filter: invert(1);
-}
-
-.resource-box h3 {
-  font-size: 1.1rem;
-  margin-bottom: 12px;
-}
-
-.resource-box p {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #555;
-  margin-bottom: 25px;
-}
-
-/* BUTTON */
-
-.resource-btn {
-  display: inline-block;
-  padding: 12px 26px;
-  border-radius: 8px;
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  color: #6b7280;
   font-size: 0.9rem;
-  font-weight: 600;
-  border: 2px solid #C00000;
-  background: transparent;
-  color: #C00000;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-decoration: none;
 }
 
-.resource-btn:hover {
-  background: #C00000;
-  color: #ffffff;
-}
+/* =========================================
+   7. MOBILE RESPONSIVENESS
+========================================= */
+@media (max-width: 768px) {
+  section {
+    padding: 60px 0;
+  }
 
-/* RESPONSIVE */
+  h2 { font-size: 2rem; }
+ /* CTA Section */
+.cta-flex {
+    flex-direction: column;    /* Stacks button below text */
+    align-items: flex-start;   /* ALIGNS BUTTON TO THE LEFT */
+    text-align: left;          /* Paragraph is below h3 left aligned */
+    gap: 25px;                 /* Space between text and button */
+  }
 
-@media (max-width: 600px) {
-  .resource-box {
+  .cta-text h2 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+    margin-bottom: 0px;
+  }
+
+  .cta-band .btn-white {
+    width: auto;               /* PREVENTS FULL WIDTH */
+    padding: 14px 28px;        /* Slightly more compact for mobile */
+    display: inline-flex;      /* Keeps centering inside the button */
+  }
+ /* 2. GRID & PROCESS FIXES */
+  .process h2 {
+    text-align: left; 
+    font-size: 1.8rem; 
+  }
+
+  .process .eyebrow {
+    text-align: left; 
+  }
+
+  .process-grid { 
+    display: flex;
+    flex-direction: column; 
+    gap: 32px; 
+    padding: 0 10px;
+  }
+
+  .process-item {
+    display: flex;         
+    gap: 16px;             
+    align-items: flex-start;  
+    text-align: left;      
+  }
+
+  /* Header Alignments */
+  .why-header-center, .hero, .process, .cta-text {
+    text-align: left;
+  }
+
+  .why-header-center h2, .why-header-center .sub-text, .hero h1, .hero p {
+    margin-left: 0;
+  }
+
+  .eyebrow { text-align: left; }
+/* Centered Header */
+.centered-header {
+    text-align: left;
+  }
+  
+  .centered-header .sub-text {
+    margin-left: 0;
+  }
+
+  /* Grid Conversions */
+  .process-grid, .products-grid, .why-grid, .footer-grid, .cta-flex {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  /* Resource-Grid*/
+.resources-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resource-card {
+    text-align: left;
+    align-items: flex-start;
     padding: 30px 20px;
   }
-}
-/* BRAND CLARITY TOOL */
-html { color-scheme: light; }
 
-body {
-  font-family: Inter, Arial, sans-serif;
-  background: #fff;
-  margin: 0;
-  color: #111;
-}
-
-.bcg-wrapper {
-  max-width: 960px;
-  margin: 60px auto;
-  padding: 0 20px 40px;
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 6px;
-}
-
-.subtitle {
-  text-align: center;
-  color: #555;
-  margin-bottom: 40px;
-}
-
-/* FORM */
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-}
-
-.label {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 6px;
-  display: flex;
-  gap: 8px;
-}
-
-.label i {
-  color: #e10600;
-}
-
-select,
-input {
-  padding: 14px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  font-size: 15px;
-}
-
-select:focus,
-input:focus {
-  border-color: #e10600;
-}
-
-.full {
-  grid-column: 1 / -1;
-}
-
-.cta {
-  margin-top: 30px;
-}
-
-.cta button {
-  width: 100%;
-  padding: 18px;
-  font-size: 18px;
-  font-weight: 700;
-  border-radius: 999px;
-  border: none;
-  background: #e10600;
-  color: #fff;
-  cursor: pointer;
-}
-
-/* RESULTS */
-.results {
-  margin-top: 50px;
-  display: grid;
-  gap: 20px;
-}
-
-.card {
-  background: #fafafa;
-  border-radius: 16px;
-  padding: 24px;
-  border: 1px solid #eee;
-}
-
-.card h3 {
-  margin-bottom: 10px;
-  color: #e10600;
-}
-
-.confirmation {
-  margin-top: 20px;
-  text-align: center;
-  color: #e10600;
-  font-weight: 700;
-}
-
-/* PDF */
-.pdf-section {
-  margin-top: 30px;
-  text-align: center;
-}
-
-.hidden {
-  display: none;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .form-grid {
-    grid-template-columns: 1fr;
+  .centered-header {
+    text-align: left;
   }
-}
+/* 1. Show the Hamburger Button */
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
 
-/* =========================
-   CONTACT SECTION
-========================= */
+  .menu-toggle span {
+    width: 25px;
+    height: 2px;
+    background-color: #333; /* Dark gray lines */
+    transition: 0.3s;
+  }
 
-.contact-section {
-  padding: 80px 20px 100px;
-  text-align: center;
-}
+  /* 2. Style the Hidden Menu */
+  .nav-links {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 70px; /* Sits below header */
+    left: 0;
+    width: 100%;
+    background: #fff;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+    z-index: 999;
+  }
 
-/* Heading */
-.contact-section h2 {
-  font-size: 2rem;
-  margin-bottom: 12px;
-}
+  /* When JS adds the 'active' class, the menu shows */
+  .nav-links.active {
+    display: flex;
+  }
 
-/* Subtitle */
-.contact-section .subtitle {
-  font-size: 1rem;
-  color: #555;
-  max-width: 600px;
-  margin: 0 auto 50px;
-  line-height: 1.6;
-}
+ /* 1. Main Menu Container */
+  .nav-links {
+    display: none; /* Hidden until toggled */
+    position: absolute;
+    top: 100%;       /* Snaps to bottom of header */
+    left: 0;
+    width: 100%;
+    background: #fff;
+    flex-direction: column;
+    padding: 20px 0; /* Vertical padding only */
+    box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+    z-index: 1000;
+  }
 
-/* =========================
-   FORM
-========================= */
+  .nav-links.active {
+    display: flex;
+  }
 
-.contact-section form {
-  max-width: 600px;
-  margin: 0 auto;
-  text-align: left;
-}
+  /* 2. Left-Aligned Navigation Links */
+  .nav-links a {
+    text-align: left;    /* Aligns text to the left */
+    padding: 12px 25px;  /* Left padding creates the "inset" look */
+    width: 100%;
+    border-bottom: none; /* Removes the lines from lines.png */
+    color: #333;
+    font-size: 1.1rem;
+    transition: 0.3s;
+  }
 
-.form-group {
-  margin-bottom: 24px;
-}
+  /* 3. Blue Highlight for 'Home' */
+  .nav-links a.active {
+    background-color: #f0f4ff; /* Light blue background */
+    color: #4b43d1;            /* Blue text */
+    margin: 0 15px;            /* Shrinks width so it doesn't touch screen edges */
+    width: calc(100% - 30px);  /* Matches the margin */
+    border-radius: 6px;
+  }
 
-.form-group label {
-  display: block;
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-bottom: 8px;
-  color: #333;
-}
+  /* 4. Full-Width Centered Button */
+  .btn-mobile-cta {
+    display: block !important;
+    margin: 20px 15px 10px !important; /* Centers within the 15px side gutters */
+    width: calc(100% - 30px) !important;
+    background: #C00000 !important;
+    color: #fff !important;
+    padding: 16px !important;
+    border-radius: 8px !important;
+    text-align: center !important;      /* Centers text inside the button */
+    font-weight: 700;
+    border: none;
+  }
 
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 8px;
-  border: 1px solid #d0d7de;
-  font-size: 0.95rem;
-  font-family: inherit;
-}
+  /* Button Controls */
+  .hero-buttons { flex-direction: column; }
+  
+  /* THIS KEEPS WHY BUTTON CENTERED ON MOBILE */
+  .centered-button-container {
+    justify-content: center; 
+  }
 
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: #C00000;
-}
-
-/* =========================
-   BUTTON
-========================= */
-
-.btn.full {
-  width: 100%;
-  padding: 14px;
-  font-size: 1rem;
-}
-
-/* =========================
-   SUCCESS MESSAGE
-========================= */
-
-.form-success {
-  margin-top: 20px;
-  color: #0a7c3a;
-  font-weight: 500;
-  text-align: center;
+  .cta-band .btn-white { width: auto; }
 }
