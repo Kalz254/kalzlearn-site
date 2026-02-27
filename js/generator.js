@@ -268,9 +268,9 @@ document.getElementById("downloadPdf").onclick = () => {
     y += 15;
   };
 
-  addOffer("1. You're clear on your niche — but not what to sell yet", "Clarity removes confusion, but it doesn't automatically generate product ideas. This guide helps you stop guessing and choose a beginner-friendly digital product.", "40 Fast Digital Product Ideas Playbook", "https://kalzlearn.com/b/ideas");
-  addOffer("2. You want to act while this clarity is still fresh", "Momentum matters. This guide shows you how to turn your blueprint into a simple digital product and launch it in one focused day.", "The 24-Hour Digital Product Launch Guide", "https://kalzlearn.com/b/24h");
-  addOffer("3. You want validation before you build anything", "Remove doubt and pressure. Test your niche, message or problem before creating a product.", "Brand Clarity & Niche Validation Workbook", "https://kalzlearn.com/b/clarity");
+  addOffer("1. You're clear on your niche — but not what to sell yet", "Clarity removes confusion, but it doesn't automatically generate product ideas. This guide helps you stop guessing and choose a beginner-friendly digital product.", "40 Fast Digital Product Ideas Playbook", "https://store.kalzlearn.com/b/ideas");
+  addOffer("2. You want to act while this clarity is still fresh", "Momentum matters. This guide shows you how to turn your blueprint into a simple digital product and launch it in one focused day.", "The 24-Hour Digital Product Launch Guide", "https://store.kalzlearn.com/b/24h");
+  addOffer("3. You want validation before you build anything", "Remove doubt and pressure. Test your niche, message or problem before creating a product.", "Brand Clarity & Niche Validation Workbook", "https://store.kalzlearn.com/b/clarity");
 
   // 5. CONCLUSION
   checkPageBreak(50);

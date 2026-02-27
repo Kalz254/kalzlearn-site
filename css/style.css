@@ -16,7 +16,7 @@ body {
 }
 
 .section-container {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -47,7 +47,7 @@ section {
 
 /* section-container keeps content from hitting the screen edges */
 .section-container {
-  max-width: 1100px;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -57,16 +57,21 @@ section {
   font-size: 3rem;
   font-weight: 800;
   color: #000000;
-  margin-bottom: 10px; /* Reduces gap between title and subtitle */
+  margin-bottom: 10px; 
   letter-spacing: -0.02em;
+  /* Add this to allow the H1 itself to spread wider if needed */
+  max-width: 1000px; 
 }
 
 .hero-small .sub-text {
   font-size: 1.25rem;
   color: #444444; 
   line-height: 1.4;
-  max-width: 650px; 
+  /* CHANGE THIS: Increase from 650px to 1000px or more */
+  max-width: 1100px; 
   margin-bottom: 0; 
+  /* Ensures it stays left-aligned as it spreads [cite: 2026-02-26] */
+  text-align: left; 
 }
 
 /* MOBILE FIX */
@@ -156,7 +161,7 @@ h3 {
 }
 
 .logo img {
-  height: 40px;
+  height: 30px;
   width: auto;
   display: block;
 }
@@ -339,7 +344,7 @@ h3 {
 .hero h1 {
   font-size: 3.5rem;
   font-weight: 900;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto 20px;
   line-height: 1.1;
   letter-spacing: -1.5px;
@@ -348,7 +353,7 @@ h3 {
 .hero p {
   font-size: 1.25rem;
   color: #555;
-  max-width: 700px;
+  max-width: 1100px;
   margin: 0 auto 35px;
 }
 
@@ -690,6 +695,44 @@ h3 {
   .philosophy-cta .btn {
     width: 100%; /* Full width buttons for easier mobile tapping */
     text-align: center;
+  }
+}
+/* CTA BAND SPECIFIC H2 STYLING */
+.cta-band {
+  background-color: #C00000; /* Assuming brand red based on your button.png */
+  padding: 60px 0;
+  color: #ffffff;
+}
+
+.cta-band h2 {
+  /* Ensuring it uses your H2 specs */
+  font-size: 2.5rem; 
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 10px; /* Tight spacing between the two lines */
+  letter-spacing: -1px;
+  color: #ffffff !important; /* Overriding your dark gray global H2 color */
+  text-align: left; /* Maintains your left-aligned paragraph preference [cite: 2026-02-26] */
+}
+
+/* Flexbox to keep text and button behaving on Windows */
+.cta-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .cta-band h2 {
+    font-size: 1.8rem; /* Scale down for mobile */
+  }
+  
+  .cta-flex {
+    flex-direction: column;
+    text-align: left; /* Ensuring left alignment on mobile [cite: 2026-02-26] */
+    align-items: flex-start;
   }
 }
 
