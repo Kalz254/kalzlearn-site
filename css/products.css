@@ -1,0 +1,246 @@
+/* =========================================
+   PRODUCT PAGE SPECIFIC LAYOUT (FINAL CLEAN)
+   ========================================= */
+
+/* 1. RESET & OVERFLOW CONTROL */
+body {
+    padding-top: 0 !important;
+    overflow-x: hidden; 
+    width: 100%;
+}
+
+.product-page-main {
+    background-color: #f8f9fa;
+    padding-top: 80px !important;
+    display: block;
+    width: 100%;
+}
+
+/* 2. GRID SYSTEM - FORCING SIDEBAR VISIBILITY */
+.layout-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.2fr); 
+    gap: 40px;
+    align-items: start;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    width: 100%;
+}
+
+/* 3. STICKY SIDEBAR - POSITIONED LOWER */
+.sticky-sidebar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 140px; 
+    z-index: 10;
+    height: fit-content;
+}
+
+/* 4. IMAGE & MOCKUP CONTAINMENT (FIXES STRETCHING) */
+.mockup-container {
+    width: 100%;
+    margin-top: 20px; /* Reduced from 30px */
+}
+
+.mockup-container img {
+    max-width: 100%; 
+    height: auto;   
+    display: block;
+    border-radius: 12px;
+}
+
+/* 5. LIST STYLING - FIXED INDENTATION */
+.clarity-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0; /* Reduced from 25px */
+    text-align: left;
+}
+
+.clarity-list li {
+    padding-left: 35px; 
+    position: relative;
+    margin-bottom: 12px; /* Reduced from 15px */
+    line-height: 1.5;
+}
+
+.clarity-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #4CAF50;
+    font-weight: 900;
+    font-size: 1.1rem;
+}
+
+/* 6. BUTTON GROUPS - UPDATED FOR PNG ICONS */
+.btn-payment-group {
+    display: flex;
+    gap: 12px;
+    margin: 15px 0; /* Reduced from 20px */
+    width: 100%;
+}
+
+.content-column .btn-payment-group {
+    flex-direction: row;
+}
+
+.sticky-sidebar .btn-payment-group {
+    flex-direction: column;
+}
+
+.btn-paypal-red, .btn-mpesa-outline {
+    flex: 1;
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+    gap: 10px; 
+    padding: 14px 10px;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+/* Icon Sizing for button1.png and button2.png */
+.btn-icon-wrapper {
+    display: flex;
+    align-items: center;
+    height: 30px; 
+}
+
+.btn-icon-wrapper img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+.btn-paypal-red { background: #C00000; color: white; border: 1px solid #C00000; }
+.btn-mpesa-outline { border: 1px solid #ddd; background: white; color: #333; }
+
+.btn-paypal-red:hover { background: #e60000; transform: translateY(-2px); }
+.btn-mpesa-outline:hover { background: #fdfdfd; border-color: #bbb; transform: translateY(-2px); }
+
+/* 7. CARDS & TYPOGRAPHY [cite: 2026-02-26] */
+.glass-card {
+    background: #ffffff;
+    padding: 25px 30px; /* Reduced top/bottom padding from 30px */
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    width: 100%;
+}
+
+/* Price styling with KES approximation */
+.product-price-display {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+}
+
+.product-price-display small {
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+/* Paragraph left alignment below h3 [cite: 2026-02-26] */
+.glass-card h3 + p {
+    text-align: left;
+    margin-top: 8px; /* Reduced from 10px */
+}
+
+.hero-content h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 850;
+    margin-top: 0;
+    margin-bottom: 15px; /* Reduced from 20px */
+    line-height: 1.1;
+    text-align: left; 
+}
+
+/* 8. MOBILE RESPONSIVENESS */
+@media (max-width: 992px) {
+    .product-page-main {
+        padding-top: 20px !important; 
+    }
+
+    .layout-grid {
+        grid-template-columns: 1fr;
+        padding-top: 10px;
+        gap: 20px; /* Reduced gap between main and sidebar on mobile */
+    }
+
+    .product-price-display {
+        font-size: 2.8rem;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .content-column .btn-payment-group {
+        flex-direction: column;
+    }
+
+    .sticky-sidebar {
+        position: static;
+        margin-top: 20px;
+    }
+}
+
+/* 9. SECTION SPACING OVERRIDES (THE FINAL FIX) */
+
+/* Reduce the gap between ALL major sections in the column */
+.content-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px !important; /* Tightens the vertical distance between sections */
+}
+
+/* Strip default browser margins from headings and paragraphs */
+.content-column h3, 
+.content-column h1,
+.content-column p,
+.content-column ul {
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+}
+
+/* Fix the "Ghost Space" inside white cards */
+.glass-card {
+    padding: 20px 30px !important; /* Reduced top/bottom padding */
+}
+
+.glass-card h3:first-child {
+    margin-top: 0 !important;
+}
+
+/* Tighten the space specifically around the mockup image */
+.hero-content {
+    margin-bottom: 5px !important;
+}
+
+.mockup-container {
+    margin-top: 10px !important;
+    margin-bottom: 15px !important;
+}
+
+/* Adjust the Is This For You grid margin */
+.info-group div[style*="grid"] {
+    margin-top: 5px !important;
+}
