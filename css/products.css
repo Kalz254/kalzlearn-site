@@ -8,15 +8,16 @@ body {
     overflow-x: hidden; 
     width: 100%;
 }
-
+/* 1. RESET & COMPACT TOP SPACING */
 .product-page-main {
     background-color: #f8f9fa;
-    padding-top: 80px !important;
+    /* Reduced from 80px to 30px to close the gap under the header */
+    padding-top: 30px !important; 
     display: block;
     width: 100%;
 }
 
-/* 2. GRID SYSTEM - FORCING SIDEBAR VISIBILITY */
+/* 2. GRID SYSTEM - TIGHTER TOP ALIGNMENT */
 .layout-grid {
     display: grid;
     grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.2fr); 
@@ -24,8 +25,53 @@ body {
     align-items: start;
     max-width: 1300px;
     margin: 0 auto;
-    padding: 40px 20px;
+    /* Reduced top padding from 40px to 10px */
+    padding: 10px 20px 40px 20px; 
     width: 100%;
+}
+/* =========================================
+   SITE HEADER & NAVIGATION
+   ========================================= */
+
+.site-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo img {
+    height: 30px;
+    width: auto;
+    display: block;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #444;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #C00000;
 }
 
 /* 3. STICKY SIDEBAR - POSITIONED LOWER */
@@ -38,16 +84,20 @@ body {
 }
 
 /* 4. IMAGE & MOCKUP CONTAINMENT (FIXES STRETCHING) */
+/* Update Section 4 and Section 9 overrides */
 .mockup-container {
     width: 100%;
-    margin-top: 20px; /* Reduced from 30px */
+    margin-top: 25px !important; /* Increased from 10px to fix tight text overlap */
+    margin-bottom: 25px !important; /* Added more space before payment buttons */
 }
 
+/* Specific styling for the Canva-style Grid Mockup */
 .mockup-container img {
-    max-width: 100%; 
-    height: auto;   
+    max-width: 100%;
+    height: auto;
     display: block;
     border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* Professional soft shadow */
 }
 
 /* 5. LIST STYLING - FIXED INDENTATION */
@@ -70,7 +120,7 @@ body {
     position: absolute;
     left: 0;
     top: 0;
-    color: #4CAF50;
+    color: #C00000;
     font-weight: 900;
     font-size: 1.1rem;
 }
@@ -158,15 +208,76 @@ body {
     margin-top: 8px; /* Reduced from 10px */
 }
 
+/* =========================================
+   HERO TITLE — PRODUCT PAGE
+   ========================================= */
+
 .hero-content h1 {
-    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-size: clamp(1.8rem, 4vw, 2.8rem); /* Balanced responsive size */
     font-weight: 850;
     margin-top: 0;
-    margin-bottom: 15px; /* Reduced from 20px */
-    line-height: 1.1;
-    text-align: left; 
+    margin-bottom: 12px;
+    line-height: 1.05; /* Professional tight spacing */
+    letter-spacing: -0.02em; /* Subtle refinement */
+    text-align: left;
 }
+/* =========================================
+   TABLET RESPONSIVENESS (768px — 1199px)
+   ========================================= */
 
+@media (max-width: 1199px) and (min-width: 768px) {
+
+    /* Adjust overall spacing */
+    .product-page-main {
+        padding-top: 50px !important;
+    }
+
+    /* Better balanced grid for tablets */
+    .layout-grid {
+        grid-template-columns: 1.3fr 1fr;
+        gap: 28px;
+        padding: 30px 25px;
+        max-width: 1000px;
+    }
+
+    /* Sidebar shouldn't feel too far down */
+    .sticky-sidebar {
+        top: 100px;
+    }
+
+    /* Price scaling for tablet readability */
+    .product-price-display {
+        font-size: 3rem;
+    }
+
+    /* Headline balance */
+    .hero-content h1 {
+        font-size: clamp(2rem, 4vw, 2.8rem);
+        line-height: 1.15;
+    }
+
+    /* Payment buttons stack nicely */
+    .content-column .btn-payment-group {
+        flex-direction: column;
+    }
+
+    .btn-paypal-red,
+    .btn-mpesa-outline {
+        font-size: 0.95rem;
+        padding: 15px 12px;
+    }
+
+    /* Reduce card padding slightly */
+    .glass-card {
+        padding: 22px 24px !important;
+    }
+
+    /* Mockup spacing refinement */
+    .mockup-container {
+        margin-top: 12px !important;
+        margin-bottom: 18px !important;
+    }
+}
 /* 8. MOBILE RESPONSIVENESS */
 @media (max-width: 992px) {
     .product-page-main {
@@ -235,9 +346,11 @@ body {
     margin-bottom: 5px !important;
 }
 
+/* Update Section 4 and Section 9 overrides */
 .mockup-container {
-    margin-top: 10px !important;
-    margin-bottom: 15px !important;
+    width: 100%;
+    margin-top: 25px !important; /* Increased from 10px to fix tight text overlap */
+    margin-bottom: 25px !important; /* Added more space before payment buttons */
 }
 
 /* Adjust the Is This For You grid margin */
