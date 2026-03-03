@@ -227,55 +227,47 @@ body {
 
 @media (max-width: 1199px) and (min-width: 768px) {
 
-    /* Adjust overall spacing */
+    /* Tighten top spacing to match slim header */
     .product-page-main {
-        padding-top: 50px !important;
+        padding-top: 30px !important; /* Reduced from 50px */
     }
 
-    /* Better balanced grid for tablets */
+    /* Force the 2-column sidebar layout */
     .layout-grid {
-        grid-template-columns: 1.3fr 1fr;
-        gap: 28px;
-        padding: 30px 25px;
-        max-width: 1000px;
+        display: grid;
+        grid-template-columns: 1.6fr 1.4fr; /* Balanced for tablet width */
+        gap: 25px; /* Tighter gap for smaller screens */
+        padding: 10px 20px 40px 20px;
+        max-width: 100%; /* Utilize full tablet width */
     }
 
-    /* Sidebar shouldn't feel too far down */
+    /* Keep sidebar sticky on the right */
     .sticky-sidebar {
-        top: 100px;
+        display: block; /* Ensure it stays visible */
+        position: sticky;
+        top: 80px; /* Sits just below the slim 60px header */
     }
 
-    /* Price scaling for tablet readability */
-    .product-price-display {
-        font-size: 3rem;
-    }
-
-    /* Headline balance */
+    /* Fix title spacing for tablet */
     .hero-content h1 {
-        font-size: clamp(2rem, 4vw, 2.8rem);
-        line-height: 1.15;
+        font-size: 2.2rem; /* Consistent professional size */
+        line-height: 1.05; /* Matches desktop tightness */
+        margin-bottom: 12px !important;
     }
 
-    /* Payment buttons stack nicely */
+    /* Keep payment buttons side-by-side if they fit, or stacked */
     .content-column .btn-payment-group {
-        flex-direction: column;
+        flex-direction: column; /* Stacking is usually safer for tablet width */
     }
 
-    .btn-paypal-red,
-    .btn-mpesa-outline {
-        font-size: 0.95rem;
-        padding: 15px 12px;
-    }
-
-    /* Reduce card padding slightly */
+    /* Card adjustments */
     .glass-card {
-        padding: 22px 24px !important;
+        padding: 20px 25px !important;
     }
 
-    /* Mockup spacing refinement */
-    .mockup-container {
-        margin-top: 12px !important;
-        margin-bottom: 18px !important;
+    /* Left-align text below headers [cite: 2026-02-26] */
+    .glass-card h3 + p {
+        text-align: left;
     }
 }
 /* 8. MOBILE RESPONSIVENESS */
