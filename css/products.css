@@ -222,66 +222,87 @@ body {
     text-align: left;
 }
 /* =========================================
-   TABLET RESPONSIVENESS (768px — 1199px)
+   REFINED TABLET & MOBILE LOGIC
    ========================================= */
 
-@media (max-width: 1199px) and (min-width: 768px) {
-    /* 1. Force the 2-column layout */
+/* 1. TABLET & DESKTOP LOGIC */
+@media (min-width: 768px) {
     .layout-grid {
-        display: grid !important; /* Force grid mode */
-        grid-template-columns: 1.6fr 1.4fr !important; /* Force sidebar to the right */
-        gap: 25px;
-        padding: 10px 20px 40px 20px;
+        display: grid !important;
+        grid-template-columns: 1.6fr 1.4fr !important;
+        gap: 30px;
     }
+    
+    /* Show regular links */
+    .nav-links { display: flex !important; }
+    .menu-toggle { display: none !important; }
 
-    /* 2. Ensure Sidebar is visible and sticky */
+    /* DIFFERENT STICKY POSITIONS FOR TABLET VS DESKTOP */
+    
+    /* Standard Tablet (Small screens) */
     .sticky-sidebar {
-        display: block !important; 
+        display: block !important;
         position: sticky !important;
-        top: 80px;
+        top: 90px; /* Slight gap for tablet */
     }
 
-    /* 3. Pull content up to match slim header */
-    .product-page-main {
-        padding-top: 30px !important;
+    /* Windows / Desktop (Large screens) */
+    @media (min-width: 1200px) {
+        .sticky-sidebar {
+            top: 120px; /* More breathing room for professional desktop look */
+        }
+        .layout-grid {
+            padding-top: 40px; /* Pushes the whole grid down away from the header */
+        }
     }
 }
-/* 8. MOBILE RESPONSIVENESS */
-@media (max-width: 992px) {
+
+/* 2. MOBILE & SMALL TABLET: Only trigger 1 column here (Below 768px) */
+@media (max-width: 767px) {
     .product-page-main {
         padding-top: 20px !important; 
     }
 
     .layout-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important; /* Drops sidebar to bottom */
         padding-top: 10px;
-        gap: 20px; /* Reduced gap between main and sidebar on mobile */
+        gap: 20px;
     }
 
-    .product-price-display {
-        font-size: 2.8rem;
+    .sticky-sidebar {
+        position: static !important; /* Stops sticking on small screens */
+        margin-top: 20px;
     }
 
+    /* Hide links and show Hamburger */
     .nav-links {
-        display: none;
+        display: none; 
         flex-direction: column;
         width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     .nav-links.active {
         display: flex;
     }
 
+    .menu-toggle {
+        display: flex !important;
+    }
+
+    .product-price-display {
+        font-size: 2.8rem;
+    }
+
     .content-column .btn-payment-group {
         flex-direction: column;
     }
-
-    .sticky-sidebar {
-        position: static;
-        margin-top: 20px;
-    }
 }
-
 /* 9. SECTION SPACING OVERRIDES (THE FINAL FIX) */
 
 /* Reduce the gap between ALL major sections in the column */
