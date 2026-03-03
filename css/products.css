@@ -226,48 +226,24 @@ body {
    ========================================= */
 
 @media (max-width: 1199px) and (min-width: 768px) {
-
-    /* Tighten top spacing to match slim header */
-    .product-page-main {
-        padding-top: 30px !important; /* Reduced from 50px */
-    }
-
-    /* Force the 2-column sidebar layout */
+    /* 1. Force the 2-column layout */
     .layout-grid {
-        display: grid;
-        grid-template-columns: 1.6fr 1.4fr; /* Balanced for tablet width */
-        gap: 25px; /* Tighter gap for smaller screens */
+        display: grid !important; /* Force grid mode */
+        grid-template-columns: 1.6fr 1.4fr !important; /* Force sidebar to the right */
+        gap: 25px;
         padding: 10px 20px 40px 20px;
-        max-width: 100%; /* Utilize full tablet width */
     }
 
-    /* Keep sidebar sticky on the right */
+    /* 2. Ensure Sidebar is visible and sticky */
     .sticky-sidebar {
-        display: block; /* Ensure it stays visible */
-        position: sticky;
-        top: 80px; /* Sits just below the slim 60px header */
+        display: block !important; 
+        position: sticky !important;
+        top: 80px;
     }
 
-    /* Fix title spacing for tablet */
-    .hero-content h1 {
-        font-size: 2.2rem; /* Consistent professional size */
-        line-height: 1.05; /* Matches desktop tightness */
-        margin-bottom: 12px !important;
-    }
-
-    /* Keep payment buttons side-by-side if they fit, or stacked */
-    .content-column .btn-payment-group {
-        flex-direction: column; /* Stacking is usually safer for tablet width */
-    }
-
-    /* Card adjustments */
-    .glass-card {
-        padding: 20px 25px !important;
-    }
-
-    /* Left-align text below headers [cite: 2026-02-26] */
-    .glass-card h3 + p {
-        text-align: left;
+    /* 3. Pull content up to match slim header */
+    .product-page-main {
+        padding-top: 30px !important;
     }
 }
 /* 8. MOBILE RESPONSIVENESS */
