@@ -257,6 +257,28 @@ h3 {
   color: white;
   border: none;
 }
+/* Ensure both links and buttons have the exact same box-sizing */
+.btn, .resource-card .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px; /* Forces a consistent height across all browsers */
+    padding: 0 24px; /* Adjust horizontal padding as needed */
+    box-sizing: border-box; /* Crucial: includes border and padding in the height */
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+}
+
+/* Specific styling for the outline buttons to ensure borders don't shrink them */
+.outline-red {
+    border: 2px solid #C00000;
+    background: transparent;
+    color: #C00000;
+}
 
 /* =========================================
    4. BUTTONS
