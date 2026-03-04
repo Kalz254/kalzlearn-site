@@ -149,7 +149,7 @@ document.getElementById("bcg-form").addEventListener("submit", function(e) {
   });
 });
 
-/* 4. PDF GENERATION */
+/* 4. PDF GENERATION (PROFESSIONAL VERSION) */
 document.getElementById("downloadPdf").onclick = () => {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
@@ -158,7 +158,7 @@ document.getElementById("downloadPdf").onclick = () => {
   // Colors
   const colBlack = [0, 0, 0];
   const colRed = [192, 0, 0];
-  const colDarkGray = [68, 68, 68];
+  const colDarkGray = [50, 50, 50]; // Darker for better screen readability
   const colBgGray = [248, 248, 248];
   const colLinkBlue = [0, 0, 139];
 
@@ -171,80 +171,85 @@ document.getElementById("downloadPdf").onclick = () => {
 
   // 1. HEADER TITLE
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(22);
+  doc.setFontSize(24);
   doc.setTextColor(...colBlack);
-  doc.text("Your Brand Clarity Blueprint", 20, y);
+  doc.text("Brand Clarity Blueprint", 20, y);
+  y += 15;
 
-  // 2. YOUR RESULTS SECTION (Gray Boxes)
-  y += 12;
-  doc.setFontSize(15);
+  // 2. YOUR RESULTS SECTION
+  doc.setFontSize(16);
   doc.setTextColor(...colRed);
   doc.text("Your Results", 20, y);
-  y += 8;
+  y += 10;
 
   const addResultBox = (title, content) => {
-    // Label
+    // Eyebrow Label (Professional Small Caps look)
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(11);
-    doc.setTextColor(...colBlack);
-    doc.text(title, 20, y);
-    y += 4;
+    doc.setFontSize(9);
+    doc.setTextColor(120, 120, 120);
+    doc.text(title.toUpperCase(), 20, y);
+    y += 5;
+    
+    // Logic for Box Height & Padding
+    const lines = doc.splitTextToSize(content || "Not specified", 160);
+    const lineHeight = 7;
+    const boxHeight = (lines.length * lineHeight) + 10; // Extra 10 for padding
     
     // Gray Background Box
-    const lines = doc.splitTextToSize(content, 160);
-    const boxHeight = (lines.length * 7) + 6;
     doc.setFillColor(...colBgGray);
     doc.rect(20, y, 170, boxHeight, 'F');
     
     // Box Content
     doc.setFont("helvetica", "normal");
     doc.setFontSize(11);
-    doc.setTextColor(...colDarkGray);
-    doc.text(lines, 25, y + 7);
-    y += boxHeight + 10;
+    doc.setTextColor(...colBlack);
+    doc.text(lines, 26, y + 8); // Padded text
+    y += boxHeight + 12;
   };
 
   addResultBox("Niche", o1);
   addResultBox("Content Direction", o2);
   addResultBox("Brand Statement", o3);
 
-  // 3. HOW TO USE (Starting Today)
+  // 3. HOW TO USE
   y += 5;
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(15);
+  doc.setFontSize(16);
   doc.setTextColor(...colRed);
-  doc.text("How to use your Blueprint (starting today)", 20, y);
+  doc.text("How to use your Blueprint", 20, y);
   y += 10;
 
   const usageSteps = [
     { t: "1. Niche - Focus on your audience.", b: "Your niche defines who you help. Use it to make sure every piece of content or product idea speaks directly to them. If it doesn't, skip it." },
-    { t: "2. Content Direction - Decide what to create and where.", b: "Your content direction tells you the formats and channels that will reach your audience most effectively. Start small and consistent — one newsletter, one Instagram post, one guide — but stay aligned with this direction." },
-    { t: "3. Brand Statement - Clarify your message.", b: "Your brand statement is your promise in one sentence. Let it guide headlines, social posts, product copy and even emails. Every touchpoint should reflect it." }
+    { t: "2. Content Direction - Decide what to create.", b: "Your content direction tells you the formats and channels that will reach your audience most effectively. Start small and consistent — one newsletter, one post — but stay aligned." },
+    { t: "3. Brand Statement - Clarify your message.", b: "Your brand statement is your promise in one sentence. Let it guide headlines, social posts, and product copy. Every touchpoint should reflect it." }
   ];
 
   usageSteps.forEach(step => {
+    checkPageBreak(35);
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(11);
+    doc.setFontSize(12);
     doc.setTextColor(...colBlack);
     doc.text(step.t, 20, y);
-    y += 6;
+    y += 7;
     doc.setFont("helvetica", "normal");
+    doc.setFontSize(11);
     doc.setTextColor(...colDarkGray);
     const bLines = doc.splitTextToSize(step.b, 170);
-    doc.text(bLines, 20, y);
-    y += (bLines.length * 6) + 10;
+    doc.text(bLines, 20, y, { lineHeightFactor: 1.4 }); // Improved line spacing
+    y += (bLines.length * 7) + 10;
   });
 
   // 4. RECOMMENDED NEXT STEPS
   checkPageBreak(80);
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(15);
+  doc.setFontSize(16);
   doc.setTextColor(...colRed);
   doc.text("Recommended Next Steps", 20, y);
-  y += 10;
+  y += 12;
 
   const addOffer = (title, description, linkText, url) => {
-    checkPageBreak(40);
+    checkPageBreak(45);
     doc.setFontSize(11);
     doc.setFont("helvetica", "bold");
     doc.setTextColor(...colBlack);
@@ -253,40 +258,47 @@ document.getElementById("downloadPdf").onclick = () => {
     doc.setFont("helvetica", "normal");
     doc.setTextColor(...colDarkGray);
     const descLines = doc.splitTextToSize(description, 170);
-    doc.text(descLines, 20, y);
-    y += (descLines.length * 6) + 6;
+    doc.text(descLines, 20, y, { lineHeightFactor: 1.2 });
+    y += (descLines.length * 6) + 7;
     
-    // Link Styling (Fixing the "Wired" look)
+    // Link Styling
     doc.setTextColor(...colLinkBlue);
-    doc.text(linkText, 20, y, { charSpace: 0 });
+    doc.text(linkText, 20, y);
     doc.link(20, y - 4, doc.getTextWidth(linkText), 6, { url: url });
     
     // Thin Underline
     doc.setDrawColor(...colLinkBlue);
-    doc.setLineWidth(0.2);
+    doc.setLineWidth(0.1);
     doc.line(20, y + 1, 20 + doc.getTextWidth(linkText), y + 1);
     y += 15;
   };
 
-  addOffer("1. You're clear on your niche — but not what to sell yet", "Clarity removes confusion, but it doesn't automatically generate product ideas. This guide helps you stop guessing and choose a beginner-friendly digital product.", "40 Fast Digital Product Ideas Playbook", "https://kalzlearn.com/products/40-product-ideas");
-  addOffer("2. You want to act while this clarity is still fresh", "Momentum matters. This guide shows you how to turn your blueprint into a simple digital product and launch it in one focused day.", "The 24-Hour Digital Product Launch Guide", "https://kalzlearn.com/products/24-hour-launch");
-  addOffer("3. You want validation before you build anything", "Remove doubt and pressure. Test your niche, message or problem before creating a product.", "Brand Clarity & Niche Validation Workbook", "https://kalzlearn.com/products/brand-clarity-workbook");
+  addOffer("1. Identify what to sell first", "Clarity removes confusion, but it doesn't automatically generate product ideas. This playbook helps you choose a beginner-friendly digital product.", "40 Fast Digital Product Ideas Playbook", "https://kalzlearn.com/products/40-product-ideas");
+  addOffer("2. Act while this clarity is still fresh", "Momentum matters. This guide shows you how to turn your blueprint into a simple digital product and launch it in one focused day.", "The 24-Hour Digital Product Launch Guide", "https://kalzlearn.com/products/24-hour-launch");
+  addOffer("3. Validate before you build", "Remove doubt and pressure. Test your niche, message or problem before creating a product.", "Brand Clarity & Niche Validation Workbook", "https://kalzlearn.com/products/brand-clarity-workbook");
 
-  // 5. CONCLUSION
+ 
+  // 5. CONCLUSION (Restored)
   checkPageBreak(50);
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(15);
+  doc.setFontSize(16);
   doc.setTextColor(...colRed);
   doc.text("Conclusion: Your Clarity is the Starting Line", 20, y);
   y += 8;
-  doc.setFont("helvetica", "normal");
-  doc.setTextColor(...colDarkGray);
-  const concl = "Clarity doesn't mean you have everything figured out. It means you now know what matters, who you're serving, and what direction makes sense for you. From here, progress comes from small, intentional action — not overthinking.";
-  doc.text(doc.splitTextToSize(concl, 170), 20, y);
   
-  y += 30;
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(11);
+  doc.setTextColor(...colDarkGray);
+  const concl = "Clarity doesn't mean you have everything figured out. It means you now know what matters, who you're serving and what direction makes sense for you. From here, progress comes from small, intentional action — not overthinking.";
+  
+  // Using 1.5 line spacing for a clean, readable finish
+  const conclLines = doc.splitTextToSize(concl, 170);
+  doc.text(conclLines, 20, y, { lineHeightFactor: 1.5 });
+  
+  // 6. FOOTER (Final Branding)
+  // This stays at the very bottom of the physical page (y = 285)
   doc.setFontSize(9);
-  doc.setTextColor(150, 150, 150);
+  doc.setTextColor(180, 180, 180);
   doc.text("© 2026 Kalz Learn | Focused Clarity for Modern Creators", 105, 285, { align: "center" });
 
   doc.save("Brand-Clarity-Blueprint.pdf");
