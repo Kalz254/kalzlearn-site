@@ -137,8 +137,17 @@ body {
     flex-direction: row;
 }
 
+/* CHANGE THIS: */
 .sticky-sidebar .btn-payment-group {
-    flex-direction: column;
+    flex-direction: row; /* Changed from column to row */
+    flex-wrap: nowrap;   /* Ensures they stay on one line */
+}
+
+/* ADD THIS to ensure they fit properly in the smaller sidebar width: */
+.sticky-sidebar .btn-payment-group .btn-paypal-red, 
+.sticky-sidebar .btn-payment-group .btn-mpesa-outline {
+    font-size: 0.85rem; /* Slightly smaller text so they don't squish */
+    padding: 12px 5px;  /* Reduced side padding */
 }
 
 .btn-paypal-red, .btn-mpesa-outline {
@@ -164,7 +173,7 @@ body {
 .btn-icon-wrapper {
     display: flex;
     align-items: center;
-    height: 40px; 
+    height: 30px; 
 }
 
 .btn-icon-wrapper img {
@@ -294,6 +303,13 @@ body {
     .sticky-sidebar {
         position: static !important; /* Stops sticking on small screens */
         margin-top: 20px;
+    }
+    .btn-payment-group {
+        flex-direction: column !important; /* Forces stacking on mobile */
+    }
+    
+    .btn-paypal-red, .btn-mpesa-outline {
+        width: 100%; /* Ensures buttons take full width when stacked */
     }
 
     /* Hide links and show Hamburger */
