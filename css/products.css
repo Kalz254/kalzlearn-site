@@ -384,3 +384,69 @@ body {
 .info-group div[style*="grid"] {
     margin-top: 5px !important;
 }
+/* =========================================
+   PREVIEW CAROUSEL STYLING
+   ========================================= */
+
+.preview-carousel-container {
+    position: relative;
+    width: 100%;
+    margin-top: 15px;
+    overflow: hidden; /* Hides the second image until scrolled */
+    border-radius: 12px;
+}
+
+.preview-carousel-track {
+    display: flex;
+    scroll-behavior: smooth;
+    overflow-x: auto;
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    snap-type: x mandatory;
+}
+
+.preview-carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.preview-slide {
+    flex: 0 0 100%; /* Each image takes full width of container */
+    width: 100%;
+    snap-align: start;
+    display: flex;
+    justify-content: center;
+}
+
+.preview-slide img {
+    width: 100%;
+    max-width: 500px; /* Limits size on desktop so it's not huge */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* Dots Navigation */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.dot:hover, .dot:active {
+    background: #C00000; /* Matches your brand red */
+}
+.dot:focus {
+    background: #C00000;
+    transform: scale(1.2);
+}
