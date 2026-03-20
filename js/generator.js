@@ -133,13 +133,10 @@ document.getElementById("bcg-form").addEventListener("submit", function(e) {
   o2 = `Create ${deliverySelect.value} on ${platformSelect.value} that moves them toward ${d.outcome}.`;
   o3 = `I help ${d.audience} overcome ${d.problem} using ${deliverySelect.value}.`;
 
-/* SAVE DATA TO GOOGLE SHEETS */
-fetch("https://script.google.com/macros/s/AKfycby3P9uA-EfOykLWeeHZrrahFxPdgpU2nUKAVsy9hVOA8xnowdlgfoxGRMwtRcIXokjk/exec", {
+/* SAVE DATA TO GOOGLE SHEETS (CORS SAFE VERSION) */
+fetch("https://script.google.com/macros/s/AKfycby8k6GHgLi_uNn2vqmdrEEW2Bnt7SFCKxgWUE69UkqrrDreENhE6VaN3hw_mBD_5VaT/exec", {
   method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
+  body: new URLSearchParams({
     email: emailInput.value,
     primaryMarket: marketVal,
     specificMarket: nicheVal,
@@ -150,9 +147,8 @@ fetch("https://script.google.com/macros/s/AKfycby3P9uA-EfOykLWeeHZrrahFxPdgpU2nU
     brandStatement: o3
   })
 })
-.then(response => response.json())
-.then(data => console.log("Saved to Google Sheets:", data))
-.catch(error => console.error("Google Sheets Error:", error));
+.then(() => console.log("Saved to Google Sheets"))
+.catch(err => console.error("Google Sheets Error:", err));
 
   resultsDiv.innerHTML = `
     <div class="card"><h3>Niche</h3><p>${o1}</p></div>
