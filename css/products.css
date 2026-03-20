@@ -173,13 +173,15 @@ body {
 .btn-icon-wrapper {
     display: flex;
     align-items: center;
-    height: 30px; 
+    justify-content: center;
+    height: 30px;        /* button height reference stays SAME */
+    overflow: visible;   /* allows icon to visually exceed box */
 }
-
 .btn-icon-wrapper img {
-    height: 100%;
+    height: 130%;        /* increase icon size */
     width: auto;
     object-fit: contain;
+    transform: scale(1.15);
 }
 /* PayPal Button (Stays Red) */
 .btn-paypal-red { 

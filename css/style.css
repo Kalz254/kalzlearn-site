@@ -61,6 +61,8 @@ section {
   letter-spacing: -0.02em;
   /* Add this to allow the H1 itself to spread wider if needed */
   max-width: 1000px; 
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-small .sub-text {
@@ -70,8 +72,7 @@ section {
   /* CHANGE THIS: Increase from 650px to 1000px or more */
   max-width: 1100px; 
   margin-bottom: 0; 
-  /* Ensures it stays left-aligned as it spreads [cite: 2026-02-26] */
-  text-align: left; 
+  text-align: center; 
 }
 
 /* MOBILE FIX */
@@ -636,7 +637,7 @@ h3 {
   font-size: 1.25rem;
   color: #444444;       /* Dark gray for readability */
   line-height: 1.4;
-  max-width: 600px;     /* Prevents text from stretching too wide */
+  max-width: 800px;     /* Prevents text from stretching too wide */
   margin-bottom: 20px;  /* Controls the gap before the main story starts */
 }
 /* About Story */
@@ -645,14 +646,14 @@ h3 {
   padding: 30px 0 60px 0; 
   background-color: #fcfcfc;
 }
-
 .story-content {
-  max-width: 800px;
+  max-width: 1000px;   /* matches visual scale of other sections */
   margin: 0 auto;
-  font-size: 1.15rem; /* Slightly adjusted for better readability */
-  line-height: 1.6;    /* Tightened line height for a more cohesive look */
+  padding: 0 10px;     /* prevents edge touching on tablets */
+  font-size: 1.15rem;
+  line-height: 1.7;
   color: #444;
-  text-align: left;   /* Ensures left alignment per instructions [cite: 2026-02-26] */
+  text-align: left;
 }
 
 /* Philosophy Grid */
@@ -1034,10 +1035,10 @@ h3 {
 
   .hero-small h1,
   .hero-small .sub-text {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
   /* Section headers */
   .centered-header h2,
   .centered-header .eyebrow,
