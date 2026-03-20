@@ -133,6 +133,27 @@ document.getElementById("bcg-form").addEventListener("submit", function(e) {
   o2 = `Create ${deliverySelect.value} on ${platformSelect.value} that moves them toward ${d.outcome}.`;
   o3 = `I help ${d.audience} overcome ${d.problem} using ${deliverySelect.value}.`;
 
+/* SAVE DATA TO GOOGLE SHEETS */
+fetch("https://script.google.com/macros/s/AKfycby3P9uA-EfOykLWeeHZrrahFxPdgpU2nUKAVsy9hVOA8xnowdlgfoxGRMwtRcIXokjk/exec", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    email: emailInput.value,
+    primaryMarket: marketVal,
+    specificMarket: nicheVal,
+    deliveryMethod: deliverySelect.value,
+    platform: platformSelect.value,
+    niche: o1,
+    contentDirection: o2,
+    brandStatement: o3
+  })
+})
+.then(response => response.json())
+.then(data => console.log("Saved to Google Sheets:", data))
+.catch(error => console.error("Google Sheets Error:", error));
+
   resultsDiv.innerHTML = `
     <div class="card"><h3>Niche</h3><p>${o1}</p></div>
     <div class="card"><h3>Content Direction</h3><p>${o2}</p></div>
