@@ -132,3 +132,19 @@ select, input {
     font-size: 16px;
   }
 }
+.form-consent-text {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.form-consent-text a {
+  color: #C00000;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.form-consent-text a:hover {
+  text-decoration: underline;
+}

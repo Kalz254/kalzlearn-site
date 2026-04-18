@@ -770,8 +770,8 @@ h3 {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 50px;
 }
 
 .footer-brand p {
@@ -1108,5 +1108,79 @@ h3 {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+  }
+}
+/* =========================================
+   LEGAL PAGES (PRIVACY + TERMS)
+========================================= */
+
+.legal-section {
+  background-color: #ffffff;
+  padding: 60px 0 100px;
+}
+
+.legal-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.legal-content {
+  margin-top: 40px;
+}
+
+.legal-content h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.legal-content p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.legal-content ul {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.legal-content li {
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.legal-content strong {
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .legal-container {
+    max-width: 100%;
+  }
+
+  .legal-content h2 {
+    font-size: 1.3rem;
+    text-align: left; 
+  }
+
+  .legal-content p {
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 768px) {
+  .hero-small {
+    text-align: left !important;
+  }
+
+  .hero-small h1,
+  .hero-small .sub-text {
+    text-align: left !important;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
