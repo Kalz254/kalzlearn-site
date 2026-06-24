@@ -85,13 +85,13 @@ const workshopJourneyMap = {
     stage: "FOUNDATION CLARITY",
     start: {
       title: "The Direction Workshop",
-      url: "products/direction-workshop.html",
+      url: "https://kalzlearn.com/products/direction-workshop",
       reason:
         "You need clarity before anything else. This helps you define your audience, problem, and first product idea."
     },
     next: {
       title: "The Creation Workshop",
-      url: "products/creation-workshop.html",
+      url: "https://kalzlearn.com/products/creation-workshop",
       reason:
         "Once your direction is clear, this helps you turn your idea into a real digital product."
     }
@@ -101,13 +101,13 @@ const workshopJourneyMap = {
     stage: "BUILDING STAGE",
     start: {
       title: "The Creation Workshop",
-      url: "products/creation-workshop.html",
+      url: "https://kalzlearn.com/products/creation-workshop",
       reason:
         "Your issue is execution. This helps you build a complete digital product from start to finish."
     },
     next: {
       title: "The Pricing Workshop",
-      url: "products/pricing-workshop.html",
+      url: "https://kalzlearn.com/products/pricing-workshop",
       reason:
         "After building your product, you need to position it correctly so people understand its value."
     }
@@ -117,13 +117,13 @@ const workshopJourneyMap = {
     stage: "MONETIZATION STAGE",
     start: {
       title: "The Pricing Workshop",
-      url: "products/pricing-workshop.html",
+      url: "https://kalzlearn.com/products/pricing-workshop",
       reason:
         "Your problem is value clarity. This helps you understand pricing and improve conversions."
     },
     next: {
       title: "The Launch Workshop",
-      url: "products/launch-workshop.html",
+      url: "https://kalzlearn.com/products/launch-workshop",
       reason:
         "Once pricing is clear, you need a strong product page that communicates value effectively."
     }
@@ -133,13 +133,13 @@ const workshopJourneyMap = {
     stage: "VISIBILITY STAGE",
     start: {
       title: "The Traffic Workshop",
-      url: "products/traffic-workshop.html",
+      url: "https://kalzlearn.com/products/traffic-workshop",
       reason:
         "Your challenge is visibility. This builds a repeatable content system to attract attention."
     },
     next: {
       title: "The Launch Workshop",
-      url: "products/launch-workshop.html",
+      url: "https://kalzlearn.com/products/launch-workshop",
       reason:
         "Once you have traffic, you need a strong conversion system (your product page)."
     }
@@ -149,13 +149,13 @@ const workshopJourneyMap = {
     stage: "VISIBILITY STAGE",
     start: {
       title: "The Traffic Workshop",
-      url: "products/traffic-workshop.html",
+      url: "https://kalzlearn.com/products/traffic-workshop",
       reason:
         "This helps you build a structured content system so you always know what to post."
     },
     next: {
       title: "The Launch Workshop",
-      url: "products/launch-workshop.html",
+      url: "https://kalzlearn.com/products/launch-workshop",
       reason:
         "After consistency, you need to convert attention into sales."
     }
@@ -165,13 +165,13 @@ const workshopJourneyMap = {
     stage: "CONVERSION STAGE",
     start: {
       title: "The Launch Workshop",
-      url: "products/launch-workshop.html",
+      url: "https://kalzlearn.com/products/launch-workshop",
       reason:
         "Your issue is your product page. This helps you clearly present your offer and improve conversions."
     },
     next: {
       title: "The Traffic Workshop",
-      url: "products/traffic-workshop.html",
+      url: "https://kalzlearn.com/products/traffic-workshop",
       reason:
         "Once conversion is fixed, you can scale by increasing traffic."
     }
@@ -181,13 +181,13 @@ const workshopJourneyMap = {
     stage: "BUILDING STAGE",
     start: {
       title: "The Creation Workshop",
-      url: "products/creation-workshop.html",
+      url: "https://kalzlearn.com/products/creation-workshop",
       reason:
         "Your product isn’t being used because it's unclear or weak. This helps you build something structured and valuable."
     },
     next: {
       title: "The Pricing Workshop",
-      url: "products/pricing-workshop.html",
+      url: "https://kalzlearn.com/products/pricing-workshop",
       reason:
         "After fixing the product, you need to position its value correctly."
     }
@@ -207,13 +207,13 @@ function getWorkshopJourney(problemText = "") {
     stage: "FOUNDATION CLARITY",
     start: {
       title: "The Direction Workshop",
-      url: "products/direction-workshop.html",
+      url: "https://kalzlearn.com/products/direction-workshop",
       reason:
         "Start here to define your audience, problem, and product direction before building anything."
     },
     next: {
       title: "The Creation Workshop",
-      url: "products/creation-workshop.html",
+      url: "https://kalzlearn.com/products/creation-workshop",
       reason:
         "After clarity, this helps you turn your idea into a real product."
     }
@@ -349,6 +349,311 @@ document.getElementById("bcg-form").addEventListener("submit", function (e) {
     method: "POST",
     body: new URLSearchParams({ "fields[email]": emailInput.value })
   });
+});
+
+/* ==========================================================================
+   PDF GENERATION
+   ========================================================================= */
+
+document.getElementById("downloadPdf").addEventListener("click", () => {
+
+  if (!identity) {
+    alert("Generate your blueprint first.");
+    return;
+  }
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  const PAGE_HEIGHT = 280;
+  let y = 60;
+
+  function checkPageSpace(spaceNeeded = 30) {
+    if (y > PAGE_HEIGHT - spaceNeeded) {
+      doc.addPage();
+      y = 20;
+    }
+  }
+
+  /* =====================================================
+     HEADER
+  ===================================================== */
+
+  doc.setFillColor(220, 0, 0);
+  doc.rect(0, 0, 210, 45, "F");
+
+  doc.setTextColor(255, 255, 255);
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(24);
+
+  doc.text("DIGITAL PRODUCT", 20, 18);
+  doc.text("CLARITY MAP", 20, 30);
+
+  doc.setFontSize(9);
+  doc.setFont("helvetica", "normal");
+  doc.text("Generated by Kalz Learn", 20, 39);
+
+  doc.setTextColor(0, 0, 0);
+
+  /* =====================================================
+     IDENTITY SHIFT
+  ===================================================== */
+
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(15);
+  doc.text("IDENTITY SHIFT", 20, y);
+
+  y += 10;
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(11);
+
+  const identityLines = doc.splitTextToSize(identity, 170);
+  doc.text(identityLines, 20, y);
+
+  y += identityLines.length * 6 + 15;
+
+  /* =====================================================
+     CONTENT STRATEGY
+  ===================================================== */
+
+  checkPageSpace();
+
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(15);
+  doc.text("CONTENT STRATEGY", 20, y);
+
+  y += 10;
+
+  doc.setFont("helvetica", "normal");
+
+  const strategyLines = doc.splitTextToSize(strategy, 170);
+  doc.text(strategyLines, 20, y);
+
+  y += strategyLines.length * 6 + 15;
+
+  /* =====================================================
+     MONETIZATION PATH
+  ===================================================== */
+
+  checkPageSpace();
+
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(15);
+  doc.text("MONETIZATION PATH", 20, y);
+
+  y += 10;
+
+  doc.setFont("helvetica", "normal");
+
+  const monetizationLines = doc.splitTextToSize(monetization, 170);
+  doc.text(monetizationLines, 20, y);
+
+  y += monetizationLines.length * 6 + 15;
+
+  /* =====================================================
+     RECOMMENDED WORKSHOP
+  ===================================================== */
+
+  checkPageSpace();
+
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(15);
+  doc.text("RECOMMENDED NEXT STEP", 20, y);
+
+  y += 10;
+
+  doc.setFontSize(12);
+  doc.text(recommendedWorkshop.title, 20, y);
+
+  y += 8;
+
+  doc.setFont("helvetica", "normal");
+
+  const reasonLines = doc.splitTextToSize(
+    recommendedWorkshop.reason,
+    170
+  );
+
+  doc.text(reasonLines, 20, y);
+
+  y += reasonLines.length * 6 + 15;
+
+  /* =====================================================
+   WORKSHOP LINK
+===================================================== */
+
+checkPageSpace();
+
+doc.setFont("helvetica", "bold");
+doc.setFontSize(13);
+
+doc.setTextColor(192, 0, 0); // #C00000
+
+doc.textWithLink(
+  "View Workshop",
+  20,
+  y,
+  {
+    url: recommendedWorkshop.url
+  }
+);
+
+doc.setTextColor(0, 0, 0);
+
+y += 18;
+
+  /* =====================================================
+   JOURNEY
+===================================================== */
+
+doc.setFont(undefined, "bold");
+doc.setFontSize(16);
+doc.text("SUGGESTED JOURNEY", 20, y);
+
+y += 12;
+
+/* STEP 1 */
+
+doc.setFontSize(12);
+doc.setFont(undefined, "bold");
+doc.text("STEP 1", 20, y);
+
+y += 8;
+
+doc.setTextColor(192, 0, 0);
+
+doc.textWithLink(
+  recommendedWorkshop.title,
+  20,
+  y,
+  {
+    url: recommendedWorkshop.url
+  }
+);
+
+doc.setTextColor(0, 0, 0);
+
+y += 14;
+
+/* STEP 2 */
+
+doc.setFont(undefined, "bold");
+doc.text("STEP 2", 20, y);
+
+y += 8;
+
+doc.setTextColor(192, 0, 0);
+
+doc.textWithLink(
+  nextWorkshop.title,
+  20,
+  y,
+  {
+    url: nextWorkshop.url
+  }
+);
+
+doc.setTextColor(0, 0, 0);
+
+y += 18;
+
+  /* =====================================================
+     ACTION PLAN
+  ===================================================== */
+
+  checkPageSpace(60);
+
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(15);
+
+  doc.text("YOUR NEXT 3 ACTIONS", 20, y);
+
+  y += 12;
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(11);
+
+  doc.text(
+    "1. Save this Digital Product Clarity Map.",
+    20,
+    y
+  );
+
+  y += 8;
+
+  doc.text(
+    "2. Commit to one audience and one problem.",
+    20,
+    y
+  );
+
+  y += 8;
+
+  /* Action 3 with clickable workshop link */
+
+doc.text(
+  "3. Complete ",
+  20,
+  y
+);
+
+const actionWidth = doc.getTextWidth(
+  "3. Complete "
+);
+
+doc.setTextColor(192, 0, 0); // #C00000
+
+doc.textWithLink(
+  recommendedWorkshop.title,
+  20 + actionWidth,
+  y,
+  {
+    url: recommendedWorkshop.url
+  }
+);
+
+doc.setTextColor(0, 0, 0);
+
+y += 18;
+
+  /* =====================================================
+     FOOTER
+  ===================================================== */
+
+  checkPageSpace();
+
+  doc.setFontSize(10);
+
+  doc.text(
+    "Clarity creates momentum. Momentum creates results.",
+    20,
+    y
+  );
+
+  y += 6;
+
+  doc.text(
+    "Take the next step and keep moving forward.",
+    20,
+    y
+  );
+
+  y += 10;
+
+  doc.setFont("helvetica", "bold");
+  doc.text(
+    "Kalz Learn",
+    20,
+    y
+  );
+
+  /* =====================================================
+     SAVE
+  ===================================================== */
+
+  doc.save("Digital-Product-Clarity-Map.pdf");
+
 });
 
 /* ==========================================================================
