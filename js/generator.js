@@ -233,9 +233,10 @@ const emailInput = document.getElementById("email");
 const pdfSection = document.getElementById("pdfSection");
 
 /* STATE */
-let identity = "";
-let strategy = "";
-let monetization = "";
+let directionText = "";
+let contentPlanText = "";
+let productText = "";
+
 let recommendedWorkshop = {};
 let nextWorkshop = {};
 
@@ -288,11 +289,11 @@ document.getElementById("bcg-form").addEventListener("submit", function (e) {
 
   const d = dataMap[marketVal][nicheVal];
 
-  identity = `Right now, you're not just choosing a niche. You're stepping into the role of a creator who helps ${d.audience} move from ${d.problem} to ${d.outcome}.`;
+  directionText = `You help ${d.audience} move from ${d.problem} to ${d.outcome}.`;
 
-  strategy = `Your best strategy is to create ${deliverySelect.value} on ${platformSelect.value} that gives your audience small wins, practical clarity and visible progress.`;
+  contentPlanText = `Create ${deliverySelect.value} on ${platformSelect.value} to help your audience achieve ${d.outcome}.`;
 
-  monetization = `Your first digital product should solve ${d.problem}. Start with something simple and outcome-focused that helps people achieve ${d.outcome}.`;
+  productText = `Build a simple digital product that helps ${d.audience} move from ${d.problem} to ${d.outcome}.`;
 
   const journey = getWorkshopJourney(d.problem);
   recommendedWorkshop = journey.start;
@@ -301,45 +302,72 @@ document.getElementById("bcg-form").addEventListener("submit", function (e) {
   /* DATA CAPTURE */
   fetch("https://script.google.com/macros/s/AKfycby8k6GHgLi_uNn2vqmdrEEW2Bnt7SFCKxgWUE69UkqrrDreENhE6VaN3hw_mBD_5VaT/exec", {
     method: "POST",
-    body: new URLSearchParams({
-      email: emailInput.value,
-      primaryMarket: marketVal,
-      specificMarket: nicheVal,
-      deliveryMethod: deliverySelect.value,
-      platform: platformSelect.value,
-      identity,
-      strategy,
-      monetization,
-      recommendedWorkshop: recommendedWorkshop.title
-    })
+  body: new URLSearchParams({
+  email: emailInput.value,
+  primaryMarket: marketVal,
+  specificMarket: nicheVal,
+  deliveryMethod: deliverySelect.value,
+  platform: platformSelect.value,
+  direction: directionText,
+  contentPlan: contentPlanText,
+  firstProduct: productText,
+  recommendedWorkshop: recommendedWorkshop.title
+  })
   });
 
   /* UI RENDER */
-  resultsDiv.innerHTML = `
-    <div class="card">
-      <h3>Identity Shift</h3>
-      <p>${identity}</p>
-    </div>
+resultsDiv.innerHTML = `
+  <div class="card">
+    <h3>Your Direction</h3>
+    <p>${directionText}</p>
+  </div>
 
-    <div class="card">
-      <h3>Content Strategy</h3>
-      <p>${strategy}</p>
-    </div>
+  <div class="card">
+    <h3>Your Content Plan</h3>
+    <p>${contentPlanText}</p>
+  </div>
 
-    <div class="card">
-      <h3>Monetization Path</h3>
-      <p>${monetization}</p>
-    </div>
+  <div class="card">
+    <h3>Your First Product</h3>
+    <p>${productText}</p>
+  </div>
 
-    <div class="card recommended-card">
-      <span class="recommended-label">Recommended Workshop</span>
-      <h3>${recommendedWorkshop.title}</h3>
-      <p>${recommendedWorkshop.reason}</p>
-      <a href="${recommendedWorkshop.url}" class="btn primary workshop-btn">
-        View Workshop
-      </a>
+  <div class="card recommended-card">
+    <span class="recommended-label">Recommended Next Step</span>
+
+    <h3>${recommendedWorkshop.title}</h3>
+
+    <p>${recommendedWorkshop.reason}</p>
+
+    <a
+      href="${recommendedWorkshop.url}"
+      class="btn primary workshop-btn"
+      target="_blank"
+    >
+      View Workshop
+    </a>
+  </div>
+
+  <div class="card">
+    <h3>Your Learning Path</h3>
+
+    <div class="journey-steps">
+      <div>
+        <strong>STEP 1</strong><br>
+        ${recommendedWorkshop.title}
+      </div>
+
+      <div style="font-size:24px; margin:15px 0;">
+        ↓
+      </div>
+
+      <div>
+        <strong>STEP 2</strong><br>
+        ${nextWorkshop.title}
+      </div>
     </div>
-  `;
+  </div>
+`;
 
   pdfSection.style.display = "block";
   resultsDiv.scrollIntoView({ behavior: "smooth" });
@@ -357,9 +385,9 @@ document.getElementById("bcg-form").addEventListener("submit", function (e) {
 
 document.getElementById("downloadPdf").addEventListener("click", () => {
 
-  if (!identity) {
-    alert("Generate your blueprint first.");
-    return;
+  if (!directionText) {
+  alert("Generate your blueprint first.");
+  return;
   }
 
   const { jsPDF } = window.jspdf;
@@ -395,61 +423,65 @@ document.getElementById("downloadPdf").addEventListener("click", () => {
 
   doc.setTextColor(0, 0, 0);
 
+  const BODY_FONT_SIZE = 12;
+
   /* =====================================================
-     IDENTITY SHIFT
+     YOUR DIRECTION
   ===================================================== */
 
   doc.setFont("helvetica", "bold");
   doc.setFontSize(15);
-  doc.text("IDENTITY SHIFT", 20, y);
+  doc.text("Your Direction", 20, y);
 
   y += 10;
 
   doc.setFont("helvetica", "normal");
-  doc.setFontSize(11);
+  doc.setFontSize(BODY_FONT_SIZE);
 
-  const identityLines = doc.splitTextToSize(identity, 170);
-  doc.text(identityLines, 20, y);
+  const directionLines = doc.splitTextToSize(directionText, 170);
+  doc.text(directionLines, 20, y);
 
-  y += identityLines.length * 6 + 15;
-
-  /* =====================================================
-     CONTENT STRATEGY
-  ===================================================== */
-
-  checkPageSpace();
-
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(15);
-  doc.text("CONTENT STRATEGY", 20, y);
-
-  y += 10;
-
-  doc.setFont("helvetica", "normal");
-
-  const strategyLines = doc.splitTextToSize(strategy, 170);
-  doc.text(strategyLines, 20, y);
-
-  y += strategyLines.length * 6 + 15;
+  y += directionLines.length * 7 + 15;
 
   /* =====================================================
-     MONETIZATION PATH
+     YOUR CONTENT PLAN
   ===================================================== */
 
   checkPageSpace();
 
   doc.setFont("helvetica", "bold");
   doc.setFontSize(15);
-  doc.text("MONETIZATION PATH", 20, y);
+  doc.text("Your Content Plan", 20, y);
 
   y += 10;
 
   doc.setFont("helvetica", "normal");
+  doc.setFontSize(BODY_FONT_SIZE);
 
-  const monetizationLines = doc.splitTextToSize(monetization, 170);
-  doc.text(monetizationLines, 20, y);
+  const contentLines = doc.splitTextToSize(contentPlanText, 170);
+  doc.text(contentLines, 20, y);
 
-  y += monetizationLines.length * 6 + 15;
+  y += contentLines.length * 7 + 15;
+
+  /* =====================================================
+     YOUR FIRST PRODUCT
+  ===================================================== */
+
+  checkPageSpace();
+
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(15);
+  doc.text("Your First Product", 20, y);
+
+  y += 10;
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(BODY_FONT_SIZE);
+
+  const productLines = doc.splitTextToSize(productText, 170);
+  doc.text(productLines, 20, y);
+
+  y += productLines.length * 7 + 15;
 
   /* =====================================================
      RECOMMENDED WORKSHOP
@@ -459,7 +491,7 @@ document.getElementById("downloadPdf").addEventListener("click", () => {
 
   doc.setFont("helvetica", "bold");
   doc.setFontSize(15);
-  doc.text("RECOMMENDED NEXT STEP", 20, y);
+  doc.text("Recommended Next Step", 20, y);
 
   y += 10;
 
@@ -509,7 +541,7 @@ y += 18;
 
 doc.setFont(undefined, "bold");
 doc.setFontSize(16);
-doc.text("SUGGESTED JOURNEY", 20, y);
+doc.text("Your Learning Path", 20, y);
 
 y += 12;
 
@@ -567,12 +599,12 @@ y += 18;
   doc.setFont("helvetica", "bold");
   doc.setFontSize(15);
 
-  doc.text("YOUR NEXT 3 ACTIONS", 20, y);
+  doc.text("Your Next 3 Actions", 20, y);
 
   y += 12;
 
   doc.setFont("helvetica", "normal");
-  doc.setFontSize(11);
+  doc.setFontSize(BODY_FONT_SIZE);
 
   doc.text(
     "1. Save this Digital Product Clarity Map.",
@@ -623,7 +655,7 @@ y += 18;
 
   checkPageSpace();
 
-  doc.setFontSize(10);
+  doc.setFontSize(11);
 
   doc.text(
     "Clarity creates momentum. Momentum creates results.",
