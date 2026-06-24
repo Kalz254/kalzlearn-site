@@ -1,4 +1,6 @@
-/* COMPLETE DATASET */
+/* ==========================================================================
+   COMPLETE DATASET 
+   ========================================================================== */
 const dataMap = {
   "Health & Fitness": {
     "Weight Loss & Fat Loss": { audience: "people trying to lose weight", problem: "inconsistent fat loss progress", outcome: "sustainable weight loss" },
@@ -74,7 +76,154 @@ const dataMap = {
   }
 };
 
-/* ELEMENTS */
+/* ==========================================================================
+   WORKSHOP JOURNEY RECOMMENDATION ENGINE (FINAL CLEAN VERSION)
+   ========================================================================== */
+
+const workshopJourneyMap = {
+  "unclear messaging": {
+    stage: "FOUNDATION CLARITY",
+    start: {
+      title: "The Direction Workshop",
+      url: "products/direction-workshop.html",
+      reason:
+        "You need clarity before anything else. This helps you define your audience, problem, and first product idea."
+    },
+    next: {
+      title: "The Creation Workshop",
+      url: "products/creation-workshop.html",
+      reason:
+        "Once your direction is clear, this helps you turn your idea into a real digital product."
+    }
+  },
+
+  "low student enrollment": {
+    stage: "BUILDING STAGE",
+    start: {
+      title: "The Creation Workshop",
+      url: "products/creation-workshop.html",
+      reason:
+        "Your issue is execution. This helps you build a complete digital product from start to finish."
+    },
+    next: {
+      title: "The Pricing Workshop",
+      url: "products/pricing-workshop.html",
+      reason:
+        "After building your product, you need to position it correctly so people understand its value."
+    }
+  },
+
+  "low conversions": {
+    stage: "MONETIZATION STAGE",
+    start: {
+      title: "The Pricing Workshop",
+      url: "products/pricing-workshop.html",
+      reason:
+        "Your problem is value clarity. This helps you understand pricing and improve conversions."
+    },
+    next: {
+      title: "The Launch Workshop",
+      url: "products/launch-workshop.html",
+      reason:
+        "Once pricing is clear, you need a strong product page that communicates value effectively."
+    }
+  },
+
+  "low reach": {
+    stage: "VISIBILITY STAGE",
+    start: {
+      title: "The Traffic Workshop",
+      url: "products/traffic-workshop.html",
+      reason:
+        "Your challenge is visibility. This builds a repeatable content system to attract attention."
+    },
+    next: {
+      title: "The Launch Workshop",
+      url: "products/launch-workshop.html",
+      reason:
+        "Once you have traffic, you need a strong conversion system (your product page)."
+    }
+  },
+
+  "inconsistent posting": {
+    stage: "VISIBILITY STAGE",
+    start: {
+      title: "The Traffic Workshop",
+      url: "products/traffic-workshop.html",
+      reason:
+        "This helps you build a structured content system so you always know what to post."
+    },
+    next: {
+      title: "The Launch Workshop",
+      url: "products/launch-workshop.html",
+      reason:
+        "After consistency, you need to convert attention into sales."
+    }
+  },
+
+  "low conversion rates": {
+    stage: "CONVERSION STAGE",
+    start: {
+      title: "The Launch Workshop",
+      url: "products/launch-workshop.html",
+      reason:
+        "Your issue is your product page. This helps you clearly present your offer and improve conversions."
+    },
+    next: {
+      title: "The Traffic Workshop",
+      url: "products/traffic-workshop.html",
+      reason:
+        "Once conversion is fixed, you can scale by increasing traffic."
+    }
+  },
+
+  "poor adoption": {
+    stage: "BUILDING STAGE",
+    start: {
+      title: "The Creation Workshop",
+      url: "products/creation-workshop.html",
+      reason:
+        "Your product isn’t being used because it's unclear or weak. This helps you build something structured and valuable."
+    },
+    next: {
+      title: "The Pricing Workshop",
+      url: "products/pricing-workshop.html",
+      reason:
+        "After fixing the product, you need to position its value correctly."
+    }
+  }
+};
+
+function getWorkshopJourney(problemText = "") {
+  const text = problemText.toLowerCase();
+
+  for (const key in workshopJourneyMap) {
+    if (text.includes(key)) {
+      return workshopJourneyMap[key];
+    }
+  }
+
+  return {
+    stage: "FOUNDATION CLARITY",
+    start: {
+      title: "The Direction Workshop",
+      url: "products/direction-workshop.html",
+      reason:
+        "Start here to define your audience, problem, and product direction before building anything."
+    },
+    next: {
+      title: "The Creation Workshop",
+      url: "products/creation-workshop.html",
+      reason:
+        "After clarity, this helps you turn your idea into a real product."
+    }
+  };
+}
+
+/* ==========================================================================
+   DOM ELEMENTS
+   ========================================================================== */
+
 const primaryMarket = document.getElementById("primaryMarket");
 const specificMarket = document.getElementById("specificMarket");
 const deliverySelect = document.getElementById("deliveryMethod");
@@ -83,13 +232,20 @@ const resultsDiv = document.getElementById("results");
 const emailInput = document.getElementById("email");
 const pdfSection = document.getElementById("pdfSection");
 
-let o1 = "", o2 = "", o3 = "";
+/* STATE */
+let identity = "";
+let strategy = "";
+let monetization = "";
+let recommendedWorkshop = {};
+let nextWorkshop = {};
 
-/* 1. INITIALIZE PRIMARY DROPDOWN */
+/* ==========================================================================
+   INIT DROPDOWN
+   ========================================================================== */
+
 function init() {
-  // Clear existing options except the first one
   primaryMarket.innerHTML = '<option value="">Select your main area</option>';
-  Object.keys(dataMap).forEach(market => {
+  Object.keys(dataMap).forEach((market) => {
     const opt = document.createElement("option");
     opt.value = market;
     opt.textContent = market;
@@ -97,16 +253,16 @@ function init() {
   });
 }
 
-/* 2. UPDATE SPECIFIC MARKET BASED ON PRIMARY */
-primaryMarket.addEventListener("change", function() {
+/* ==========================================================================
+   EVENT: PRIMARY MARKET CHANGE
+   ========================================================================== */
+
+primaryMarket.addEventListener("change", function () {
   const selectedMarket = this.value;
-  
-  // Reset Specific Market dropdown
   specificMarket.innerHTML = '<option value="">Select a focus</option>';
-  
+
   if (selectedMarket && dataMap[selectedMarket]) {
-    const niches = Object.keys(dataMap[selectedMarket]);
-    niches.forEach(niche => {
+    Object.keys(dataMap[selectedMarket]).forEach((niche) => {
       const opt = document.createElement("option");
       opt.value = niche;
       opt.textContent = niche;
@@ -115,210 +271,88 @@ primaryMarket.addEventListener("change", function() {
   }
 });
 
-/* 3. FORM SUBMISSION */
-document.getElementById("bcg-form").addEventListener("submit", function(e) {
+/* ==========================================================================
+   FORM SUBMISSION
+   ========================================================================== */
+
+document.getElementById("bcg-form").addEventListener("submit", function (e) {
   e.preventDefault();
-  
+
   const marketVal = primaryMarket.value;
   const nicheVal = specificMarket.value;
-  
+
   if (!marketVal || !nicheVal) {
     alert("Please select both markets.");
     return;
   }
 
   const d = dataMap[marketVal][nicheVal];
-  
-  o1 = `You help ${d.audience} who struggle with ${d.problem}.`;
-  o2 = `Create ${deliverySelect.value} on ${platformSelect.value} that moves them toward ${d.outcome}.`;
-  o3 = `I help ${d.audience} overcome ${d.problem} using ${deliverySelect.value}.`;
 
-/* SAVE DATA TO GOOGLE SHEETS (CORS SAFE VERSION) */
-fetch("https://script.google.com/macros/s/AKfycby8k6GHgLi_uNn2vqmdrEEW2Bnt7SFCKxgWUE69UkqrrDreENhE6VaN3hw_mBD_5VaT/exec", {
-  method: "POST",
-  body: new URLSearchParams({
-    email: emailInput.value,
-    primaryMarket: marketVal,
-    specificMarket: nicheVal,
-    deliveryMethod: deliverySelect.value,
-    platform: platformSelect.value,
-    niche: o1,
-    contentDirection: o2,
-    brandStatement: o3
-  })
-})
-.then(() => console.log("Saved to Google Sheets"))
-.catch(err => console.error("Google Sheets Error:", err));
+  identity = `Right now, you're not just choosing a niche. You're stepping into the role of a creator who helps ${d.audience} move from ${d.problem} to ${d.outcome}.`;
 
+  strategy = `Your best strategy is to create ${deliverySelect.value} on ${platformSelect.value} that gives your audience small wins, practical clarity and visible progress.`;
+
+  monetization = `Your first digital product should solve ${d.problem}. Start with something simple and outcome-focused that helps people achieve ${d.outcome}.`;
+
+  const journey = getWorkshopJourney(d.problem);
+  recommendedWorkshop = journey.start;
+  nextWorkshop = journey.next;
+
+  /* DATA CAPTURE */
+  fetch("https://script.google.com/macros/s/AKfycby8k6GHgLi_uNn2vqmdrEEW2Bnt7SFCKxgWUE69UkqrrDreENhE6VaN3hw_mBD_5VaT/exec", {
+    method: "POST",
+    body: new URLSearchParams({
+      email: emailInput.value,
+      primaryMarket: marketVal,
+      specificMarket: nicheVal,
+      deliveryMethod: deliverySelect.value,
+      platform: platformSelect.value,
+      identity,
+      strategy,
+      monetization,
+      recommendedWorkshop: recommendedWorkshop.title
+    })
+  });
+
+  /* UI RENDER */
   resultsDiv.innerHTML = `
-    <div class="card"><h3>Niche</h3><p>${o1}</p></div>
-    <div class="card"><h3>Content Direction</h3><p>${o2}</p></div>
-    <div class="card"><h3>Brand Statement</h3><p>${o3}</p></div>
+    <div class="card">
+      <h3>Identity Shift</h3>
+      <p>${identity}</p>
+    </div>
+
+    <div class="card">
+      <h3>Content Strategy</h3>
+      <p>${strategy}</p>
+    </div>
+
+    <div class="card">
+      <h3>Monetization Path</h3>
+      <p>${monetization}</p>
+    </div>
+
+    <div class="card recommended-card">
+      <span class="recommended-label">Recommended Workshop</span>
+      <h3>${recommendedWorkshop.title}</h3>
+      <p>${recommendedWorkshop.reason}</p>
+      <a href="${recommendedWorkshop.url}" class="btn primary workshop-btn">
+        View Workshop
+      </a>
+    </div>
   `;
 
   pdfSection.style.display = "block";
-  resultsDiv.scrollIntoView({ behavior: "smooth", block: "start" });
+  resultsDiv.scrollIntoView({ behavior: "smooth" });
 
-  // MailerLite Integration
+  /* MAILERLITE */
   fetch("https://assets.mailerlite.com/jsonp/1835111/forms/177644935893222841/subscribe", {
     method: "POST",
     body: new URLSearchParams({ "fields[email]": emailInput.value })
   });
 });
 
-/* 4. PDF GENERATION (PROFESSIONAL VERSION) */
-document.getElementById("downloadPdf").onclick = () => {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-  let y = 20;
+/* ==========================================================================
+   INIT
+   ========================================================================== */
 
-  // Colors
-  const colBlack = [0, 0, 0];
-  const colRed = [192, 0, 0];
-  const colDarkGray = [50, 50, 50]; // Darker for better screen readability
-  const colBgGray = [248, 248, 248];
-  const colLinkBlue = [0, 0, 139];
-
-  const checkPageBreak = (needed) => {
-    if (y + needed > 275) {
-      doc.addPage();
-      y = 20;
-    }
-  };
-
-  // 1. HEADER TITLE
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(24);
-  doc.setTextColor(...colBlack);
-  doc.text("Brand Clarity Blueprint", 20, y);
-  y += 15;
-
-  // 2. YOUR RESULTS SECTION
-  doc.setFontSize(16);
-  doc.setTextColor(...colRed);
-  doc.text("Your Results", 20, y);
-  y += 10;
-
-  const addResultBox = (title, content) => {
-    // Eyebrow Label (Professional Small Caps look)
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(9);
-    doc.setTextColor(120, 120, 120);
-    doc.text(title.toUpperCase(), 20, y);
-    y += 5;
-    
-    // Logic for Box Height & Padding
-    const lines = doc.splitTextToSize(content || "Not specified", 160);
-    const lineHeight = 7;
-    const boxHeight = (lines.length * lineHeight) + 10; // Extra 10 for padding
-    
-    // Gray Background Box
-    doc.setFillColor(...colBgGray);
-    doc.rect(20, y, 170, boxHeight, 'F');
-    
-    // Box Content
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(11);
-    doc.setTextColor(...colBlack);
-    doc.text(lines, 26, y + 8); // Padded text
-    y += boxHeight + 12;
-  };
-
-  addResultBox("Niche", o1);
-  addResultBox("Content Direction", o2);
-  addResultBox("Brand Statement", o3);
-
-  // 3. HOW TO USE
-  y += 5;
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(16);
-  doc.setTextColor(...colRed);
-  doc.text("How to use your Blueprint", 20, y);
-  y += 10;
-
-  const usageSteps = [
-    { t: "1. Niche - Focus on your audience.", b: "Your niche defines who you help. Use it to make sure every piece of content or product idea speaks directly to them. If it doesn't, skip it." },
-    { t: "2. Content Direction - Decide what to create.", b: "Your content direction tells you the formats and channels that will reach your audience most effectively. Start small and consistent — one newsletter, one post — but stay aligned." },
-    { t: "3. Brand Statement - Clarify your message.", b: "Your brand statement is your promise in one sentence. Let it guide headlines, social posts, and product copy. Every touchpoint should reflect it." }
-  ];
-
-  usageSteps.forEach(step => {
-    checkPageBreak(35);
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(12);
-    doc.setTextColor(...colBlack);
-    doc.text(step.t, 20, y);
-    y += 7;
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(11);
-    doc.setTextColor(...colDarkGray);
-    const bLines = doc.splitTextToSize(step.b, 170);
-    doc.text(bLines, 20, y, { lineHeightFactor: 1.4 }); // Improved line spacing
-    y += (bLines.length * 7) + 10;
-  });
-
-  // 4. RECOMMENDED NEXT STEPS
-  checkPageBreak(80);
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(16);
-  doc.setTextColor(...colRed);
-  doc.text("Recommended Next Steps", 20, y);
-  y += 12;
-
-  const addOffer = (title, description, linkText, url) => {
-    checkPageBreak(45);
-    doc.setFontSize(11);
-    doc.setFont("helvetica", "bold");
-    doc.setTextColor(...colBlack);
-    doc.text(title, 20, y);
-    y += 6;
-    doc.setFont("helvetica", "normal");
-    doc.setTextColor(...colDarkGray);
-    const descLines = doc.splitTextToSize(description, 170);
-    doc.text(descLines, 20, y, { lineHeightFactor: 1.2 });
-    y += (descLines.length * 6) + 7;
-    
-    // Link Styling
-    doc.setTextColor(...colLinkBlue);
-    doc.text(linkText, 20, y);
-    doc.link(20, y - 4, doc.getTextWidth(linkText), 6, { url: url });
-    
-    // Thin Underline
-    doc.setDrawColor(...colLinkBlue);
-    doc.setLineWidth(0.1);
-    doc.line(20, y + 1, 20 + doc.getTextWidth(linkText), y + 1);
-    y += 15;
-  };
-
-  addOffer("1. Identify what to sell first", "Clarity removes confusion, but it doesn't automatically generate product ideas. This playbook helps you choose a beginner-friendly digital product.", "40 Fast Digital Product Ideas Playbook", "https://kalzlearn.com/products/40-product-ideas");
-  addOffer("2. Act while this clarity is still fresh", "Momentum matters. This guide shows you how to turn your blueprint into a simple digital product and launch it in one focused day.", "The 24-Hour Digital Product Launch Guide", "https://kalzlearn.com/products/24-hour-launch");
-  addOffer("3. Validate before you build", "Remove doubt and pressure. Test your niche, message or problem before creating a product.", "Brand Clarity & Niche Validation Workbook", "https://kalzlearn.com/products/brand-clarity-workbook");
-
- 
-  // 5. CONCLUSION (Restored)
-  checkPageBreak(50);
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(16);
-  doc.setTextColor(...colRed);
-  doc.text("Conclusion: Your Clarity is the Starting Line", 20, y);
-  y += 8;
-  
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(11);
-  doc.setTextColor(...colDarkGray);
-  const concl = "Clarity doesn't mean you have everything figured out. It means you now know what matters, who you're serving and what direction makes sense for you. From here, progress comes from small, intentional action — not overthinking.";
-  
-  // Using 1.5 line spacing for a clean, readable finish
-  const conclLines = doc.splitTextToSize(concl, 170);
-  doc.text(conclLines, 20, y, { lineHeightFactor: 1.5 });
-  
-  // 6. FOOTER (Final Branding)
-  // This stays at the very bottom of the physical page (y = 285)
-  doc.setFontSize(9);
-  doc.setTextColor(180, 180, 180);
-  doc.text("© 2026 Kalz Learn | Focused Clarity for Modern Creators", 105, 285, { align: "center" });
-
-  doc.save("Brand-Clarity-Blueprint.pdf");
-};
-// Run init on load
 init();

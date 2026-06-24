@@ -1,11 +1,16 @@
-/* TOOL LAYOUT */
+/* ==========================================================================
+   TOOL LAYOUT & CONTAINERS
+   ========================================================================== */
 .bcg-wrapper {
   max-width: 1100px; /* Wide spread for desktop */
   margin: 60px auto;
   padding: 0 20px;
 }
 
-.centered-header { text-align: center; margin-bottom: 40px; }
+.centered-header { 
+  text-align: center; 
+  margin-bottom: 40px; 
+}
 
 .form-grid {
   display: grid;
@@ -13,8 +18,14 @@
   gap: 30px 40px;
 }
 
-.field { display: flex; flex-direction: column; }
-.field.full { grid-column: 1 / -1; }
+.field { 
+  display: flex; 
+  flex-direction: column; 
+}
+
+.field.full { 
+  grid-column: 1 / -1; 
+}
 
 .label {
   font-size: 14px;
@@ -25,9 +36,14 @@
   gap: 8px;
   color: #333;
 }
-.label i { color: #C00000; } /* Brand Red */
 
-/* BOX STYLING */
+.label i { 
+  color: #C00000; /* Brand Red */
+} 
+
+/* ==========================================================================
+   FORM INPUTS & ELEMENTS
+   ========================================================================== */
 select, input {
   padding: 16px;
   border-radius: 10px;
@@ -52,7 +68,26 @@ select, input {
   cursor: pointer;
 }
 
-/* RESULTS & POST-SUBMISSION [cite: 2026-02-26] */
+.form-consent-text {
+  margin-top: 15px;
+  font-size: 0.6rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+.form-consent-text a {
+  color: #C00000;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.form-consent-text a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   RESULTS & CARD FRAMEWORKS
+   ========================================================================== */
 .results-container {
   margin-top: 50px;
   display: grid;
@@ -88,30 +123,56 @@ select, input {
   text-align: left;
 }
 
-/* Styling for the note below the PDF button */
+/* ==========================================================================
+   FUNNEL UPGRADE — DYNAMIC CONTEXTUAL OFFERS
+   ========================================================================== */
+.recommended-card {
+  border: 2px solid #C00000;
+  background: #fff8f8; /* Soft red tint to isolate the call-to-action */
+}
+
+.recommended-label {
+  display: inline-block;
+  background: #C00000;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.workshop-price {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #C00000;
+  margin: 15px 0;
+}
+
+.workshop-btn {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+/* ==========================================================================
+   FOOTER ELEMENTS & PRINT ACTIONS
+   ========================================================================== */
 .button-footer-note {
   margin-top: 15px;
   font-size: 0.95rem;
   color: #444444;       /* Dark gray for readability */
   line-height: 1.5;
   max-width: 500px;     /* Prevents text from being too wide */
-  
-  /* Centering Logic for Windows/Desktop */
   margin-left: auto;    /* Centers the block itself */
   margin-right: auto;   /* Centers the block itself */
   text-align: center;   /* Centers the text inside the block */
 }
 
-/* Mobile adjustments */
-@media (max-width: 768px) {
-  .button-footer-note {
-    font-size: 0.85rem;
-    margin-top: 12px;
-    padding: 0 15px;    /* Adds slight padding for smaller screens */
-  }
-}
-
-/* MOBILE RESPONSIVENESS */
+/* ==========================================================================
+   MEDIA QUERIES (MOBILE RESPONSIVENESS)
+   ========================================================================== */
 @media (max-width: 768px) {
   .form-grid { 
     grid-template-columns: 1fr; 
@@ -131,20 +192,10 @@ select, input {
     padding: 16px;
     font-size: 16px;
   }
-}
-.form-consent-text {
-  margin-top: 15px;
-  font-size: 0.6rem;
-  color: #555;
-  line-height: 1.4;
-}
 
-.form-consent-text a {
-  color: #C00000;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.form-consent-text a:hover {
-  text-decoration: underline;
+  .button-footer-note {
+    font-size: 0.85rem;
+    margin-top: 12px;
+    padding: 0 15px;    /* Adds slight padding for smaller screens */
+  }
 }

@@ -11,7 +11,7 @@ body {
   font-family: 'Inter', Arial, sans-serif;
   color: #111;
   line-height: 1.6;
-  padding-top: 80px; /* Space for fixed header */
+  padding-top: 65px; /* Space for fixed header */
   background-color: #fff;
 }
 
@@ -55,7 +55,7 @@ section {
 .hero-small h1 {
   font-family: 'Inter', sans-serif;
   font-size: 3rem;
-  font-weight: 800;
+  font-weight: 700;
   color: #000000;
   margin-bottom: 10px; 
   letter-spacing: -0.02em;
@@ -351,7 +351,7 @@ h3 {
 
 .centered-header .sub-text {
   margin: 0 auto;
-  max-width: 600px; /* Keeps the description easy to read */
+  max-width: 1000px; /* Keeps the description easy to read */
 }
 /* =========================================
    5. SECTIONS (ALTERNATING COLORS)
@@ -1183,4 +1183,94 @@ h3 {
     margin-left: 0;
     margin-right: 0;
   }
+}
+/* =========================================
+   SECTION HEADERS: DESKTOP CENTER + MOBILE LEFT
+========================================= */
+
+/* Desktop default (Windows) */
+.resources-layer .section-container .eyebrow,
+.resources-layer .section-container h2,
+.resources-layer .section-container .sub-text {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Keep sub-text readable width on desktop */
+.resources-layer .sub-text {
+  max-width: 800px;
+}
+.resources-layer .resources-grid {
+  margin-top: 30px;
+}
+/* Mobile override */
+@media (max-width: 768px) {
+
+  .resources-layer .section-container .eyebrow,
+  .resources-layer .section-container h2,
+  .resources-layer .section-container .sub-text {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .resources-layer .sub-text {
+    max-width: 100%;
+  }
+}
+@media (max-width: 768px) {
+
+  .featured-products .centered-header {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .featured-products .centered-header .eyebrow,
+  .featured-products .centered-header h2,
+  .featured-products .centered-header .sub-text {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .featured-products .centered-header .sub-text {
+    max-width: 100%;
+  }
+}
+
+/* =========================================
+   HOMEPAGE BACKGROUND SYSTEM (ALT LAYERS)
+========================================= */
+
+/* Default fallback = white */
+main section {
+  background-color: #ffffff;
+}
+
+/* 1. White sections (clean entry / thinking zones) */
+.hero,
+.cta-band {
+  background-color: #ffffff;
+}
+
+/* 2. Light gray sections (teaching / explanation) */
+.process,
+.why-section,
+.featured-products {
+  background-color: #f9fafb;
+}
+
+/* 3. Emphasis section (keep brand moment strong) */
+.cta-band {
+  background-color: #C00000;
+  color: #ffffff;
+}
+
+/* Ensure CTA text stays readable */
+.cta-band h2,
+.cta-band h3,
+.cta-band p {
+  color: #ffffff;
 }
