@@ -300,7 +300,7 @@ document.getElementById("bcg-form").addEventListener("submit", function (e) {
   nextWorkshop = journey.next;
 
   /* DATA CAPTURE */
-  fetch("https://script.google.com/macros/s/AKfycby8k6GHgLi_uNn2vqmdrEEW2Bnt7SFCKxgWUE69UkqrrDreENhE6VaN3hw_mBD_5VaT/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbyf5DXjzVIwI22Zbpx2p1rtop48lVval0J54Rm0n8hyGhXrZWN2OvL_mSzuu7NcHmDs/exec", {
     method: "POST",
   body: new URLSearchParams({
   email: emailInput.value,
@@ -433,7 +433,7 @@ document.getElementById("downloadPdf").addEventListener("click", () => {
   doc.setFontSize(15);
   doc.text("Your Direction", 20, y);
 
-  y += 10;
+  y += 8;
 
   doc.setFont("helvetica", "normal");
   doc.setFontSize(BODY_FONT_SIZE);
@@ -441,7 +441,7 @@ document.getElementById("downloadPdf").addEventListener("click", () => {
   const directionLines = doc.splitTextToSize(directionText, 170);
   doc.text(directionLines, 20, y);
 
-  y += directionLines.length * 7 + 15;
+  y += directionLines.length * 7 + 7;
 
   /* =====================================================
      YOUR CONTENT PLAN
@@ -453,7 +453,7 @@ document.getElementById("downloadPdf").addEventListener("click", () => {
   doc.setFontSize(15);
   doc.text("Your Content Plan", 20, y);
 
-  y += 10;
+  y += 8;
 
   doc.setFont("helvetica", "normal");
   doc.setFontSize(BODY_FONT_SIZE);
@@ -461,7 +461,7 @@ document.getElementById("downloadPdf").addEventListener("click", () => {
   const contentLines = doc.splitTextToSize(contentPlanText, 170);
   doc.text(contentLines, 20, y);
 
-  y += contentLines.length * 7 + 15;
+  y += contentLines.length * 7 + 7;
 
   /* =====================================================
      YOUR FIRST PRODUCT
@@ -473,7 +473,7 @@ document.getElementById("downloadPdf").addEventListener("click", () => {
   doc.setFontSize(15);
   doc.text("Your First Product", 20, y);
 
-  y += 10;
+  y += 8;
 
   doc.setFont("helvetica", "normal");
   doc.setFontSize(BODY_FONT_SIZE);
@@ -481,7 +481,34 @@ document.getElementById("downloadPdf").addEventListener("click", () => {
   const productLines = doc.splitTextToSize(productText, 170);
   doc.text(productLines, 20, y);
 
-  y += productLines.length * 7 + 15;
+  y += productLines.length * 7 + 7;
+
+/* =====================================================
+   HOW TO USE THIS CLARITY MAP
+===================================================== */
+
+checkPageSpace(45);
+
+doc.setFont("helvetica", "bold");
+doc.setFontSize(15);
+doc.text("How to Use This Clarity Map", 20, y);
+
+y += 8;
+
+doc.setFont("helvetica", "normal");
+doc.setFontSize(BODY_FONT_SIZE);
+
+const guideText =
+  "This clarity map gives you a starting point, not a finished business. Focus on one audience, solve one problem and create one simple product before moving to the next stage. Use the recommended workshop below as your next step.";
+
+const guideLines = doc.splitTextToSize(
+  guideText,
+  170
+);
+
+doc.text(guideLines, 20, y);
+
+y += guideLines.length * 7 + 7;
 
   /* =====================================================
      RECOMMENDED WORKSHOP
@@ -493,7 +520,7 @@ document.getElementById("downloadPdf").addEventListener("click", () => {
   doc.setFontSize(15);
   doc.text("Recommended Next Step", 20, y);
 
-  y += 10;
+  y += 8;
 
   doc.setFontSize(12);
   doc.text(recommendedWorkshop.title, 20, y);
@@ -509,7 +536,7 @@ document.getElementById("downloadPdf").addEventListener("click", () => {
 
   doc.text(reasonLines, 20, y);
 
-  y += reasonLines.length * 6 + 15;
+  y += reasonLines.length * 6 + 6;
 
   /* =====================================================
    WORKSHOP LINK
@@ -671,7 +698,7 @@ y += 18;
     y
   );
 
-  y += 10;
+  y += 8;
 
   doc.setFont("helvetica", "bold");
   doc.text(
