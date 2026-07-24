@@ -870,15 +870,7 @@ h3 {
     text-align: left;      
   }
 
-  /* Header Alignments */
-  .why-header-center, .hero, .process, .cta-text {
-    text-align: left;
-  }
-
-  .why-header-center h2, .why-header-center .sub-text, .hero h1, .hero p {
-    margin-left: 0;
-  }
-
+  
   .eyebrow { text-align: left; }
 /* Centered Header */
 .centered-header {
@@ -1274,3 +1266,5 @@ main section {
 .cta-band p {
   color: #ffffff;
 }
+
+
