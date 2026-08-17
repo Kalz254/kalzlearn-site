@@ -1433,8 +1433,16 @@ main section {
 
 @media (max-width: 768px) {
 
+.hero {
+    padding-top: 30px !important;
+    margin-top: 0 !important;
+  }
+
+  .hero .section-container {
+    padding-top: 0 !important;
+  }
+
   .hero {
-    padding: 55px 0 50px !important;
     text-align: left !important;
   }
 
