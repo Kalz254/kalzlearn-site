@@ -1527,3 +1527,58 @@ main section {
     height: 19px;
   }
 }
+
+/* =========================================
+   MOBILE: REMOVE GAP ABOVE HERO
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  main,
+  .bcg-wrapper,
+  .content-section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .hero {
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 30px !important;
+  }
+}
+
+/* =========================================
+   MOBILE HEADER → HERO SPACING
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  /* Reserve only the actual mobile header height */
+  body {
+    padding-top: 48px !important;
+  }
+
+  main,
+  .bcg-wrapper,
+  .content-section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .hero {
+    margin-top: 0 !important;
+    padding-top: 25px !important;
+  }
+
+  .hero-kicker {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin-bottom: 5px !important;
+  }
+}
