@@ -1434,7 +1434,7 @@ main section {
 @media (max-width: 768px) {
 
 .hero {
-    padding-top: 30px !important;
+    padding-top: 20px !important;
     margin-top: 0 !important;
   }
 
@@ -1455,7 +1455,7 @@ main section {
   .hero-kicker {
     font-size: 1.2rem;
     font-weight: 600;
-    margin-bottom: 9px;
+    margin-bottom: 5px;
   }
 
   .hero-title {
