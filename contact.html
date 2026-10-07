@@ -4,21 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - Kalz Learn</title>
-<link rel="icon" href="images/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="css/style.css">
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5FHZBD0QSL"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-5FHZBD0QSL');
-</script>
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FHZBD0QSL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-5FHZBD0QSL');
+  </script>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header class="site-header">
   <div class="nav-container">
     <a href="index.html" class="logo">
@@ -26,9 +29,9 @@
     </a>
 
     <button class="menu-toggle" aria-label="Open Menu" id="menu-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
 
     <nav class="nav-links" id="nav-menu">
@@ -37,21 +40,30 @@
       <a href="resources.html">Resources</a>
       <a href="products.html">Products</a>
       <a href="contact.html" class="active">Contact</a>
-      <a href="brand-clarity.html" class="btn primary small btn-mobile-cta">Try Brand Tool</a>
+      <a href="ai-learning-path.html" class="btn primary small btn-mobile-cta">Find My AI Path</a>
     </nav>
   </div>
 </header>
 
 <main>
+ <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="section-container">
+
+      <h1>
+        <span class="hero-title">Have a Question? Let's Talk.</span>
+      </h1>
+
+      <p>
+        Whether you have a question about a resource, want to discuss a workshop, or are interested in working with Kalz Learn, you can get in touch.
+      </p>
+
+    </div>
+  </section>
+
+<!-- CONTACT FORM SECTION -->
   <section class="contact-section">
     <div class="section-container">
-      <div class="section-header centered-header">
-        <p class="eyebrow">GET IN TOUCH</p>
-        <h2>Contact Support</h2>
-        <p class="sub-text">
-          Have questions about our products or need help with the Brand Clarity Tool? Drop us a message.
-        </p>
-      </div>
 
       <div class="contact-form-wrapper">
         <form id="contact-form" action="https://formsubmit.co/hello@kalzlearn.com" method="POST">
@@ -59,65 +71,85 @@
           <input type="hidden" name="_redirect" value="false">
 
           <div class="form-group">
-            <label>Name</label>
-            <input type="text" name="name" placeholder="Your Name" required>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
           </div>
 
           <div class="form-group">
-            <label>Email</label>
-            <input type="email" name="email" placeholder="email@example.com" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="email@example.com" required>
           </div>
 
           <div class="form-group">
-            <label>Message</label>
-            <textarea name="message" rows="6" placeholder="How can we help?" required></textarea>
+            <label for="reason">What are you reaching out about?</label>
+            <select id="reason" name="reason" required>
+              <option value="" disabled selected>Select a reason...</option>
+              <option value="General Question">General Question</option>
+              <option value="Workshop Enquiry">Workshop Enquiry</option>
+              <option value="Partnership">Partnership</option>
+              <option value="Resource Recommendation">Resource Recommendation</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" placeholder="How can we help?" required></textarea>
           </div>
 
           <button type="submit" class="btn primary full">
             Send Message
           </button>
 
-          <p class="form-success" style="display:none; margin-top: 20px; color: green; font-weight: 600;">
+          <p class="form-success" style="display:none; margin-top: 20px; color: #16a34a; font-weight: 600;">
             ✅ Message sent successfully. We’ll get back to you shortly.
           </p>
         </form>
       </div>
+
     </div>
   </section>
 </main>
 
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="section-container">
     <div class="footer-grid">
       <div class="footer-brand">
         <h4>Kalz Learn</h4>
-        <p>Helping beginners gain clarity, build digital products and grow confidently in the digital economy.</p>
+        <p>Helping beginners understand the data behind AI and how data is made reliable.</p>
       </div>
 
       <div class="footer-links">
         <h4>Explore</h4>
+        <a href="ai-learning-path.html">Assessment Tool</a>
         <a href="resources.html">Resources</a>
         <a href="products.html">Products</a>
-        <a href="brand-clarity.html">Brand Clarity Tool</a>
       </div>
-<div class="footer-links">
-        <h4>Legal</h4>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms & Conditions</a>
+
+      <div class="footer-links">
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
       </div>
+
       <div class="footer-social">
         <h4>Follow Kalz Learn</h4>
         <div class="social-icons">
-          <a href="https://www.youtube.com/@KalzLearn" aria-label="YouTube">
-            <svg viewBox="0 0 24 24" fill="none" style="width:24px;"><path d="M22 12C22 12 22 8.5 21.5 7C21.1 5.8 20.2 4.9 19 4.5C16.8 4 12 4 12 4C12 4 7.2 4 5 4.5C3.8 4.9 2.9 5.8 2.5 7C2 8.5 2 12 2 12C2 12 2 15.5 2.5 17C2.9 18.2 3.8 19.1 5 19.5C7.2 20 12 20 12 20C12 20 16.8 20 19 19.5C20.2 19.1 21.1 18.2 21.5 17C22 15.5 22 12 22 12Z" stroke="currentColor" stroke-width="1.6"/><path d="M10 9L15 12L10 15V9Z" fill="currentColor"/></svg>
+          <a href="https://www.youtube.com/@KalzLearn" aria-label="YouTube" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M22 12C22 12 22 8.5 21.5 7C21.1 5.8 20.2 4.9 19 4.5C16.8 4 12 4 12 4C12 4 7.2 4 5 4.5C3.8 4.9 2.9 5.8 2.5 7C2 8.5 2 12 2 12C2 12 2 15.5 2.5 17C2.9 18.2 3.8 19.1 5 19.5C7.2 20 12 20 12 20C12 20 16.8 20 19 19.5C20.2 19.1 21.1 18.2 21.5 17C22 15.5 22 12 22 12Z" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M10 9L15 12L10 15V9Z" fill="currentColor"/>
+            </svg>
           </a>
-      <a href="https://www.facebook.com/kalzlearnhq" aria-label="Facebook">
-      <svg viewBox="0 0 24 24" fill="none">
-        <path d="M14 9H16V6H14C11.8 6 10 7.8 10 10V12H8V15H10V21H13V15H15L16 12H13V10C13 9.4 13.4 9 14 9Z" fill="currentColor"/>
-      </svg>
-    </a>
 
-    
+          <a href="https://www.facebook.com/kalzlearnhq" aria-label="Facebook" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M14 9H16V6H14C11.8 6 10 7.8 10 10V12H8V15H10V21H13V15H15L16 12H13V10C13 9.4 13.4 9 14 9Z" fill="currentColor"/>
+            </svg>
+          </a>
         </div>
       </div>
     </div>
@@ -127,7 +159,6 @@
     </div>
   </div>
 </footer>
-
 <script>
   // Mobile Menu Logic
   const menuToggle = document.getElementById('menu-toggle');

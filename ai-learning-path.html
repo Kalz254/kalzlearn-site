@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AI Learning Path Assessment - Kalz Learn</title>
+
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+  <!-- Main Site Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- AI Learning Path Tool Styles -->
+  <link rel="stylesheet" href="css/generator.css">
+
+  <!-- Font Awesome -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    rel="stylesheet"
+  >
+
+  <!-- jsPDF Library for generating dynamic blueprints -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- Google Analytics -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-5FHZBD0QSL">
+  </script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag(){
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-5FHZBD0QSL');
+  </script>
+
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <img src="images/logo.png" alt="Kalz Learn logo">
+      </a>
+
+      <button class="menu-toggle" aria-label="Open Menu" id="menu-toggle" type="button">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-links" id="nav-menu">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="resources.html">Resources</a>
+        <a href="products.html">Products</a>
+        <a href="contact.html">Contact</a>
+        <a href="ai-learning-path.html" class="active btn primary small btn-mobile-cta">Find My AI Path</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero centered-header">
+      <div class="section-container">
+        <h1 style="color: #ffffff;">
+          <span class="hero-title" style="color: #ffffff;">Not sure where to start with AI? Start with the data.</span>
+        </h1>
+        <p>Answer two quick questions to identify your interest area and get a personalized learning path recommendation.</p>
+      </div>
+    </section>
+
+    <!-- GUIDED ASSESSMENT TOOL -->
+    <section class="bcg-section">
+      <div class="bcg-wrapper">
+
+        <!-- STEP CONTAINER -->
+        <div id="quizContainer" class="quiz-card">
+          <!-- PROGRESS BAR -->
+          <div class="progress-header">
+            <span id="progressText" class="progress-text">Question 1 of 2</span>
+            <div class="progress-bar-bg">
+              <div id="progressBarFill" class="progress-bar-fill" style="width: 50%;"></div>
+            </div>
+          </div>
+
+          <!-- QUESTION INTERFACE -->
+          <div id="questionWrapper"></div>
+
+          <!-- NAVIGATION -->
+          <div class="quiz-nav">
+            <button id="prevBtn" class="btn secondary" style="display:none;">Previous</button>
+            <button id="nextBtn" class="btn primary" disabled>Next Question</button>
+          </div>
+        </div>
+
+        <!-- RESULTS PAGE -->
+        <div id="resultsContainer" class="results-container" style="display:none;">
+          <div class="card result-header-card">
+            <span class="recommended-label">YOUR AI LEARNING PATH</span>
+            <h2 id="resTitle" class="result-path-title"></h2>
+            <p id="resSummary" class="result-summary-text"></p>
+            <p id="resExplanation" class="result-explanation-text"></p>
+          </div>
+
+          <!-- WHAT YOU'LL LEARN -->
+          <div class="card">
+            <h3>What you'll learn</h3>
+            <ul id="resSkillsList" class="skills-list"></ul>
+          </div>
+
+          <!-- SINGLE SPOTLIGHT RESOURCE -->
+          <div class="card recommended-card" style="text-align: center; padding: 2.5rem 2rem;">
+            <span class="recommended-label">YOUR MATCHED RESOURCE HUB</span>
+            <h3 id="resResourceTitle" style="margin-top: 0.5rem; margin-bottom: 0.75rem;"></h3>
+            <p id="resResourceReason" style="margin-bottom: 1.5rem; color: #4b5563;"></p>
+            <a id="resResourceBtn" href="#" class="btn primary" style="font-size: 1.1rem; padding: 0.9rem 2rem; display: inline-block;">
+              Explore Path Landing Page →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="section-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>Kalz Learn</h4>
+          <p>Helping beginners understand the data behind AI and how data is made reliable.</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Explore</h4>
+          <a href="ai-learning-path.html">Assessment Tool</a>
+          <a href="resources.html">Resources</a>
+          <a href="products.html">Products</a>
+        </div>
+
+        <div class="footer-links">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+        </div>
+
+        <div class="footer-social">
+          <h4>Follow Kalz Learn</h4>
+          <div class="social-icons">
+            <a href="https://www.youtube.com/@KalzLearn" aria-label="YouTube" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M22 12C22 12 22 8.5 21.5 7C21.1 5.8 20.2 4.9 19 4.5C16.8 4 12 4 12 4C12 4 7.2 4 5 4.5C3.8 4.9 2.9 5.8 2.5 7C2 8.5 2 12 2 12C2 12 2 15.5 2.5 17C2.9 18.2 3.8 19.1 5 19.5C7.2 20 12 20 12 20C12 20 16.8 20 19 19.5C20.2 19.1 21.1 18.2 21.5 17C22 15.5 22 12 22 12Z" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M10 9L15 12L10 15V9Z" fill="currentColor"/>
+              </svg>
+            </a>
+
+            <a href="https://www.facebook.com/kalzlearnhq" aria-label="Facebook" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M14 9H16V6H14C11.8 6 10 7.8 10 10V12H8V15H10V21H13V15H15L16 12H13V10C13 9.4 13.4 9 14 9Z" fill="currentColor"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Kalz Learn. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/ai-path-data.js"></script>
+  <script src="js/assessment-data.js"></script>
+  <script src="js/ai-assessment-engine.js"></script>
+
+  <script>
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwWGjKgxR4qHQ9kni-jD2oHTGjBsFt2QoWZnjhQCu8vvdGvEHwHL3M6M_73QWg0yI8ZgA/exec";
+
+    let currentStepIndex = 0; // 0 for Q1, 1 for Q2
+    const userAnswers = {
+      q1_branch: null,
+      q1_option: null,
+      q2_option: null,
+      q2_targetPath: null
+    };
+
+    const progressText = document.getElementById("progressText");
+    const progressBarFill = document.getElementById("progressBarFill");
+    const questionWrapper = document.getElementById("questionWrapper");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+   function sendToGoogleSheet(payload) {
+  window.lastAssessmentProfile = payload;
+
+  fetch(GOOGLE_SCRIPT_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "text/plain;charset=utf-8"
+    },
+    body: JSON.stringify(payload)
+  }).catch(err => console.error("Error sending to sheet:", err));
+}
+
+    function renderQuestion() {
+      const qData = getQuestionData(currentStepIndex, userAnswers.q1_branch);
+
+      if (!qData) {
+        console.error("Missing question data for step index:", currentStepIndex);
+        return;
+      }
+
+      progressText.textContent = qData.questionNumber;
+      progressBarFill.style.width = ((currentStepIndex + 1) / 2) * 100 + "%";
+
+      let html = `<h2 class="question-title">${qData.title}</h2><div class="options-group">`;
+      
+      const activeSelectedId = currentStepIndex === 0 ? userAnswers.q1_option : userAnswers.q2_option;
+
+      qData.options.forEach(opt => {
+        const isChecked = activeSelectedId === opt.id ? "checked" : "";
+        const targetAttr = opt.targetPath ? `data-target="${opt.targetPath}"` : '';
+        const branchAttr = opt.branch ? `data-branch="${opt.branch}"` : '';
+
+        html += `
+          <label class="option-card ${isChecked ? 'selected' : ''}">
+            <input type="radio" name="${qData.id}" value="${opt.id}" ${branchAttr} ${targetAttr} ${isChecked} />
+            <span>${opt.label}</span>
+          </label>
+        `;
+      });
+      html += `</div>`;
+
+      questionWrapper.innerHTML = html;
+
+      document.querySelectorAll(`input[name="${qData.id}"]`).forEach(input => {
+        input.addEventListener("change", (e) => {
+          if (currentStepIndex === 0) {
+            userAnswers.q1_option = e.target.value;
+            userAnswers.q1_branch = e.target.getAttribute("data-branch");
+            userAnswers.q2_option = null;
+            userAnswers.q2_targetPath = null;
+          } else {
+            userAnswers.q2_option = e.target.value;
+            userAnswers.q2_targetPath = e.target.getAttribute("data-target");
+          }
+
+          document.querySelectorAll(".option-card").forEach(c => c.classList.remove("selected"));
+          e.target.closest(".option-card").classList.add("selected");
+          nextBtn.disabled = false;
+        });
+      });
+
+      prevBtn.style.display = currentStepIndex === 0 ? "none" : "inline-block";
+      nextBtn.disabled = currentStepIndex === 0 ? !userAnswers.q1_option : !userAnswers.q2_option;
+      nextBtn.textContent = currentStepIndex === 1 ? "Find My Learning Path" : "Next Question";
+    }
+
+    nextBtn.addEventListener("click", () => {
+      if (currentStepIndex === 0) {
+        currentStepIndex = 1;
+        renderQuestion();
+      } else {
+        renderResults();
+      }
+    });
+
+    prevBtn.addEventListener("click", () => {
+      if (currentStepIndex === 1) {
+        currentStepIndex = 0;
+        renderQuestion();
+      }
+    });
+
+    function renderResults() {
+      const outcome = runAssessment(userAnswers);
+      const data = outcome.details;
+
+      document.getElementById("quizContainer").style.display = "none";
+      
+      document.getElementById("resTitle").textContent = data.title;
+      document.getElementById("resSummary").textContent = data.summary;
+      document.getElementById("resExplanation").textContent = data.explanation;
+
+      const skillsUl = document.getElementById("resSkillsList");
+      skillsUl.innerHTML = "";
+      data.skills.forEach(skill => {
+        const li = document.createElement("li");
+        li.textContent = skill;
+        skillsUl.appendChild(li);
+      });
+
+      document.getElementById("resResourceTitle").textContent = data.recommendedResource.title;
+      document.getElementById("resResourceReason").textContent = data.recommendedResource.reason;
+      const resBtn = document.getElementById("resResourceBtn");
+      resBtn.href = data.recommendedResource.url;
+      resBtn.textContent = data.recommendedResource.buttonText;
+
+      const resultsDiv = document.getElementById("resultsContainer");
+      resultsDiv.style.display = "block";
+      resultsDiv.scrollIntoView({ behavior: "smooth" });
+
+      sendToGoogleSheet(outcome.profile);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuToggle = document.getElementById('menu-toggle');
+      const navMenu = document.getElementById('nav-menu');
+
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+          navMenu.classList.toggle('active');
+        });
+      }
+
+      renderQuestion();
+    });
+  </script>
+</body>
+</html>

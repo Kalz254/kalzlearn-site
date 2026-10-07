@@ -1,43 +1,58 @@
 /* =========================================
-   PRODUCT PAGE SPECIFIC LAYOUT (FINAL CLEAN)
+   KALZ LEARN — PRODUCT PAGE STYLES
    ========================================= */
 
-/* 1. RESET & OVERFLOW CONTROL */
+
+/* =========================================
+   1. GLOBAL PRODUCT PAGE RESET
+   ========================================= */
+
 body {
     padding-top: 0 !important;
-    overflow-x: hidden; 
+    overflow-x: hidden;
     width: 100%;
 }
-/* 1. RESET & COMPACT TOP SPACING */
+
 .product-page-main {
     background-color: #f8f9fa;
-    /* Reduced from 80px to 30px to close the gap under the header */
-    padding-top: 30px !important; 
+    padding-top: 30px !important;
     display: block;
     width: 100%;
 }
 
-/* 2. GRID SYSTEM - TIGHTER TOP ALIGNMENT */
+
+/* =========================================
+   2. PRODUCT PAGE GRID
+   ========================================= */
+
 .layout-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.2fr); 
-    gap: 40px;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
+    gap: 30px;
     align-items: start;
-    max-width: 1300px;
+
+    max-width: 1360px;
     margin: 0 auto;
-    /* Reduced top padding from 40px to 10px */
-    padding: 10px 20px 40px 20px; 
+    padding: 10px 12px 40px;
     width: 100%;
+    box-sizing: border-box;
 }
+
+
 /* =========================================
-   SITE HEADER & NAVIGATION
+   3. SITE HEADER & NAVIGATION
    ========================================= */
 
 .site-header {
     position: fixed;
     top: 0;
     width: 100%;
-    background: #fff;
+    background: linear-gradient(
+        90deg,
+        #0d0d0d 0%,
+        #160b0b 55%,
+        #220707 100%
+    );
     border-bottom: 1px solid #eee;
     z-index: 1000;
 }
@@ -65,7 +80,7 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: #444;
+    color: #fff;
     font-weight: 500;
     transition: 0.3s ease;
 }
@@ -74,49 +89,153 @@ body {
     color: #C00000;
 }
 
-/* 3. STICKY SIDEBAR - POSITIONED LOWER */
+
+/* =========================================
+   4. HERO BACKGROUND
+   ========================================= */
+
+.hero {
+    background:
+        radial-gradient(
+            circle at 72% 42%,
+            rgba(192, 0, 0, 0.18) 0%,
+            rgba(192, 0, 0, 0.08) 22%,
+            rgba(192, 0, 0, 0) 55%
+        ),
+        linear-gradient(
+            90deg,
+            #0d0d0d 0%,
+            #120909 50%,
+            #250707 100%
+        );
+}
+
+
+/* =========================================
+   5. CONTENT COLUMN
+   ========================================= */
+
+.content-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 1.5rem 1rem;
+    box-sizing: border-box;
+}
+
+.content-column h1,
+.content-column h3,
+.content-column p,
+.content-column ul {
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+}
+
+
+/* =========================================
+   6. HERO CONTENT
+   ========================================= */
+
+.hero-content {
+    padding: 1.5rem 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.hero-content h1,
+.content-column h1 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 850;
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.01em;
+    text-align: left !important;
+}
+
+.hero-content p {
+    line-height: 1.6;
+    color: #444;
+}
+
+.hero-content h3 {
+    line-height: 1.3;
+}
+
+
+/* =========================================
+   7. STICKY SIDEBAR
+   ========================================= */
+
 .sticky-sidebar {
-    position: -webkit-sticky;
     position: sticky;
-    top: 140px; 
+    top: 120px;
     z-index: 10;
     height: fit-content;
 }
 
-/* 4. IMAGE & MOCKUP CONTAINMENT (FIXES STRETCHING) */
-/* Update Section 4 and Section 9 overrides */
+
+/* =========================================
+   8. PRODUCT MOCKUP
+   ========================================= */
+
 .mockup-container {
     width: 100%;
-    margin-top: 25px !important; /* Increased from 10px to fix tight text overlap */
-    margin-bottom: 25px !important; /* Added more space before payment buttons */
+    margin-top: 25px !important;
+    margin-bottom: 25px !important;
 }
 
-/* Specific styling for the Canva-style Grid Mockup */
 .mockup-container img {
     max-width: 100%;
     height: auto;
     display: block;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08); /* Professional soft shadow */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
-/* 5. LIST STYLING - FIXED INDENTATION */
+
+/* =========================================
+   9. GLASS CARDS
+   ========================================= */
+
+.glass-card {
+    background: #fff;
+    padding: 15px 30px 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.glass-card h3:first-child {
+    margin-top: 0 !important;
+}
+
+.glass-card h3 + p {
+    text-align: left;
+    margin-top: 8px;
+}
+
+
+/* =========================================
+   10. LIST STYLING
+   ========================================= */
+
 .clarity-list {
     list-style: none;
     padding: 0;
-    margin: 15px 0; /* Reduced from 25px */
+    margin: 15px 0;
     text-align: left;
 }
 
 .clarity-list li {
-    padding-left: 35px; 
     position: relative;
-    margin-bottom: 12px; /* Reduced from 15px */
+    padding-left: 35px;
+    margin-bottom: 12px;
     line-height: 1.5;
 }
 
 .clarity-list li::before {
-    content: '✓';
+    content: "✓";
     position: absolute;
     left: 0;
     top: 0;
@@ -125,107 +244,110 @@ body {
     font-size: 1.1rem;
 }
 
-/* 6. BUTTON GROUPS - UPDATED FOR PNG ICONS */
+
+/* =========================================
+   11. PAYMENT BUTTON GROUP
+   ========================================= */
+
 .btn-payment-group {
     display: flex;
+    flex-direction: row;
     gap: 12px;
-    margin: 15px 0; /* Reduced from 20px */
+    margin: 15px 0;
     width: 100%;
 }
 
-.content-column .btn-payment-group {
-    flex-direction: row;
-}
-
-/* CHANGE THIS: */
-.sticky-sidebar .btn-payment-group {
-    flex-direction: row; /* Changed from column to row */
-    flex-wrap: nowrap;   /* Ensures they stay on one line */
-}
-
-/* ADD THIS to ensure they fit properly in the smaller sidebar width: */
-.sticky-sidebar .btn-payment-group .btn-paypal-red, 
-.sticky-sidebar .btn-payment-group .btn-mpesa-outline {
-    font-size: 0.85rem; /* Slightly smaller text so they don't squish */
-    padding: 12px 5px;  /* Reduced side padding */
-}
-
-.btn-paypal-red, .btn-mpesa-outline {
+.btn-paypal-red,
+.btn-mpesa-outline {
     flex: 1;
-    display: inline-flex; 
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px; 
+    gap: 10px;
+
     padding: 14px 10px;
     border-radius: 8px;
+
     font-weight: 700;
-    text-decoration: none;
     font-size: 0.9rem;
+    text-decoration: none;
+
     transition: all 0.2s ease;
-    
-    /* MOBILE PERFORMANCE FIXES */
-    touch-action: manipulation; /* Fixes "sometimes fails" by removing 300ms tap delay */
+
+    touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
 }
 
-/* Icon Sizing for button1.png and button2.png */
+
+/* =========================================
+   12. PAYMENT BUTTON ICONS
+   ========================================= */
+
 .btn-icon-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 30px;        /* button height reference stays SAME */
-    overflow: visible;   /* allows icon to visually exceed box */
+    height: 30px;
+    overflow: visible;
 }
+
 .btn-icon-wrapper img {
-    height: 130%;        /* increase icon size */
+    height: 130%;
     width: auto;
     object-fit: contain;
     transform: scale(1.15);
 }
-/* PayPal Button (Stays Red) */
-.btn-paypal-red { 
-    background: #C00000; 
-    color: white; 
-    border: 1px solid #C00000; 
+
+
+/* =========================================
+   13. PAYPAL / CARD BUTTON
+   ========================================= */
+
+.btn-paypal-red {
+    background: #C00000;
+    color: #fff;
+    border: 1px solid #C00000;
 }
 
-.btn-paypal-red:hover { 
-    background: #e60000; 
-    transform: translateY(-2px); 
+.btn-paypal-red:hover {
+    background: #e60000;
+    transform: translateY(-2px);
 }
 
-/* M-Pesa Button (Now Light Gray) */
-.btn-mpesa-outline { 
-    border: 1px solid #ccc; 
-    background: #f2f2f2; /* Light Gray */
-    color: #333; 
+
+/* =========================================
+   14. MOBILE MONEY BUTTON
+   ========================================= */
+
+.btn-mpesa-outline {
+    border: 1px solid #ccc;
+    background: #f2f2f2;
+    color: #333;
 }
 
-.btn-mpesa-outline:hover { 
-    background: #e9e9e9; /* Slightly darker gray on hover */
-    border-color: #bbb; 
-    transform: translateY(-2px); 
-}
-/* 7. CARDS & TYPOGRAPHY [cite: 2026-02-26] */
-.glass-card {
-    background: #ffffff;
-    padding: 25px 30px; /* Reduced top/bottom padding from 30px */
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-    width: 100%;
+.btn-mpesa-outline:hover {
+    background: #e9e9e9;
+    border-color: #bbb;
+    transform: translateY(-2px);
 }
 
-/* Price styling with KES approximation */
+
+/* =========================================
+   15. PRODUCT PRICE
+   ========================================= */
+
 .product-price-display {
-    font-size: 3.5rem;
-    font-weight: 900;
-    margin-bottom: 15px;
-    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    font-size: 3.5rem;
+    font-weight: 900;
     line-height: 1;
+    text-align: center;
+
+    margin-bottom: 15px;
 }
 
 .product-price-display small {
@@ -235,166 +357,16 @@ body {
     margin-top: 8px;
 }
 
-/* Paragraph left alignment below h3 [cite: 2026-02-26] */
-.glass-card h3 + p {
-    text-align: left;
-    margin-top: 8px; /* Reduced from 10px */
-}
 
 /* =========================================
-   HERO TITLE — PRODUCT PAGE
-   ========================================= */
-
-.hero-content h1 {
-    font-size: clamp(1.8rem, 4vw, 2.8rem); /* Balanced responsive size */
-    font-weight: 850;
-    margin-top: 0;
-    margin-bottom: 12px;
-    line-height: 1.05; /* Professional tight spacing */
-    letter-spacing: -0.02em; /* Subtle refinement */
-    text-align: left;
-}
-/* =========================================
-   REFINED TABLET & MOBILE LOGIC
-   ========================================= */
-
-/* 1. TABLET & DESKTOP LOGIC */
-@media (min-width: 768px) {
-    .layout-grid {
-        display: grid !important;
-        grid-template-columns: 1.6fr 1.4fr !important;
-        gap: 30px;
-    }
-    
-    /* Show regular links */
-    .nav-links { display: flex !important; }
-    .menu-toggle { display: none !important; }
-
-    /* DIFFERENT STICKY POSITIONS FOR TABLET VS DESKTOP */
-    
-    /* Standard Tablet (Small screens) */
-    .sticky-sidebar {
-        display: block !important;
-        position: sticky !important;
-        top: 90px; /* Slight gap for tablet */
-    }
-
-    /* Windows / Desktop (Large screens) */
-    @media (min-width: 1200px) {
-        .sticky-sidebar {
-            top: 120px; /* More breathing room for professional desktop look */
-        }
-        .layout-grid {
-            padding-top: 40px; /* Pushes the whole grid down away from the header */
-        }
-    }
-}
-
-/* 2. MOBILE & SMALL TABLET: Only trigger 1 column here (Below 768px) */
-@media (max-width: 767px) {
-    .product-page-main {
-        padding-top: 20px !important; 
-    }
-
-    .layout-grid {
-        grid-template-columns: 1fr !important; /* Drops sidebar to bottom */
-        padding-top: 10px;
-        gap: 20px;
-    }
-
-    .sticky-sidebar {
-        position: static !important; /* Stops sticking on small screens */
-        margin-top: 20px;
-    }
-    .btn-payment-group {
-        flex-direction: column !important; /* Forces stacking on mobile */
-    }
-    
-    .btn-paypal-red, .btn-mpesa-outline {
-        width: 100%; /* Ensures buttons take full width when stacked */
-    }
-
-    /* Hide links and show Hamburger */
-    .nav-links {
-        display: none; 
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        background: #fff;
-        padding: 20px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: flex !important;
-    }
-
-    .product-price-display {
-        font-size: 2.8rem;
-    }
-
-    .content-column .btn-payment-group {
-        flex-direction: column;
-    }
-}
-/* 9. SECTION SPACING OVERRIDES (THE FINAL FIX) */
-
-/* Reduce the gap between ALL major sections in the column */
-.content-column {
-    display: flex;
-    flex-direction: column;
-    gap: 10px !important; /* Tightens the vertical distance between sections */
-}
-
-/* Strip default browser margins from headings and paragraphs */
-.content-column h3, 
-.content-column h1,
-.content-column p,
-.content-column ul {
-    margin-top: 0 !important;
-    margin-bottom: 10px !important;
-}
-
-/* Fix the "Ghost Space" inside white cards */
-.glass-card {
-    padding: 20px 30px !important; /* Reduced top/bottom padding */
-}
-
-.glass-card h3:first-child {
-    margin-top: 0 !important;
-}
-
-/* Tighten the space specifically around the mockup image */
-.hero-content {
-    margin-bottom: 5px !important;
-}
-
-/* Update Section 4 and Section 9 overrides */
-.mockup-container {
-    width: 100%;
-    margin-top: 25px !important; /* Increased from 10px to fix tight text overlap */
-    margin-bottom: 25px !important; /* Added more space before payment buttons */
-}
-
-/* Adjust the Is This For You grid margin */
-.info-group div[style*="grid"] {
-    margin-top: 5px !important;
-}
-/* =========================================
-   PREVIEW CAROUSEL STYLING
+   16. PREVIEW CAROUSEL
    ========================================= */
 
 .preview-carousel-container {
     position: relative;
     width: 100%;
     margin-top: 15px;
-    overflow: hidden; /* Hides the second image until scrolled */
+    overflow: hidden;
     border-radius: 12px;
 }
 
@@ -402,10 +374,11 @@ body {
     display: flex;
     scroll-behavior: smooth;
     overflow-x: auto;
-    /* Hide scrollbar for Chrome, Safari and Opera */
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-    snap-type: x mandatory;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    scroll-snap-type: x mandatory;
 }
 
 .preview-carousel-track::-webkit-scrollbar {
@@ -413,22 +386,29 @@ body {
 }
 
 .preview-slide {
-    flex: 0 0 100%; /* Each image takes full width of container */
+    flex: 0 0 100%;
     width: 100%;
-    snap-align: start;
+
     display: flex;
     justify-content: center;
+
+    scroll-snap-align: start;
 }
 
 .preview-slide img {
     width: 100%;
-    max-width: 500px; /* Limits size on desktop so it's not huge */
+    max-width: 500px;
     height: auto;
+
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-/* Dots Navigation */
+
+/* =========================================
+   17. CAROUSEL DOTS
+   ========================================= */
+
 .carousel-dots {
     display: flex;
     justify-content: center;
@@ -439,16 +419,177 @@ body {
 .dot {
     width: 10px;
     height: 10px;
+
     background: #ccc;
     border-radius: 50%;
     text-decoration: none;
+
     transition: background 0.3s ease;
 }
 
-.dot:hover, .dot:active {
-    background: #C00000; /* Matches your brand red */
-}
+.dot:hover,
+.dot:active,
 .dot:focus {
     background: #C00000;
+}
+
+.dot:focus {
     transform: scale(1.2);
 }
+
+
+/* =========================================
+   18. SIDEBAR PAYMENT BUTTONS
+   ========================================= */
+
+.sticky-sidebar .btn-payment-group {
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.sticky-sidebar .btn-payment-group .btn-paypal-red,
+.sticky-sidebar .btn-payment-group .btn-mpesa-outline {
+    font-size: 0.85rem;
+    padding: 12px 5px;
+}
+
+
+/* =========================================
+   19. "IS THIS GUIDE FOR YOU?" GRID
+   ========================================= */
+
+.info-group div[style*="grid"] {
+    margin-top: 5px !important;
+}
+
+
+/* =========================================
+   20. TABLET & DESKTOP
+   ========================================= */
+
+@media (min-width: 768px) {
+
+    .layout-grid {
+        grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
+        gap: 30px;
+    }
+
+    .nav-links {
+        display: flex !important;
+    }
+
+    .menu-toggle {
+        display: none !important;
+    }
+
+    .sticky-sidebar {
+        display: block !important;
+        position: sticky !important;
+        top: 90px;
+    }
+}
+
+
+/* =========================================
+   21. LARGE DESKTOP
+   ========================================= */
+
+@media (min-width: 1200px) {
+
+    .layout-grid {
+        padding-top: 40px;
+    }
+
+    .sticky-sidebar {
+        top: 120px;
+    }
+}
+
+
+/* =========================================
+   22. MOBILE
+   ========================================= */
+
+@media (max-width: 767px) {
+
+    .product-page-main {
+        padding-top: 20px !important;
+    }
+
+    .layout-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+
+        padding: 10px 8px 30px;
+
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .content-column {
+        padding: 1.5rem 4px;
+    }
+
+    .hero-content {
+        padding: 1.5rem 12px;
+    }
+
+    .sticky-sidebar {
+        position: static !important;
+        margin-top: 20px;
+    }
+
+    /* Stack payment buttons on mobile */
+    .btn-payment-group,
+    .content-column .btn-payment-group {
+        flex-direction: column !important;
+    }
+
+    .btn-paypal-red,
+    .btn-mpesa-outline {
+        width: 100%;
+    }
+
+    /* Mobile navigation */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+
+        background: #fff;
+        padding: 20px;
+
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        color: #111;
+    }
+
+    .menu-toggle {
+        display: flex !important;
+    }
+
+    /* Mobile price */
+    .product-price-display {
+        font-size: 2.8rem;
+    }
+
+    /* Mobile cards */
+    .glass-card {
+        padding: 15px 20px 20px;
+    }
+}
+
+
+/* =========================================
+   END OF PRODUCT PAGE CSS
+   ========================================= */

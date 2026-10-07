@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Video Annotation Learning Path | Kalz Learn</title>
+
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/products.css">
+    <link rel="stylesheet" href="../css/path.css">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FHZBD0QSL"></script>
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag(){
+        dataLayer.push(arguments);
+      }
+
+      gtag('js', new Date());
+
+      gtag('config', 'G-5FHZBD0QSL');
+    </script>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="site-header">
+
+  <div class="nav-container">
+
+    <a href="../index.html" class="logo">
+
+      <img
+        src="../images/logo.png"
+        alt="Kalz Learn logo">
+
+    </a>
+
+
+    <button
+      class="menu-toggle"
+      id="mobile-menu"
+      aria-label="Menu">
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </button>
+
+
+    <nav class="nav-links">
+
+      <a href="../index.html">Home</a>
+
+      <a href="../about.html">About</a>
+
+      <a href="../resources.html" class="active">Resources</a>
+
+      <a href="../products.html">Products</a>
+
+      <a href="../contact.html">Contact</a>
+
+      <a
+        href="../ai-learning-path.html"
+        class="btn primary small btn-mobile-cta">
+
+        Find My AI Path
+
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="product-page-main">
+
+<div class="section-container layout-grid">
+
+
+<div class="content-column">
+
+
+<!-- =========================================================
+     HERO SECTION
+========================================================= -->
+
+<section class="hero-content">
+
+    <p class="category-tag">
+        Recommended Path · Temporal Computer Vision
+    </p>
+
+
+    <h1>
+        Video Data Annotation &amp; Temporal Tracking
+    </h1>
+
+
+    <h3 class="hero-subtitle">
+
+        Learn how multi-frame sequence data, continuous object tracking, and temporal timestamps are annotated to power autonomous vehicles, sports analytics, and action recognition AI.
+
+    </h3>
+
+
+    <p>
+
+        Unlike single static images, video adds the critical dimension of time. Computer vision models must track moving objects, manage temporary occlusions, and understand activity context across hundreds of consecutive frames.
+
+    </p>
+
+
+    <p>
+
+        Video annotation structures continuous video streams into frame-by-frame object IDs and time-bounded events. Below is your detailed breakdown of four core video labeling techniques.
+
+    </p>
+
+
+    <div class="mini-outcome-bar">
+
+        <span>✓ Single &amp; Multi-Object Tracking</span>
+
+        <span>✓ Interpolation &amp; Keyframing</span>
+
+        <span>✓ Temporal Action Tagging</span>
+
+        <span>✓ 3D Bounding Cuboids</span>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SECTION 1: OBJECT TRACKING & INTERPOLATION
+========================================================= -->
+
+<section class="glass-card" id="object-tracking">
+
+    <p class="category-tag blue">
+        01 · Multi-Frame Continuity
+    </p>
+
+    <h3>
+        Object Tracking &amp; Keyframe Interpolation
+    </h3>
+
+
+    <p>
+
+        Object tracking assigns a persistent unique ID to an entity across continuous video frames, allowing computer vision models to calculate velocity, direction, and movement paths.
+
+    </p>
+
+
+    <div class="feature-grid">
+
+        <div class="glass-card card-inner">
+            <h4>Keyframe Interpolation</h4>
+            <p>
+                Annotators place bounding boxes on select keyframes (e.g., frame 1 and frame 30), and software automatically estimates trajectory across intermediate frames.
+            </p>
+        </div>
+
+        <div class="glass-card card-inner">
+            <h4>Occlusion &amp; Re-Identification</h4>
+            <p>
+                Maintaining consistent tracking IDs when objects temporarily disappear behind obstacles (e.g., a car passing under a bridge) and reappear.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="glass-card highlight-box" style="margin-top: 20px;">
+
+        <p style="margin:0;">
+
+            <strong>Example &amp; Visual Logic:</strong> Traffic management AI uses persistent bounding box tracking IDs to measure vehicle speed and detect lane changes across intersection feeds.
+
+        </p>
+
+    </div>
+
+
+    <!-- Soft PDF Guide Recommendation -->
+    <div class="glass-card card-border-blue" style="margin-top: 25px; background: rgba(59, 130, 246, 0.04);">
+
+        <p class="category-tag blue" style="font-size: 0.75rem;">RECOMMENDED STEP-BY-STEP GUIDE</p>
+
+        <h4 style="margin-bottom: 8px;">Master Video Frame Rates &amp; ID Persistence</h4>
+
+        <p style="font-size: 0.9rem; margin-bottom: 12px;">
+
+            Want detailed guidelines on resolving camera jitter, frame dropping, and complex tracklet splits? Check out our dedicated guide.
+
+        </p>
+
+        <a href="../products/video-annotation-guide.html" class="btn primary small">
+            Explore The Video Annotation Guide →
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SECTION 2: TEMPORAL ACTION SEGMENTATION
+========================================================= -->
+
+<section class="glass-card" id="action-tagging">
+
+    <p class="category-tag amber">
+        02 · Time-Based Events
+    </p>
+
+    <h3>
+        Temporal Action Segmentation &amp; Event Tagging
+    </h3>
+
+
+    <p>
+
+        Temporal segmentation marks exact start and end timestamps (`HH:MM:SS:FF`) to categorize actions and events occurring over time within a stream.
+
+    </p>
+
+
+    <div class="feature-grid">
+
+        <div class="glass-card card-inner">
+            <h4>Action Recognition</h4>
+            <p>
+                Labeling human activities like <code>[PEDESTRIAN_CROSSING]</code>, <code>[CYCLIST_TURNING]</code>, or <code>[ATHLETE_JUMPING]</code> across frame ranges.
+            </p>
+        </div>
+
+        <div class="glass-card card-inner">
+            <h4>Event Boundary Detection</h4>
+            <p>
+                Pinpointing millisecond-level transitions between events, such as the exact frame a soccer ball crosses the goal line.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="glass-card highlight-box" style="margin-top: 20px;">
+
+        <p style="margin:0;">
+
+            <strong>Example:</strong> Sports broadcast analytics platforms use action tagging to automate highlight clip generation and player performance tracking.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SECTION 3: 3D CUBOIDS & SENSOR FUSION
+========================================================= -->
+
+<section class="glass-card" id="cuboids-fusion">
+
+    <p class="category-tag green">
+        03 · Spatial-Temporal Depth
+    </p>
+
+    <h3>
+        3D Cuboids &amp; LiDAR-Video Sensor Fusion
+    </h3>
+
+
+    <p>
+
+        Advanced video systems—like self-driving cars—combine 2D camera frames with 3D point clouds (LiDAR) to perceive depth, spatial volume, and rotation over time.
+
+    </p>
+
+
+    <ul class="clarity-list">
+
+        <li>
+            <strong>3D Bounding Cuboids:</strong> Drawing 3D boxes around moving targets to capture length, width, height, and yaw angle relative to the camera.
+        </li>
+
+        <li>
+            <strong>Sensor Fusion Alignment:</strong> Synchronizing camera video feeds frame-by-frame with 3D LiDAR point clouds to ensure spatial accuracy.
+        </li>
+
+        <li>
+            <strong>Ego-Motion Tracking:</strong> Accounting for the movement of the recording camera itself while tracking external surrounding objects.
+        </li>
+
+    </ul>
+
+
+    <div class="glass-card highlight-box" style="margin-top: 20px;">
+
+        <p style="margin:0;">
+
+            <strong>Example:</strong> Autonomous vehicle Perception models evaluate 3D cuboids to calculate accurate stopping distances relative to surrounding traffic.
+
+        </p>
+
+    </div>
+
+
+    <!-- Soft PDF Guide Recommendation -->
+    <div class="glass-card card-border-blue" style="margin-top: 25px; background: rgba(59, 130, 246, 0.04);">
+
+        <p class="category-tag blue" style="font-size: 0.75rem;">PRACTICAL QA CHEATSHEET</p>
+
+        <h4 style="margin-bottom: 8px;">Ensure Frame-Level Quality Control</h4>
+
+        <p style="font-size: 0.9rem; margin-bottom: 12px;">
+
+            Our video handbook includes Multiple Object Tracking Accuracy (MOTA) benchmarks, keyframe density guidelines, and audit templates.
+
+        </p>
+
+        <a href="../products/video-annotation-guide.html" class="btn primary small">
+            Get The Video Annotation Guide →
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SECTION 4: FRAME-BY-FRAME SEGMENTATION
+========================================================= -->
+
+<section class="glass-card" id="video-segmentation">
+
+    <p class="category-tag purple">
+        04 · Pixel-Level Motion
+    </p>
+
+    <h3>
+        Video Instance &amp; Semantic Segmentation
+    </h3>
+
+
+    <p>
+
+        Video segmentation outlines exact pixel boundaries of targets continuously across consecutive frames, enabling fine-grained visual interaction understanding.
+
+    </p>
+
+
+    <div class="feature-grid">
+
+        <div class="glass-card card-inner">
+            <h4>Video Instance Segmentation</h4>
+            <p>
+                Semiautomatically propagating pixel-level masks across sequential frames while preserving unique individual object identities.
+            </p>
+        </div>
+
+        <div class="glass-card card-inner">
+            <h4>Polygonal Tracking</h4>
+            <p>
+                Adjusting polygon vertices as moving objects change shape, angle, or deformation profile during continuous movement.
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="glass-card highlight-box" style="margin-top: 20px;">
+
+        <p style="margin:0;">
+
+            <strong>Example:</strong> Surgical AI systems track surgical tool tips using video segmentation to assist doctors during delicate procedures.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     END CTA: EXPLORE OTHER PATHS
+========================================================= -->
+
+<section class="glass-card">
+
+    <p class="category-tag">
+        Explore Related Paths
+    </p>
+
+
+    <h3>
+        Ready to Explore Another Data Domain?
+    </h3>
+
+
+    <p>
+
+        Real-world AI systems often combine video processing with spatial maps, images, or audio data. Select a path below to continue building your annotation expertise:
+
+    </p>
+
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
+
+        <a href="image-annotation.html" class="glass-card card-inner" style="text-decoration: none; color: inherit;">
+            <h4>Image Annotation →</h4>
+            <p style="font-size: 0.85rem; margin-top: 5px; color: #666;">
+                Bounding boxes, segmentation &amp; CV
+            </p>
+        </a>
+
+        <a href="text-annotation.html" class="glass-card card-inner" style="text-decoration: none; color: inherit;">
+            <h4>Text Annotation →</h4>
+            <p style="font-size: 0.85rem; margin-top: 5px; color: #666;">
+                NER, sentiment analysis &amp; LLMs
+            </p>
+        </a>
+
+        <a href="audio-annotation.html" class="glass-card card-inner" style="text-decoration: none; color: inherit;">
+            <h4>Speech &amp; Audio →</h4>
+            <p style="font-size: 0.85rem; margin-top: 5px; color: #666;">
+                Transcription &amp; speaker tagging
+            </p>
+        </a>
+
+        <a href="satelite-annotation.html" class="glass-card card-inner" style="text-decoration: none; color: inherit;">
+            <h4>Geographic Data →</h4>
+            <p style="font-size: 0.85rem; margin-top: 5px; color: #666;">
+                GIS vectors &amp; satellite mapping
+            </p>
+        </a>
+
+    </div>
+
+</section>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     SIDEBAR MENU (INCLUDES CURRENT PAGE HIGHLIGHTED)
+========================================================= -->
+
+<aside class="sticky-sidebar">
+
+  <div class="glass-card">
+
+    <h3>
+        Annotation Learning Paths
+    </h3>
+
+    <p style="font-size: 0.9rem; margin-bottom: 15px;">
+        Explore our domain hubs:
+    </p>
+
+    <div class="sidebar-nav-list">
+
+        <p><a href="image-annotation.html">01 · Image Annotation</a></p>
+        <p><a href="text-annotation.html">02 · Text Annotation</a></p>
+        <p><a href="audio-annotation.html">03 · Speech &amp; Audio Annotation</a></p>
+        <p><strong class="active-link">04 · Video Annotation</strong></p>
+        <p><a href="satelite-annotation.html">05 · Geographic Data Annotation</a></p>
+
+    </div>
+
+  </div>
+
+</aside>
+
+
+</div>
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="site-footer">
+
+  <div class="section-container">
+
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+
+        <h4>Kalz Learn</h4>
+
+        <p>
+          Helping beginners understand the data behind AI and how data is made reliable.
+        </p>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <h4>Explore</h4>
+
+        <a href="../ai-learning-path.html">Assessment Tool</a>
+
+        <a href="../resources.html">Resources</a>
+
+        <a href="../products.html">Products</a>
+
+      </div>
+
+
+      <div class="footer-links">
+
+        <h4>Company</h4>
+
+        <a href="../about.html">About</a>
+
+        <a href="../contact.html">Contact</a>
+
+        <a href="../privacy.html">Privacy</a>
+
+        <a href="../terms.html">Terms</a>
+
+      </div>
+
+
+      <div class="footer-social">
+
+        <h4>Follow Kalz Learn</h4>
+
+        <div class="social-icons">
+
+          <a
+            href="https://www.youtube.com/@KalzLearn"
+            aria-label="YouTube"
+            target="_blank"
+            rel="noopener">
+
+            <svg viewBox="0 0 24 24" fill="none">
+
+              <path
+                d="M22 12C22 12 22 8.5 21.5 7C21.1 5.8 20.2 4.9 19 4.5C16.8 4 12 4 12 4C12 4 7.2 4 5 4.5C3.8 4.9 2.9 5.8 2 7C2 8.5 2 12 2 12C2 12 2 15.5 2.5 17C2.9 18.2 3.8 19.1 5 19.5C7.2 20 12 20 12 20C12 20 16.8 20 19 19.5C20.2 19.1 21.1 18.2 21.5 17C22 15.5 22 12 22 12Z"
+                stroke="currentColor"
+                stroke-width="1.6"/>
+
+              <path
+                d="M10 9L15 12L10 15V9Z"
+                fill="currentColor"/>
+
+            </svg>
+
+          </a>
+
+
+          <a
+            href="https://www.facebook.com/kalzlearnhq"
+            aria-label="Facebook"
+            target="_blank"
+            rel="noopener">
+
+            <svg viewBox="0 0 24 24" fill="none">
+
+              <path
+                d="M14 9H16V6H14C11.8 6 10 7.8 10 10V12H8V15H10V21H13V15H15L16 12H13V10C13 9.4 13.4 9 14 9Z"
+                fill="currentColor"/>
+
+            </svg>
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <p>
+        © 2026 Kalz Learn. All rights reserved.
+      </p>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script>
+
+const menuToggle =
+    document.getElementById('mobile-menu');
+
+const navMenu =
+    document.querySelector('.nav-links');
+
+menuToggle.addEventListener('click', () => {
+
+    navMenu.classList.toggle('active');
+
+    menuToggle.classList.toggle('open');
+
+});
+
+</script>
+
+
+</body>
+</html>

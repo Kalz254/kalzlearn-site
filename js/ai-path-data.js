@@ -1,557 +1,339 @@
 /* ==========================================================================
-   KALZ LEARN — AI PATH MAP
-   ==========================================================================
-   This file contains the knowledge base used by the AI Skill Path Finder.
-
-   IMPORTANT:
-   - This is NOT the user's profile.
-   - It contains the possible learning paths.
-   - calculateProfile() will later decide which path is appropriate.
+   KALZ LEARN — DATA ANNOTATION DETAILED PATH MAP
    ========================================================================== */
 
 const aiPathMap = {
 
-  /* ==========================================================================
-     1. VISUAL AI DATA
-     ========================================================================== */
-
-  "visual-ai-data": {
-    id: "visual-ai-data",
-
-    identity: "Visual Data Practitioner",
-
-    name: "Visual AI Data",
-    shortName: "Visual Data",
-
-    description:
-      "Learn how images are labeled and prepared as training data for AI systems.",
-
-    bestFor:
-      "Learners who enjoy working with images, visual information and structured labeling tasks.",
-
-    entrySkill: "Image Classification",
-
+  // --- IMAGE SUB-PATHS ---
+  "image-bounding-boxes": {
+    title: "Bounding Box Image Annotation",
+    summary: "Your ideal path is learning object detection through precise 2D and 3D bounding boxes.",
+    explanation: "Bounding box annotation is fundamental for computer vision systems like autonomous vehicles and retail AI. You'll master labeling target objects, handling occlusions, and maintaining tight bounding margins.",
+    currentStepIndex: 0,
     skills: [
-      {
-        id: "image-classification",
-        name: "Image Classification",
-        level: "beginner",
-        prerequisite: null,
-        description:
-          "Learn how to assign meaningful categories or labels to images.",
-        portfolioProject:
-          "Create a small image classification dataset and document the labels and rules you used.",
-        workshop: "Classification Workshop"
-      },
-
-      {
-        id: "object-detection",
-        name: "Object Detection",
-        level: "beginner",
-        prerequisite: "image-classification",
-        description:
-          "Learn how to locate objects in images using bounding boxes.",
-        portfolioProject:
-          "Annotate a small dataset using bounding boxes and document your annotation guidelines.",
-        workshop: "Object Detection Workshop"
-      },
-
-      {
-        id: "image-segmentation",
-        name: "Image Segmentation",
-        level: "intermediate",
-        prerequisite: "object-detection",
-        description:
-          "Learn how to identify precise regions or objects within an image.",
-        portfolioProject:
-          "Create a segmentation sample showing how individual objects or regions were separated.",
-        workshop: "Segmentation Workshop"
-      },
-
-      {
-        id: "visual-quality-control",
-        name: "Visual Annotation Quality Control",
-        level: "intermediate",
-        prerequisite: "image-segmentation",
-        description:
-          "Learn how to identify annotation errors and check dataset consistency.",
-        portfolioProject:
-          "Create a visual annotation QA report showing common errors and how they were corrected.",
-        workshop: "AI Data Quality Workshop"
-      }
+      "2D Bounding Box Placement",
+      "Handling Object Occlusion & Overlaps",
+      "Class Label Assignment",
+      "Tight Edge Alignment Guidelines",
+      "Quality Assurance & Intersection over Union (IoU)"
     ],
-
-    progression: [
-      "image-classification",
-      "object-detection",
-      "image-segmentation",
-      "visual-quality-control"
-    ]
+    recommendedResource: {
+      title: "Bounding Box & Object Detection Hub",
+      reason: "Learn hands-on bounding box techniques, labeling guidelines, and best practices for computer vision.",
+      url: "path/image-annotation.html#bounding-boxes",
+      buttonText: "Explore Bounding Box Path →"
+    }
   },
 
-
-  /* ==========================================================================
-     2. LANGUAGE AI DATA
-     ========================================================================== */
-
-  "language-ai-data": {
-    id: "language-ai-data",
-
-    identity: "Language Data Practitioner",
-
-    name: "Language AI Data",
-    shortName: "Language Data",
-
-    description:
-      "Learn how text is labeled and structured to help AI systems understand language.",
-
-    bestFor:
-      "Learners who enjoy reading, writing, categorizing information and working with language.",
-
-    entrySkill: "Text Classification",
-
+  "image-classification": {
+    title: "Image Classification Annotation",
+    summary: "Your starting point is single and multi-label image categorization.",
+    explanation: "Image classification forms the baseline of computer vision, training models to identify the primary subject, scene context, or visual properties of an entire image.",
+    currentStepIndex: 0,
     skills: [
-      {
-        id: "text-classification",
-        name: "Text Classification",
-        level: "beginner",
-        prerequisite: null,
-        description:
-          "Learn how to categorize text according to predefined labels or intents.",
-        portfolioProject:
-          "Create a small text classification dataset using clear categories and annotation rules.",
-        workshop: "Text Classification Workshop"
-      },
-
-      {
-        id: "sentiment-analysis",
-        name: "Sentiment Annotation",
-        level: "beginner",
-        prerequisite: "text-classification",
-        description:
-          "Learn how to label text according to sentiment or emotional tone.",
-        portfolioProject:
-          "Annotate a small collection of text examples and document your sentiment guidelines.",
-        workshop: "Sentiment Annotation Workshop"
-      },
-
-      {
-        id: "entity-tagging",
-        name: "Entity Tagging",
-        level: "intermediate",
-        prerequisite: "text-classification",
-        description:
-          "Learn how to identify and label entities such as people, places, organizations and products.",
-        portfolioProject:
-          "Create a named-entity annotation sample with clearly documented labeling rules.",
-        workshop: "Entity Tagging Workshop"
-      },
-
-      {
-        id: "language-quality-control",
-        name: "Language Data Quality Control",
-        level: "intermediate",
-        prerequisite: "entity-tagging",
-        description:
-          "Learn how to review text annotations for consistency, accuracy and guideline compliance.",
-        portfolioProject:
-          "Create a language annotation QA report identifying and correcting common labeling errors.",
-        workshop: "AI Data Quality Workshop"
-      }
+      "Single-label & Multi-label Classification",
+      "Taxonomy & Label Hierarchy Creation",
+      "Scene Context Tagging",
+      "Edge-case & Ambiguity Resolution"
     ],
-
-    progression: [
-      "text-classification",
-      "sentiment-analysis",
-      "entity-tagging",
-      "language-quality-control"
-    ]
+    recommendedResource: {
+      title: "Image Classification Hub",
+      reason: "Master image categorization, dataset organization, and taxonomy structuring.",
+      url: "path/image-annotation.html#classification",
+      buttonText: "Explore Classification Path →"
+    }
   },
 
-
-  /* ==========================================================================
-     3. AUDIO AI DATA
-     ========================================================================== */
-
-  "audio-ai-data": {
-    id: "audio-ai-data",
-
-    identity: "Audio Data Practitioner",
-
-    name: "Audio AI Data",
-    shortName: "Audio Data",
-
-    description:
-      "Learn how spoken language and other audio signals are converted into structured data for AI.",
-
-    bestFor:
-      "Learners who are comfortable listening carefully, transcribing speech and working with audio.",
-
-    entrySkill: "Audio Transcription",
-
+  "image-segmentation": {
+    title: "Semantic & Instance Image Segmentation",
+    summary: "Your ideal path is pixel-level precision labeling for advanced AI models.",
+    explanation: "Segmentation goes beyond boxes to outline exact object boundaries pixel-by-pixel. It is essential for medical imaging, satellite analysis, and robotics.",
+    currentStepIndex: 0,
     skills: [
-      {
-        id: "audio-transcription",
-        name: "Audio Transcription",
-        level: "beginner",
-        prerequisite: null,
-        description:
-          "Learn how spoken audio is converted into accurate written text.",
-        portfolioProject:
-          "Create a short transcription sample and document the transcription conventions you followed.",
-        workshop: "Transcription Workshop"
-      },
-
-      {
-        id: "speaker-identification",
-        name: "Speaker Identification",
-        level: "beginner",
-        prerequisite: "audio-transcription",
-        description:
-          "Learn how to distinguish and label different speakers in an audio recording.",
-        portfolioProject:
-          "Create a multi-speaker transcription sample with clear speaker labels.",
-        workshop: "Speaker Identification Workshop"
-      },
-
-      {
-        id: "audio-classification",
-        name: "Audio Classification",
-        level: "intermediate",
-        prerequisite: "audio-transcription",
-        description:
-          "Learn how to categorize audio according to predefined sound classes.",
-        portfolioProject:
-          "Create a small audio classification dataset with documented labeling rules.",
-        workshop: "Audio Classification Workshop"
-      },
-
-      {
-        id: "audio-quality-control",
-        name: "Audio Data Quality Control",
-        level: "intermediate",
-        prerequisite: "audio-classification",
-        description:
-          "Learn how to review transcription and audio labels for consistency and accuracy.",
-        portfolioProject:
-          "Create an audio QA report showing transcription and labeling issues and their corrections.",
-        workshop: "AI Data Quality Workshop"
-      }
+      "Polygon Tracing",
+      "Semantic vs. Instance Segmentation",
+      "Pixel-level Mask Creation",
+      "Boundary Smoothness Rules"
     ],
-
-    progression: [
-      "audio-transcription",
-      "speaker-identification",
-      "audio-classification",
-      "audio-quality-control"
-    ]
+    recommendedResource: {
+      title: "Image Segmentation Hub",
+      reason: "Master pixel-level segmentation techniques for complex computer vision datasets.",
+      url: "path/image-annotation.html#segmentation",
+      buttonText: "Explore Segmentation Path →"
+    }
   },
 
-
-  /* ==========================================================================
-     4. VIDEO AI DATA
-     ========================================================================== */
-
-  "video-ai-data": {
-    id: "video-ai-data",
-
-    identity: "Video Data Practitioner",
-
-    name: "Video AI Data",
-    shortName: "Video Data",
-
-    description:
-      "Learn how objects and events are labeled across video frames to create training data for AI.",
-
-    bestFor:
-      "Learners who enjoy visual content and are comfortable working with sequences of images or video.",
-
-    entrySkill: "Video Annotation",
-
+  "image-keypoints": {
+    title: "Keypoint & Landmark Annotation",
+    summary: "Your path focuses on structural point estimation for pose and facial tracking.",
+    explanation: "Keypoint annotation marks precise structural coordinates on objects, human bodies, or faces to train motion tracking and facial recognition models.",
+    currentStepIndex: 0,
     skills: [
-      {
-        id: "video-annotation",
-        name: "Video Annotation",
-        level: "beginner",
-        prerequisite: null,
-        description:
-          "Learn how objects and relevant events are identified and labeled in video.",
-        portfolioProject:
-          "Create a short video annotation sample and document the objects and labeling rules used.",
-        workshop: "Video Annotation Workshop"
-      },
-
-      {
-        id: "object-tracking",
-        name: "Object Tracking",
-        level: "intermediate",
-        prerequisite: "video-annotation",
-        description:
-          "Learn how to maintain object identities as they move across video frames.",
-        portfolioProject:
-          "Create an object-tracking sample showing consistent object identities across several frames.",
-        workshop: "Object Tracking Workshop"
-      },
-
-      {
-        id: "temporal-annotation",
-        name: "Temporal Annotation",
-        level: "intermediate",
-        prerequisite: "object-tracking",
-        description:
-          "Learn how to identify events or actions occurring over specific periods of a video.",
-        portfolioProject:
-          "Create a temporal annotation sample identifying defined events and their start/end points.",
-        workshop: "Video Annotation Workshop"
-      },
-
-      {
-        id: "video-quality-control",
-        name: "Video Data Quality Control",
-        level: "intermediate",
-        prerequisite: "temporal-annotation",
-        description:
-          "Learn how to review video annotations for consistency across frames and events.",
-        portfolioProject:
-          "Create a video annotation QA report showing common tracking and labeling errors.",
-        workshop: "AI Data Quality Workshop"
-      }
+      "Skeletal Landmark Placement",
+      "Facial Keypoint Mapping",
+      "Pose Estimation Modeling Concepts",
+      "Visibility & Occlusion Flagging"
     ],
-
-    progression: [
-      "video-annotation",
-      "object-tracking",
-      "temporal-annotation",
-      "video-quality-control"
-    ]
+    recommendedResource: {
+      title: "Keypoint Estimation Hub",
+      reason: "Learn pose tracking, facial landmarking, and structural coordinate labeling.",
+      url: "path/image-annotation.html#keypoints",
+      buttonText: "Explore Keypoint Path →"
+    }
   },
 
-
-  /* ==========================================================================
-     5. AI EVALUATION
-     ========================================================================== */
-
-  "ai-evaluation": {
-    id: "ai-evaluation",
-
-    identity: "AI Evaluation Practitioner",
-
-    name: "AI Evaluation",
-    shortName: "AI Evaluation",
-
-    description:
-      "Learn how AI outputs can be reviewed, compared and evaluated using clear criteria.",
-
-    bestFor:
-      "Learners who enjoy critical thinking, comparing responses and identifying quality or accuracy issues.",
-
-    entrySkill: "AI Response Evaluation",
-
+  // --- TEXT SUB-PATHS ---
+  "text-ner": {
+    title: "Named Entity Recognition (NER) Annotation",
+    summary: "Your starting point is extracting key entities from unstructured text.",
+    explanation: "NER annotation teaches AI to recognize people, locations, organizations, dates, and custom entities inside sentences and documents.",
+    currentStepIndex: 0,
     skills: [
-      {
-        id: "response-evaluation",
-        name: "AI Response Evaluation",
-        level: "beginner",
-        prerequisite: null,
-        description:
-          "Learn how to assess AI-generated responses against defined criteria.",
-        portfolioProject:
-          "Create an evaluation sample comparing AI responses using a documented scoring rubric.",
-        workshop: "AI Evaluation Workshop"
-      },
-
-      {
-        id: "evaluation-rubrics",
-        name: "Evaluation Rubrics",
-        level: "beginner",
-        prerequisite: "response-evaluation",
-        description:
-          "Learn how structured criteria can be used to evaluate AI outputs consistently.",
-        portfolioProject:
-          "Create a simple evaluation rubric and apply it to a set of AI responses.",
-        workshop: "AI Evaluation Workshop"
-      },
-
-      {
-        id: "error-identification",
-        name: "AI Error Identification",
-        level: "intermediate",
-        prerequisite: "evaluation-rubrics",
-        description:
-          "Learn how to identify different types of problems in AI-generated outputs.",
-        portfolioProject:
-          "Create an AI evaluation case study documenting response errors and the reasoning behind each judgment.",
-        workshop: "AI Evaluation Workshop"
-      },
-
-      {
-        id: "evaluation-quality-control",
-        name: "Evaluation Quality Control",
-        level: "intermediate",
-        prerequisite: "error-identification",
-        description:
-          "Learn how to improve consistency when evaluating AI outputs.",
-        portfolioProject:
-          "Create an evaluation QA report showing inconsistent judgments and how they can be resolved.",
-        workshop: "AI Data Quality Workshop"
-      }
+      "Entity Span Selection",
+      "Nested Entity Labeling",
+      "Taxonomy Rule Application",
+      "Contextual Disambiguation"
     ],
-
-    progression: [
-      "response-evaluation",
-      "evaluation-rubrics",
-      "error-identification",
-      "evaluation-quality-control"
-    ]
+    recommendedResource: {
+      title: "NER & Text Extraction Hub",
+      reason: "Master entity extraction, text parsing, and NLP labeling workflows.",
+      url: "path/text-annotation.html#ner",
+      buttonText: "Explore NER Path →"
+    }
   },
 
-
-  /* ==========================================================================
-     6. AI EXPLORER
-     ========================================================================== */
-
-  "ai-explorer": {
-    id: "ai-explorer",
-
-    identity: "AI Explorer",
-
-    name: "AI Foundations",
-    shortName: "AI Foundations",
-
-    description:
-      "Build a broad understanding of practical AI work before choosing a specialization.",
-
-    bestFor:
-      "Learners who are curious about AI but don't yet know which practical direction suits them.",
-
-    entrySkill: "AI Data Fundamentals",
-
+  "text-sentiment": {
+    title: "Sentiment & Opinion Annotation",
+    summary: "Your starting point is evaluating emotional tone and intent in language.",
+    explanation: "Sentiment annotation labels human emotions, opinions, and review tone to help AI understand customer feedback and conversational sentiment.",
+    currentStepIndex: 0,
     skills: [
-      {
-        id: "ai-data-fundamentals",
-        name: "AI Data Fundamentals",
-        level: "beginner",
-        prerequisite: null,
-        description:
-          "Understand how data is collected, labeled, reviewed and used in AI development.",
-        portfolioProject:
-          "Create a beginner AI data case study explaining an annotation workflow from raw data to quality control.",
-        workshop: "AI Data Fundamentals Workshop"
-      },
-
-      {
-        id: "annotation-overview",
-        name: "Annotation Methods Overview",
-        level: "beginner",
-        prerequisite: "ai-data-fundamentals",
-        description:
-          "Understand the major types of image, text, audio and video annotation.",
-        portfolioProject:
-          "Create a comparison project showing four different annotation methods and when each is used.",
-        workshop: "AI Annotation Fundamentals Workshop"
-      },
-
-      {
-        id: "path-selection",
-        name: "AI Path Selection",
-        level: "beginner",
-        prerequisite: "annotation-overview",
-        description:
-          "Use practical experience to identify the AI data specialization that fits you best.",
-        portfolioProject:
-          "Create a personal AI skills roadmap based on your strongest interests and demonstrated skills.",
-        workshop: "AI Beginner Roadmap Workshop"
-      }
+      "Positive/Negative/Neutral Scoring",
+      "Aspect-Based Sentiment Labeling",
+      "Sarcasm & Nuance Detection",
+      "Subjectivity Guidelines"
     ],
+    recommendedResource: {
+      title: "Sentiment Analysis Hub",
+      reason: "Learn sentiment evaluation, tone classification, and subjective text labeling.",
+      url: "path/text-annotation.html#sentiment-intent",
+      buttonText: "Explore Sentiment Path →"
+    }
+  },
 
-    progression: [
-      "ai-data-fundamentals",
-      "annotation-overview",
-      "path-selection"
-    ]
+  "text-intent": {
+    title: "Intent & Utterance Annotation",
+    summary: "Your path focuses on conversational AI and chatbot training data.",
+    explanation: "Intent classification maps human statements to actionable goals, powering virtual assistants, customer service bots, and AI agents.",
+    currentStepIndex: 0,
+    skills: [
+      "Utterance Categorization",
+      "Intent Mapping",
+      "Slot Filling & Parameter Tagging",
+      "Dialogue Flow Structuring"
+    ],
+    recommendedResource: {
+      title: "Intent & Conversational AI Hub",
+      reason: "Explore chatbot data preparation, utterance labeling, and intent taxonomies.",
+      url: "path/text-annotation.html#sentiment-intent",
+      buttonText: "Explore Intent Path →"
+    }
+  },
+
+  "text-classification": {
+    title: "Text & Document Classification",
+    summary: "Your path focuses on categorizing large-scale documents and articles.",
+    explanation: "Document classification organizes text into structured topics, legal categories, or spam filters for search and retrieval engines.",
+    currentStepIndex: 0,
+    skills: [
+      "Hierarchical Topic Categorization",
+      "Document Keyword Tagging",
+      "Spam & Moderation Labeling",
+      "Multi-label Document Tagging"
+    ],
+    recommendedResource: {
+      title: "Text Classification Hub",
+      reason: "Learn document taxonomy setup, topic categorization, and dataset curation.",
+      url: "path/text-annotation.html#sentiment-intent",
+      buttonText: "Explore Document Path →"
+    }
+  },
+
+  // --- AUDIO SUB-PATHS ---
+  "audio-transcription": {
+    title: "Speech-to-Text Audio Annotation",
+    summary: "Your starting point is verbatim audio transcription and acoustic alignment.",
+    explanation: "Speech-to-text annotation converts spoken audio into accurate transcripts, complete with punctuation, filler word handling, and phonetic correctness.",
+    currentStepIndex: 0,
+    skills: [
+      "Verbatim Transcription Rules",
+      "Phonetic & Dialect Handling",
+      "Audio Noise & Overlap Tagging",
+      "Audio Timestamping"
+    ],
+    recommendedResource: {
+      title: "Speech & Audio Transcription Hub",
+      reason: "Master verbatim audio transcription, acoustic formatting, and speech dataset guidelines.",
+      url: "path/audio-annotation.html#transcription",
+      buttonText: "Explore Speech Path →"
+    }
+  },
+
+  "audio-diarization": {
+    title: "Speaker Diarization Annotation",
+    summary: "Your path focuses on identifying who spoke when across multi-speaker audio.",
+    explanation: "Speaker diarization partitions audio into turns by individual speakers. It is key for meeting transcripts, podcast indexing, and call center logs.",
+    currentStepIndex: 0,
+    skills: [
+      "Speaker Boundary Segmenting",
+      "Multi-Speaker Overlap Flagging",
+      "Voice Profile Tagging",
+      "Time-aligned Speaker Attribution"
+    ],
+    recommendedResource: {
+      title: "Speaker Diarization Hub",
+      reason: "Learn multi-speaker segmentation and turn-taking audio annotation.",
+      url: "path/audio-annotation.html#diarization",
+      buttonText: "Explore Diarization Path →"
+    }
+  },
+
+  "audio-events": {
+    title: "Sound Event Classification",
+    summary: "Your path focuses on identifying environmental sounds and acoustic events.",
+    explanation: "Sound event detection tags non-speech acoustic occurrences—like glass breaking, vehicle horns, or machinery noise—for security and industrial AI.",
+    currentStepIndex: 0,
+    skills: [
+      "Acoustic Event Timestamping",
+      "Background Noise Categorization",
+      "Sound Duration Boundary Bounding",
+      "Frequency & Spectrogram Tagging"
+    ],
+    recommendedResource: {
+      title: "Sound Event Detection Hub",
+      reason: "Explore environmental audio labeling, noise classification, and event tracking.",
+      url: "path/audio-annotation.html#event-detection",
+      buttonText: "Explore Sound Events Path →"
+    }
+  },
+
+  // --- VIDEO SUB-PATHS ---
+  "video-tracking": {
+    title: "Video Object Tracking Annotation",
+    summary: "Your starting point is tracking objects consistently across sequential frames.",
+    explanation: "Video tracking maintains persistent object IDs and bounding boxes across consecutive video frames, taking into account movement, speed, and temporary occlusions.",
+    currentStepIndex: 0,
+    skills: [
+      "Frame-by-Frame Bounding Box Interpolation",
+      "Persistent Object ID Assignment",
+      "Occlusion & Re-entry Handling",
+      "Trajectory & Vector Verification"
+    ],
+    recommendedResource: {
+      title: "Video Object Tracking Hub",
+      reason: "Master temporal frame tracking, object ID consistency, and interpolation tools.",
+      url: "path/video-annotation.html#object-tracking",
+      buttonText: "Explore Video Tracking Path →"
+    }
+  },
+
+  "video-action-recognition": {
+    title: "Video Action & Event Annotation",
+    summary: "Your path focuses on labeling temporal actions and human behaviors.",
+    explanation: "Action recognition identifies when an event starts and ends in dynamic video footage, such as sports highlights, surveillance alerts, or human activity tracking.",
+    currentStepIndex: 0,
+    skills: [
+      "Temporal Action Boundary Marking",
+      "Multi-action Sequence Tagging",
+      "Human Behavior Categorization",
+      "Timestamp Precision Rule Sets"
+    ],
+    recommendedResource: {
+      title: "Video Action Recognition Hub",
+      reason: "Learn temporal video segmentation, timestamp tagging, and action categorization.",
+      url: "path/video-annotation.html#action-tagging",
+      buttonText: "Explore Action Tracking Path →"
+    }
+  },
+
+  "video-segmentation": {
+    title: "Video Instance Segmentation",
+    summary: "Your path focuses on pixel-level dynamic mask tracking across frames.",
+    explanation: "Video segmentation applies precise pixel masks to moving targets frame-by-frame, combining high spatial accuracy with temporal continuity.",
+    currentStepIndex: 0,
+    skills: [
+      "Dynamic Mask Interpolation",
+      "Pixel-level Edge Tracking",
+      "Temporal Mask Consistency",
+      "Complex Motion Boundary Handling"
+    ],
+    recommendedResource: {
+      title: "Video Segmentation Hub",
+      reason: "Learn dynamic pixel mask tracking and advanced video labeling tools.",
+      url: "path/video-annotation.html#video-segmentation",
+      buttonText: "Explore Video Segmentation Path →"
+    }
+  },
+
+  // --- GEOSPATIAL SUB-PATHS ---
+  "geospatial-landcover": {
+    title: "Geospatial Land Cover Annotation",
+    summary: "Your path focuses on classifying satellite imagery and terrain types.",
+    explanation: "Land cover labeling categorizes environmental terrain into forests, urban zones, agricultural land, and water bodies using satellite imagery.",
+    currentStepIndex: 0,
+    skills: [
+      "Satellite Image Classification",
+      "Multispectral Band Interpretation",
+      "Terrain Polygon Mapping",
+      "GIS Layer Compatibility"
+    ],
+    recommendedResource: {
+      title: "Geospatial Land Cover Hub",
+      reason: "Explore land cover taxonomy, multispectral imaging, and GIS mapping.",
+      url: "path/satelite-annotation.html#lulc-segmentation",
+      buttonText: "Explore Land Cover Path →"
+    }
+  },
+
+  "geospatial-footprints": {
+    title: "Building Footprint & GIS Annotation",
+    summary: "Your path focuses on tracing urban structures and infrastructure boundaries.",
+    explanation: "Building footprint annotation uses aerial and satellite imagery to vectorize buildings and roads for urban planning and disaster mapping.",
+    currentStepIndex: 0,
+    skills: [
+      "Building Footprint Polygon Tracing",
+      "Orthorectified Imagery Handling",
+      "Road Network Vectorization",
+      "GIS Coordinate Alignment"
+    ],
+    recommendedResource: {
+      title: "Building Footprint & GIS Hub",
+      reason: "Master structural tracing and vector mapping on high-resolution satellite imagery.",
+      url: "path/satelite-annotation.html#vector-mapping",
+      buttonText: "Explore Footprint Path →"
+    }
+  },
+
+  "geospatial-agriculture": {
+    title: "Agricultural & Farm Plot Annotation",
+    summary: "Your path focuses on mapping crops, field boundaries, and farm plots.",
+    explanation: "Agricultural geospatial labeling tracks field boundaries, crop health, and irrigation features to power precision agriculture AI models.",
+    currentStepIndex: 0,
+    skills: [
+      "Farm Plot Boundary Polygon Tracing",
+      "Crop Type & Health Tagging",
+      "Water Resource Identification",
+      "Temporal Drone Image Analysis"
+    ],
+    recommendedResource: {
+      title: "Precision Agriculture GIS Hub",
+      reason: "Learn agricultural mapping, crop monitoring, and farm plot polygon creation.",
+      url: "path/satelite-annotation.html#multispectral-sar",
+      buttonText: "Explore Agriculture GIS Path →"
+    }
   }
 
 };
 
-
-/* ==========================================================================
-   HELPER FUNCTIONS
-   ========================================================================== */
-
-/**
- * Get a complete learning path.
- */
-function getAIPath(pathId) {
-  return aiPathMap[pathId] || aiPathMap["ai-explorer"];
-}
-
-
-/**
- * Get a specific skill from a learning path.
- */
-function getAISkill(pathId, skillId) {
-
-  const path = getAIPath(pathId);
-
-  return path.skills.find(skill => skill.id === skillId) || path.skills[0];
-}
-
-
-/**
- * Get the first skill in a learning path.
- */
-function getEntrySkill(pathId) {
-
-  const path = getAIPath(pathId);
-
-  return path.skills[0];
-}
-
-
-/**
- * Get the next skill after the current skill.
- */
-function getNextSkill(pathId, currentSkillId) {
-
-  const path = getAIPath(pathId);
-
-  const currentIndex =
-    path.progression.indexOf(currentSkillId);
-
-  if (
-    currentIndex === -1 ||
-    currentIndex >= path.progression.length - 1
-  ) {
-    return null;
-  }
-
-  const nextSkillId =
-    path.progression[currentIndex + 1];
-
-  return getAISkill(pathId, nextSkillId);
-}
-
-
-/**
- * Get the recommended portfolio project.
- */
-function getPortfolioProject(pathId, skillId) {
-
-  const skill = getAISkill(pathId, skillId);
-
-  return skill.portfolioProject;
-}
-
-
-/**
- * Get the recommended workshop.
- */
-function getRecommendedWorkshop(pathId, skillId) {
-
-  const skill = getAISkill(pathId, skillId);
-
-  return {
-    title: skill.workshop,
-    skill: skill.name
-  };
-}
+/* Fallback default path */
+const defaultAIPath = "image-bounding-boxes";
